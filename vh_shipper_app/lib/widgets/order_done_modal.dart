@@ -1,0 +1,526 @@
+import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:intl/intl.dart';
+import 'package:vh_shipper_app/Colors/color.dart';
+import 'package:dotted_border/dotted_border.dart';
+import 'package:slider_button/slider_button.dart';
+
+class OrderDoneModal extends StatefulWidget {
+  late ValueChanged<void> function;
+  late String menuId;
+  late String storeId;
+  OrderDoneModal(
+      {required this.function, required this.menuId, required this.storeId});
+  @override
+  State<StatefulWidget> createState() => _OrderDoneModal();
+}
+
+class _OrderDoneModal extends State<OrderDoneModal> {
+  bool checkInclude(ele, arr) {
+    for (var index = 0; index < arr.length; index++) {
+      if (arr[index].id == ele) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(alignment: Alignment.center, children: [
+      Container(
+          height: MediaQuery.of(context).size.height * 1,
+          width: MediaQuery.of(context).size.width,
+          margin: EdgeInsets.only(top: 20, bottom: 5),
+          decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(15))),
+          child: Stack(
+            children: [
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(15),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 25,
+                            height: 25,
+                            margin: const EdgeInsets.only(right: 15),
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(50),
+                                  bottomLeft: Radius.circular(50),
+                                  topRight: Radius.circular(50),
+                                  bottomRight: Radius.circular(50),
+                                ),
+
+                                // padding: const EdgeInsets.only(right: 15, left: 0),
+                                child: Image(
+                                  // color:25olors.red,
+                                  height: 25,
+                                  width: 25,
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(
+                                      "https://firebasestorage.googleapis.com/v0/b/deliveryfood-9c436.appspot.com/o/icon%2Fcutlery.png?alt=media&token=18690a73-6b12-40b6-a055-3c212ebcdad4"),
+                                )),
+                          ),
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Đặt bởi",
+                                      style: const TextStyle(
+                                          color:
+                                              Color.fromRGBO(100, 100, 100, 1),
+                                          fontFamily: "SF Regular",
+                                          fontSize: 16),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      "Văn Dương",
+                                      style: const TextStyle(
+                                          color: MaterialColors.black,
+                                          fontFamily: "SF Bold",
+                                          fontSize: 16),
+                                    ),
+                                  ],
+                                ),
+                                Icon(
+                                  Icons.phone_in_talk,
+                                  size: 24,
+                                  color: Color.fromRGBO(100, 100, 100, 1),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                        decoration: const BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    color: Color.fromRGBO(230, 230, 230, 1),
+                                    width: 1))),
+                        margin: EdgeInsets.only(top: 5, bottom: 5)),
+                    Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(15),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: MaterialColors.secondary),
+                                    width: 25,
+                                    height: 25,
+                                    child: Icon(Icons.location_on,
+                                        color: Colors.white, size: 18),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(),
+                                      child: Text(
+                                        "Tòa S1.07",
+                                        style: const TextStyle(
+                                            color: MaterialColors.black,
+                                            fontFamily: "SF Bold",
+                                            fontSize: 18),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 7,
+                                    ),
+                                    Container(
+                                      child: Text(
+                                        "Tòa S1.07, Rainbow, Vinhomes Grand Park",
+                                        style: const TextStyle(
+                                            color: MaterialColors.black,
+                                            fontFamily: "SF Ruglar",
+                                            fontSize: 14),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                            color: MaterialColors.grey,
+                            padding: EdgeInsets.only(top: 10)),
+                        Container(
+                          padding: const EdgeInsets.only(
+                              top: 10, left: 15, right: 15),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 25,
+                                height: 25,
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(50),
+                                      bottomLeft: Radius.circular(50),
+                                      topRight: Radius.circular(50),
+                                      bottomRight: Radius.circular(50),
+                                    ),
+
+                                    // padding: const EdgeInsets.only(right: 15, left: 0),
+                                    child: Image(
+                                      // color:40olors.red,
+                                      height: 35,
+                                      width: 35,
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                          "https://firebasestorage.googleapis.com/v0/b/deliveryfood-9c436.appspot.com/o/icon%2Froom-service.png?alt=media&token=67d36528-b39c-4acc-bfb2-96cf318ddf39"),
+                                    )),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text("Danh sách món",
+                                    style: const TextStyle(
+                                        color: MaterialColors.black,
+                                        fontFamily: "SF Bold",
+                                        fontSize: 16)),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(
+                              left: 35, right: 15, bottom: 10, top: 10),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "1 x",
+                                      style: const TextStyle(
+                                          color: MaterialColors.black,
+                                          fontFamily: "SF Regular",
+                                          fontSize: 16),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        "Kebab Thịt heo",
+                                        style: const TextStyle(
+                                            color: MaterialColors.black,
+                                            fontFamily: "SF Regular",
+                                            fontSize: 16),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "₫ 55.000",
+                                style: const TextStyle(
+                                    color: MaterialColors.black,
+                                    fontFamily: "SF Regular",
+                                    fontSize: 16),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(
+                              left: 35, right: 15, bottom: 10, top: 10),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "1 x",
+                                      style: const TextStyle(
+                                          color: MaterialColors.black,
+                                          fontFamily: "SF Regular",
+                                          fontSize: 16),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        "Kebab Thịt heo đặc biệt có phô mai mai mai",
+                                        style: const TextStyle(
+                                            color: MaterialColors.black,
+                                            fontFamily: "SF Regular",
+                                            fontSize: 16),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "₫ 55.000",
+                                style: const TextStyle(
+                                    color: MaterialColors.black,
+                                    fontFamily: "SF Regular",
+                                    fontSize: 16),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                            color: MaterialColors.grey,
+                            padding: EdgeInsets.only(top: 10)),
+                        Container(
+                          padding: EdgeInsets.all(15),
+                          child: Column(
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      "Phương thức thanh toán",
+                                      style: const TextStyle(
+                                          color: MaterialColors.black,
+                                          fontFamily: "SF Regular",
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Text(
+                                      "Tiền mặt",
+                                      style: const TextStyle(
+                                          color: MaterialColors.black,
+                                          fontFamily: "SF Regular",
+                                          fontSize: 16),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      "Thu tiền mặt",
+                                      style: const TextStyle(
+                                          color: MaterialColors.black,
+                                          fontFamily: "SF Bold",
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Text(
+                                      "₫ 70.000",
+                                      style: const TextStyle(
+                                          color: MaterialColors.black,
+                                          fontFamily: "SF Bold",
+                                          fontSize: 16),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                            decoration: const BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        color: Color.fromRGBO(230, 230, 230, 1),
+                                        width: 1))),
+                            margin: EdgeInsets.only(top: 15, bottom: 30)),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.cancel_outlined,
+                                  color: Colors.red[800],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Hủy",
+                                  style: TextStyle(
+                                      color: Colors.red[800],
+                                      fontFamily: "SF Regular",
+                                      fontSize: 16),
+                                )
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.help_outline_rounded,
+                                    color: Color.fromRGBO(100, 100, 100, 1)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Trợ giúp",
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(100, 100, 100, 1),
+                                      fontFamily: "SF Regular",
+                                      fontSize: 16),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 100,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                  bottom: 0,
+                  child: Container(
+                      height: 70,
+                      decoration: BoxDecoration(color: Colors.white),
+                      padding: EdgeInsets.only(
+                          left: 15, right: 15, top: 10, bottom: 10),
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                          child: SliderButton(
+                        action: () {
+                          ///Do something here
+                          Navigator.pop(context);
+                        },
+                        alignLabel: Alignment(0.3, 0),
+                        label: Text(
+                          "Hoàn thành đơn hàng",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: "SF SemiBold",
+                              fontSize: 18),
+                        ),
+                        icon: Container(
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                            size: 24.0,
+                          ),
+                        ),
+                        shimmer: true,
+                        vibrationFlag: true,
+                        // buttonSize: ,
+                        boxShadow: BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 3,
+                          blurRadius: 5,
+                          offset: Offset(0, 2), // changes position of shadow
+                        ),
+
+                        ///Change All the color and size from here.
+                        width: MediaQuery.of(context).size.width,
+                        // height: 45,
+                        radius: 8,
+                        buttonColor: Color.fromARGB(255, 11, 158, 36),
+                        backgroundColor: Colors.green,
+                        baseColor: Colors.white,
+                      ))
+                      // Container(
+                      //   height: 45,
+                      //   child: ElevatedButton(
+                      //     child: Text(
+                      //       "Đã lấy món xong",
+                      //       style: TextStyle(
+                      //           color: Colors.white,
+                      //           fontFamily: "SF SemiBold",
+                      //           fontSize: 18),
+                      //     ),
+                      //     style: ElevatedButton.styleFrom(
+                      //       primary: MaterialColors.secondary,
+                      //       textStyle: TextStyle(color: Colors.white),
+                      //       shadowColor: Colors.white,
+                      //       shape: RoundedRectangleBorder(
+                      //         borderRadius: BorderRadius.circular(8),
+                      //       ),
+                      //     ),
+                      //     onPressed: () => {},
+                      //   ),
+                      // )
+                      )),
+            ],
+          ))
+    ]);
+  }
+}

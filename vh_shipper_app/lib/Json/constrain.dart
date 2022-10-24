@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vh_shipper_app/Colors/color.dart';
 
 const kDarkPrimaryColor = Color(0xFF212121);
 const kDarkSecondaryColor = Color(0xFF373737);
@@ -9,11 +10,11 @@ const kAccentColor = Color.fromARGB(255, 255, 190, 105);
 const kAccentColorButton = Color.fromARGB(255, 3, 82, 151);
 
 List itemsTab = [
-  {"icon": Icons.home, "size": 30.0},
-  {"icon": Icons.notes_rounded, "size": 22.0},
-  {"icon": Icons.account_balance, "size": 21.0},
-  {"icon": Icons.history, "size": 24.0},
-  {"icon": Icons.account_circle_outlined, "size": 30.0},
+  {"icon": Icons.home, "size": 30.0, "label": "Trang chủ"},
+  {"icon": Icons.notes_rounded, "size": 22.0, "label": "Đơn hàng"},
+  {"icon": Icons.account_balance, "size": 21.0, "label": "Ví tiền"},
+  {"icon": Icons.history, "size": 24.0, "label": "Giao dịch"},
+  {"icon": Icons.account_circle_outlined, "size": 30.0, "label": "Tài khoản"},
 ];
 
 const kSpacingUnit = 10;
@@ -36,18 +37,23 @@ final kDarkTheme = ThemeData(
 );
 
 final kLightTheme = ThemeData(
-  brightness: Brightness.light,
-  fontFamily: 'SFProText',
-  primaryColor: kLightPrimaryColor,
-  canvasColor: kLightPrimaryColor,
-  backgroundColor: kLightSecondaryColor,
-  accentColor: kAccentColor,
-  iconTheme: ThemeData.light().iconTheme.copyWith(
-        color: kDarkSecondaryColor,
-      ),
-  textTheme: ThemeData.light().textTheme.apply(
-        fontFamily: 'SFProText',
-        bodyColor: kDarkSecondaryColor,
-        displayColor: kDarkSecondaryColor,
-      ),
-);
+    brightness: Brightness.light,
+    fontFamily: 'SF Regular',
+    primaryColor: kLightPrimaryColor,
+    canvasColor: kLightPrimaryColor,
+    backgroundColor: kLightSecondaryColor,
+    accentColor: kAccentColor,
+    scaffoldBackgroundColor: MaterialColors.grey,
+    iconTheme: ThemeData.light().iconTheme.copyWith(
+          color: kDarkSecondaryColor,
+        ),
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: MaterialColors.primary)),
+    )
+    // textTheme: ThemeData.light().textTheme.apply(
+    //       fontFamily: 'SFProText',
+    //       bodyColor: kDarkSecondaryColor,
+    //       displayColor: kDarkSecondaryColor,
+    //     ),
+    );

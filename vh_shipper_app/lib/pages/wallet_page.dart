@@ -14,578 +14,529 @@ class WalletPage extends StatefulWidget {
 class _WalletPageState extends State<WalletPage> {
   @override
   Widget build(BuildContext context) {
-    var ATMInfor = Expanded(
-      child: Column(children: [
-        SizedBox(
-          height: kSpacingUnit * 1,
+    var ATMInfor = Container(
+      margin: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
+      padding: EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        gradient: LinearGradient(
+          colors: [
+            Color.fromARGB(255, 3, 82, 151),
+            Color.fromARGB(255, 58, 173, 223),
+            Color.fromARGB(255, 25, 124, 185),
+          ],
         ),
-        Container(
-          height: kSpacingUnit * 17,
-          width: kSpacingUnit * 30,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 3, 82, 151),
-                Color.fromARGB(255, 58, 173, 223),
-                Color.fromARGB(255, 25, 124, 185),
-              ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            child: Text(
+              "CARD NAME",
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 15,
+                  fontFamily: "SF Regular"),
             ),
           ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: kSpacingUnit * 1,
-              ),
-              Container(
-                padding: EdgeInsets.only(right: 160),
-                child: Text(
-                  "CARD NAME",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-              SizedBox(
-                height: kSpacingUnit * 1,
-              ),
-              Container(
-                padding: EdgeInsets.only(right: 150),
-                child: Text(
-                  "VO CHI CONG",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-              SizedBox(
-                height: kSpacingUnit * 2,
-              ),
-              Container(
-                padding: EdgeInsets.only(right: 110),
-                child: Text(
-                  "**** **** **** 1234",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-              SizedBox(
-                height: kSpacingUnit * 2,
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 20),
-                child: Row(
-                  children: [
-                    Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Text(
-                              "EXP DATE",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(right: 25),
-                            child: Text(
-                              "00/00",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "          ",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Text(
-                              "CVV NUMBER",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(right: 60),
-                            child: Text(
-                              "**0",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-      ]),
-    );
-
-    var revenue = Expanded(
-      child: Column(
-        children: [
           SizedBox(
-            height: kSpacingUnit * 1.5,
+            height: kSpacingUnit * 0.5,
           ),
           Container(
-            height: kSpacingUnit * 15,
-            width: kSpacingUnit * 40,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Color.fromARGB(255, 243, 247, 251),
-              border: Border.all(color: Colors.black38),
+            child: Text(
+              "VO CHI CONG",
+              style: TextStyle(
+                  color: Colors.white, fontSize: 17, fontFamily: "SF SemiBold"),
             ),
-            child: Column(
+          ),
+          SizedBox(
+            height: kSpacingUnit * 2,
+          ),
+          Row(
+            children: [
+              Text(
+                "****",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontFamily: "SF SemiBold"),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Text(
+                "****",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontFamily: "SF SemiBold"),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Text(
+                "****",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontFamily: "SF SemiBold"),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Text(
+                "1234",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontFamily: "SF SemiBold"),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: kSpacingUnit * 2,
+          ),
+          Container(
+            child: Row(
               children: [
-                SizedBox(
-                  height: kSpacingUnit * 1,
-                ),
                 Container(
-                  padding: EdgeInsets.only(right: 220),
-                  child: Text(
-                    "Hôm nay",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        child: Text(
+                          "EXPIRES",
+                          style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: 15,
+                              fontFamily: "SF Regular"),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                        child: Text(
+                          "09/26",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontFamily: "SF SemiBold"),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(
-                  height: kSpacingUnit * 1.5,
+                  width: 30,
                 ),
                 Container(
-                  padding: EdgeInsets.only(right: 200),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        child: Text(
+                          "CVV NUMBER",
+                          style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: 15,
+                              fontFamily: "SF Regular"),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                        child: Text(
+                          "**0",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontFamily: "SF SemiBold"),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+
+    var revenue = Container(
+      margin: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
+      padding: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        border: Border.all(color: Color.fromRGBO(200, 200, 200, 1)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Hôm nay",
+            style: TextStyle(
+                color: Colors.black, fontSize: 18, fontFamily: "SF SemiBold"),
+          ),
+          SizedBox(
+            height: kSpacingUnit * 1.5,
+          ),
+          Text(
+            "0.00 đ",
+            style: TextStyle(
+                color: Colors.black, fontSize: 20, fontFamily: "SF Bold"),
+          ),
+          SizedBox(
+            height: kSpacingUnit * 0.5,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    Icons.event_available,
+                    size: 20,
+                    color: Color.fromRGBO(80, 80, 80, 1),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "0",
+                        style: TextStyle(
+                            color: Color.fromRGBO(80, 80, 80, 1), fontSize: 14),
+                      ),
+                      Text(
+                        " đơn hàng hoàn tất",
+                        style: TextStyle(
+                            color: Color.fromRGBO(80, 80, 80, 1), fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Container(
+                    child: OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll<Color>(
+                            MaterialColors.primary),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                        ),
+                      ),
+                      onPressed: null,
+                      child: Text('Xem chi tiết',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              fontSize: 16,
+                              fontFamily: "SF SemiBold")),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+
+    var collection = Container(
+      margin: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
+      padding: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        border: Border.all(color: Color.fromRGBO(200, 200, 200, 1)),
+      ),
+      child: Column(
+        children: [
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  child: Text(
+                    "Số dư",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontFamily: "SF SemiBold"),
+                  ),
+                ),
+                Container(
                   child: Text(
                     "0.00 đ",
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 30,
-                        fontWeight: FontWeight.w500),
+                        fontSize: 24,
+                        fontFamily: "SF SemiBold"),
                   ),
                 ),
-                SizedBox(
-                  height: kSpacingUnit * 0.5,
-                ),
-                Container(
-                  child: Row(
+              ],
+            ),
+          ),
+          Container(
+            height: 20,
+            decoration: BoxDecoration(
+                border: Border(
+                    bottom:
+                        BorderSide(color: Color.fromRGBO(220, 220, 220, 1)))),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        child: Text(
-                          "        ",
-                          style: TextStyle(color: Colors.black),
+                        child: Icon(
+                          Icons.input,
+                          size: 28,
+                          color: MaterialColors.primary,
                         ),
                       ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Nạp tiền",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Color.fromRGBO(80, 80, 80, 1),
+                            fontFamily: "SD Regular"),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.monetization_on,
+                        size: 28,
+                        color: MaterialColors.primary,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Rút tiền",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Color.fromRGBO(80, 80, 80, 1),
+                            fontFamily: "SD Regular"),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
                       Container(
-                        child: Row(
-                          children: [
-                            Container(
-                              child: Icon(
-                                Icons.event_available,
-                                size: 30,
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(right: 85),
-                              child: Container(
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      child: Text(
-                                        " ",
-                                        style: TextStyle(
-                                            color:
-                                                Color.fromARGB(255, 0, 0, 0)),
-                                      ),
-                                    ),
-                                    Container(
-                                      child: Text(
-                                        "0",
-                                        style: TextStyle(
-                                            color:
-                                                Color.fromARGB(255, 0, 0, 0)),
-                                      ),
-                                    ),
-                                    Container(
-                                      child: Text(
-                                        " đơn hàng hoàn tất",
-                                        style: TextStyle(
-                                            color:
-                                                Color.fromARGB(255, 0, 0, 0)),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
+                        child: Icon(
+                          Icons.history,
+                          size: 28,
+                          color: MaterialColors.primary,
                         ),
                       ),
-                      Container(
-                        child: Column(
-                          children: [
-                            Container(
-                              child: OutlinedButton(
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStatePropertyAll<Color>(
-                                          Theme.of(context).accentColor),
-                                  shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                  ),
-                                ),
-                                onPressed: null,
-                                child: Text('Xem chi tiết',
-                                    style: TextStyle(
-                                        color: Color.fromARGB(
-                                            255, 255, 255, 255))),
-                              ),
-                            ),
-                          ],
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Lịch sử ",
+                        style: TextStyle(
+                          fontFamily: "SD Regular",
+                          fontSize: 15,
+                          color: Color.fromRGBO(80, 80, 80, 1),
+                        ),
+                      ),
+                      Text(
+                        "giao dịch ",
+                        style: TextStyle(
+                          fontFamily: "SD Regular",
+                          fontSize: 15,
+                          color: Color.fromRGBO(80, 80, 80, 1),
                         ),
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );
 
-    var collection = Column(
-      children: [
-        Container(
-          height: kSpacingUnit * 20,
-          width: kSpacingUnit * 40,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Color.fromARGB(255, 243, 247, 251),
-            border: Border.all(color: Colors.black38),
-          ),
-          child: Column(
+    var bonous = Container(
+      margin: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
+      padding: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        border: Border.all(color: Color.fromRGBO(200, 200, 200, 1)),
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                height: kSpacingUnit * 0.5,
-              ),
               Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Text(
-                        "Số dư",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(right: 20),
-                      child: Text(
-                        "0.00 đ",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  "Thưởng",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontFamily: "SF SemiBold"),
                 ),
               ),
               Container(
                 child: Text(
-                  "___________________________________________________",
+                  "0.00 đ",
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w300),
+                      fontSize: 18,
+                      fontFamily: "SF SemiBold"),
                 ),
               ),
-              SizedBox(
-                height: kSpacingUnit * 2,
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(left: 30),
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Icon(
-                              Icons.input,
-                              size: 40,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(left: 5),
-                            child: Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      "Nạp tiền",
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Color.fromARGB(255, 0, 0, 0),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Icon(
-                              Icons.monetization_on,
-                              size: 40,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Container(
-                            child: Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      "Rút tiền",
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          color: Color.fromARGB(255, 0, 0, 0),
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(right: 30),
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Icon(
-                              Icons.assignment_turned_in,
-                              size: 40,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Container(
-                            //padding: EdgeInsets.only(right: 55),
-                            child: Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      "Lịch sử giao dịch",
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          color: Color.fromARGB(255, 0, 0, 0),
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
             ],
           ),
-        ),
-      ],
-    );
-
-    var bonous = Expanded(
-      child: Column(
-        children: [
+          SizedBox(
+            height: 15,
+          ),
           Container(
-            height: kSpacingUnit * 10,
-            width: kSpacingUnit * 40,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Color.fromARGB(255, 243, 247, 251),
-              border: Border.all(color: Colors.black38),
-            ),
-            child: Column(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: kSpacingUnit * 1,
+                Container(
+                  child: Text(
+                    "Phạt",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontFamily: "SF SemiBold"),
+                  ),
                 ),
                 Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.only(left: 20),
-                              child: Text(
-                                "Thưởng",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(right: 20),
-                              child: Text(
-                                "0.00 đ",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.only(left: 20),
-                              child: Text(
-                                "Phạt",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(right: 20),
-                              child: Text(
-                                "0.00 đ",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
+                  child: Text(
+                    "0.00 đ",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontFamily: "SF SemiBold"),
                   ),
                 ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );
 
-    var header = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(
-          width: kSpacingUnit * 3,
-        ),
-        ATMInfor,
-        SizedBox(
-          width: kSpacingUnit * 2,
-        ),
-      ],
-    );
+    // var header = Row(
+    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //   crossAxisAlignment: CrossAxisAlignment.center,
+    //   children: <Widget>[
+    //     SizedBox(
+    //       width: kSpacingUnit * 3,
+    //     ),
+    //     ATMInfor,
+    //     SizedBox(
+    //       width: kSpacingUnit * 2,
+    //     ),
+    //   ],
+    // );
 
-    return ListView(
-      children: [
-        SizedBox(
-          height: kSpacingUnit * 1.5,
-        ),
-        header,
-        SizedBox(
-          height: kSpacingUnit * 3,
-        ),
-        Container(
-          padding: EdgeInsets.only(left: 20),
-          child: Text(
-            "Tổng kết danh thu",
-            style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontWeight: FontWeight.bold,
-                fontSize: 24),
+    return Container(
+      color: Colors.white,
+      child: ListView(
+        children: [
+          SizedBox(
+            height: kSpacingUnit * 1.5,
           ),
-        ),
-        SizedBox(
-          height: kSpacingUnit * 1.5,
-        ),
-        collection,
-        SizedBox(
-          height: kSpacingUnit * 3,
-        ),
-        Container(
-          padding: EdgeInsets.only(left: 20),
-          child: Text(
-            "Danh thu thu hộ",
-            style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontWeight: FontWeight.bold,
-                fontSize: 24),
+          ATMInfor,
+          SizedBox(
+            height: kSpacingUnit * 3,
           ),
-        ),
-        revenue,
-        SizedBox(
-          height: kSpacingUnit * 3,
-        ),
-        Container(
-          padding: EdgeInsets.only(left: 20),
-          child: Text(
-            "Danh thu bổ xung",
-            style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontWeight: FontWeight.bold,
-                fontSize: 24),
+          Container(
+            padding: EdgeInsets.only(left: 20),
+            child: Text(
+              "Tổng kết doanh thu",
+              style: TextStyle(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontFamily: "SF Bold",
+                  fontSize: 20),
+            ),
           ),
-        ),
-        SizedBox(
-          height: kSpacingUnit * 1.5,
-        ),
-        bonous,
-        SizedBox(
-          height: kSpacingUnit * 5,
-        ),
-      ],
+          SizedBox(
+            height: kSpacingUnit * 0.5,
+          ),
+          revenue,
+          SizedBox(
+            height: kSpacingUnit * 2,
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 20),
+            child: Text(
+              "Doanh thu thu hộ",
+              style: TextStyle(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontFamily: "SF Bold",
+                  fontSize: 20),
+            ),
+          ),
+          SizedBox(
+            height: kSpacingUnit * 0.5,
+          ),
+          collection,
+          SizedBox(
+            height: kSpacingUnit * 2,
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 20),
+            child: Text(
+              "Doanh thu bổ xung",
+              style: TextStyle(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontFamily: "SF Bold",
+                  fontSize: 20),
+            ),
+          ),
+          SizedBox(
+            height: kSpacingUnit * 0.5,
+          ),
+          bonous,
+          SizedBox(
+            height: kSpacingUnit * 1.5,
+          ),
+        ],
+      ),
     );
   }
 }
