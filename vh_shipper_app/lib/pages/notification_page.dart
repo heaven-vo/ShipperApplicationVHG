@@ -17,14 +17,11 @@ class _NotificationPageState extends State<NotificationPage> {
           Container(
             child: Column(
               children: [
-                SizedBox(
-                  height: kSpacingUnit * 15,
-                ),
                 Container(
                   child: Column(
                     children: [
                       Container(
-                        padding: EdgeInsets.only(right: 200),
+                        // padding: EdgeInsets.only(right: 200),
                         child: Text(
                           "Đơn hàng gợi ý",
                           style: TextStyle(
@@ -37,7 +34,7 @@ class _NotificationPageState extends State<NotificationPage> {
                         height: kSpacingUnit * 1.5,
                       ),
                       Container(
-                        padding: EdgeInsets.only(right: 220),
+                        // padding: EdgeInsets.only(right: 220),
                         child: Text(
                           "1 điểm giao",
                           style: TextStyle(
@@ -52,7 +49,7 @@ class _NotificationPageState extends State<NotificationPage> {
                         height: kSpacingUnit * 1.5,
                       ),
                       Container(
-                        padding: EdgeInsets.only(right: 80),
+                        // padding: EdgeInsets.only(right: 80),
                         child: Text(
                           "Cơm gà Nguyễn Văn Tăng",
                           style: TextStyle(
@@ -65,7 +62,7 @@ class _NotificationPageState extends State<NotificationPage> {
                         height: kSpacingUnit * 1.5,
                       ),
                       Container(
-                        padding: EdgeInsets.only(right: 330),
+                        // padding: EdgeInsets.only(right: 330),
                         child: Text(
                           "|",
                           style: TextStyle(
@@ -79,7 +76,7 @@ class _NotificationPageState extends State<NotificationPage> {
                         height: kSpacingUnit * 1.5,
                       ),
                       Container(
-                        padding: EdgeInsets.only(right: 110),
+                        // padding: EdgeInsets.only(right: 110),
                         child: Text(
                           "S602, đường Cầu Vồng",
                           style: TextStyle(
@@ -101,9 +98,6 @@ class _NotificationPageState extends State<NotificationPage> {
     var accept = Expanded(
       child: Column(
         children: [
-          SizedBox(
-            height: kSpacingUnit * 8.5,
-          ),
           Container(
             height: 320,
             decoration: BoxDecoration(
@@ -130,7 +124,7 @@ class _NotificationPageState extends State<NotificationPage> {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.only(left: 10),
+                        // padding: EdgeInsets.only(left: 10),
                         child: Text(
                           "________________________________________",
                           style: TextStyle(
@@ -148,7 +142,7 @@ class _NotificationPageState extends State<NotificationPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              padding: EdgeInsets.only(right: 120),
+                              // padding: EdgeInsets.only(right: 120),
                               child: Column(
                                 children: [
                                   Container(
@@ -205,7 +199,7 @@ class _NotificationPageState extends State<NotificationPage> {
                         child: Column(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(left: 10),
+                              // padding: EdgeInsets.only(left: 10),
                               child: Text(
                                 "________________________________________",
                                 style: TextStyle(
@@ -221,7 +215,7 @@ class _NotificationPageState extends State<NotificationPage> {
                         height: kSpacingUnit * 1,
                       ),
                       Container(
-                        padding: EdgeInsets.only(left: 10),
+                        // padding: EdgeInsets.only(left: 10),
                         child: Row(
                           children: [
                             Container(
