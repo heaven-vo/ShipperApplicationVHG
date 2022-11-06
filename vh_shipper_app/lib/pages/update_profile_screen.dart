@@ -12,6 +12,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:vh_shipper_app/Colors/color.dart';
+import 'package:vh_shipper_app/apis/apiServices.dart';
+import 'package:vh_shipper_app/models/DriverModel.dart';
 // import 'package:vh_shipper_app/apis/apiService.dart';
 // import 'package:vh_shipper_app/constants/Theme.dart';
 import 'package:vh_shipper_app/provider/appProvider.dart';
@@ -49,34 +51,13 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   void initState() {
     super.initState();
     final currencyFormatter = NumberFormat('##0', 'ID');
-    // isImage = store.image.toString();
-    // _name.text = store.name ?? "";
-    // _id.text = store.id ?? "";
-    // _phone.text = store.phone ?? "";
-    // _password.text = store.account!.values.first ?? "";
-    // print(store.account);
-    // _openTime.text = store.openTime ?? "";
-    // _closeTime.text = store.closeTime ?? "";
-    // _buildingId = store.buildingId ?? "";
-    // _status = store.status!;
-    // _brandId = store.brandId ?? "";
-    // _storeCategoryId = store.storeCategoryId ?? "";
-    // ApiServices.getListBuilding()
-    //     .then((value) => {
-    //           if (value != null)
-    //             {
-    //               setState(() {
-    //                 listBuilding = value;
-    //                 isLoadingSubmit = false;
-    //               })
-    //             }
-    //         })
-    //     .catchError((onError) {
-    //   setState(() {
-    //     listBuilding = [];
-    //     isLoadingSubmit = false;
-    //   });
-    // });
+    DriverModel driver = context.read<AppProvider>().getDriverModel;
+    isImage = driver.image.toString();
+    _name.text = driver.fullName ?? "";
+    _id.text = driver.id ?? "";
+    _phone.text = driver.phone ?? "";
+
+    _status = driver.status!;
   }
 
   @override
@@ -87,7 +68,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   Future<void> hanldeUpdate() async {
     FocusScope.of(context).unfocus();
-
+    DriverModel driver = context.read<AppProvider>().getDriverModel;
     var img64 = null;
     var base64String = null;
     setState(() {
@@ -102,43 +83,35 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
       );
       base64String = base64.encode(imageResponse.bodyBytes);
     }
-    Map<String, dynamic>? account = {"password": _password.text};
+    print("_name.text" + _name.text);
+    print("_id.text" + _id.text);
+    print("_phone.text" + _phone.text);
+    DriverModel driverModel = DriverModel(
+      image: img64 ?? base64String,
+      fullName: _name.text,
+      phone: _phone.text,
+      id: _id.text,
+      licensePlates: driver.licensePlates,
+      password: driver.password,
+      vehicleType: driver.vehicleType,
+      colour: driver.colour,
+      deliveryTeam: driver.deliveryTeam,
+      email: driver.email,
+    );
+    ApiServices.putDriver(driverModel, _id.text).then((value) => {
+          if (value != null)
+            {
+              driver = value,
+              print(value),
+              setState(() {
+                context.read<AppProvider>().setDriverModel(driver);
+                context.read<AppProvider>().setName(driver.fullName);
+                context.read<AppProvider>().setAvatar(driver.image);
 
-    // StoreModel store = StoreModel(
-    //     image: img64 ?? base64String,
-    //     name: _name.text,
-    //     buildingId: _buildingId,
-    //     closeTime: _closeTime.text,
-    //     openTime: _openTime.text,
-    //     phone: _phone.text,
-    //     id: _id.text,
-    //     rate: "",
-    //     slogan: "",
-    //     status: _status,
-    //     brandId: _brandId,
-    //     account: account,
-    //     storeCategoryId: _storeCategoryId);
-    // print(widget.productModel.id);
-    // ApiServices.putStore(store, _id.text, _password.text).then((value) => {
-    //       if (value != null)
-    //         {
-    //           setState(() {
-    //             print(value);
-    //             context.read<AppProvider>().setStoreModel(value);
-    //             context.read<AppProvider>().setName(value.name);
-    //             context.read<AppProvider>().setAvatar(value.image);
-    //             Fluttertoast.showToast(
-    //                 msg: "Cập nhật thông tin thành công",
-    //                 toastLength: Toast.LENGTH_SHORT,
-    //                 gravity: ToastGravity.TOP,
-    //                 timeInSecForIosWeb: 1,
-    //                 backgroundColor: Colors.green,
-    //                 textColor: Colors.white,
-    //                 fontSize: 16.0);
-    //             isLoadingSubmit = false;
-    //           }),
-    //         }
-    //     });
+                isLoadingSubmit = false;
+              }),
+            }
+        });
   }
 
   Future _pickImage(ImageSource source) async {

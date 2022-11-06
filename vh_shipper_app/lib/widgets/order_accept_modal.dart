@@ -6,14 +6,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 import 'package:vh_shipper_app/Colors/color.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:slider_button/slider_button.dart';
+import 'package:slide_to_act/slide_to_act.dart';
 
 class OrderAcceptModal extends StatefulWidget {
   late ValueChanged<void> function;
-  late String menuId;
-  late String storeId;
-  OrderAcceptModal(
-      {required this.function, required this.menuId, required this.storeId});
+
+  OrderAcceptModal({
+    required this.function,
+  });
   @override
   State<StatefulWidget> createState() => _OrderAcceptModal();
 }
@@ -33,14 +33,14 @@ class _OrderAcceptModal extends State<OrderAcceptModal> {
   late Timer _timer;
 
   void _startTimer() {
-    count = 15;
+    count = 20;
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (count > 0) {
         setState(() {
           count--;
         });
       } else {
-        // Navigator.pop(context);
+        Navigator.pop(context);
       }
     });
   }
@@ -137,11 +137,6 @@ class _OrderAcceptModal extends State<OrderAcceptModal> {
                                     ),
                                   ],
                                 ),
-                                Icon(
-                                  Icons.phone_in_talk,
-                                  size: 24,
-                                  color: Color.fromRGBO(100, 100, 100, 1),
-                                )
                               ],
                             ),
                           )
@@ -389,73 +384,78 @@ class _OrderAcceptModal extends State<OrderAcceptModal> {
               Positioned(
                   bottom: 0,
                   child: Container(
-                      height: 70,
+                      // height: 70,
                       decoration: BoxDecoration(color: Colors.white),
                       padding: EdgeInsets.only(
                           left: 15, right: 15, top: 10, bottom: 10),
                       width: MediaQuery.of(context).size.width,
                       child: Center(
-                          child: SliderButton(
-                        action: () {
-                          ///Do something here
-                          Navigator.pop(context);
-                        },
-                        alignLabel: Alignment(0.1, 0),
-                        label: Text(
-                          "Chấp nhận     " + count.toString(),
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "SF SemiBold",
-                              fontSize: 18),
-                        ),
-                        icon: Container(
-                          child: Icon(
+                        child: SlideAction(
+                          alignment: Alignment.bottomCenter,
+                          textStyle: TextStyle(
+                              fontSize: 18,
+                              fontFamily: "SF Bold",
+                              color: Colors.white),
+                          // innerColor: Color.fromRGBO(219, 98, 71, 1),
+                          outerColor: Color.fromARGB(255, 12, 120, 209),
+                          innerColor: MaterialColors.secondary,
+                          // text: "Chấp nhận" + ,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width - 140,
+                                child: Text("Chấp nhận",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: "SF Bold",
+                                        color: Colors.white)),
+                              ),
+                              Container(
+                                  alignment: Alignment.center,
+                                  height: 35,
+                                  width: 35,
+                                  decoration: BoxDecoration(
+                                      color: Color.fromRGBO(200, 200, 200, 1)
+                                          .withOpacity(0.5),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(50))),
+                                  child: Text(count.toString(),
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "SF Bold",
+                                          color: Colors.white))),
+                              SizedBox(
+                                width: 20,
+                              )
+                            ],
+                          ),
+                          height: 55,
+                          sliderButtonIconSize: 35,
+                          sliderRotate: false,
+                          borderRadius: 10,
+                          sliderButtonIconPadding: 15,
+                          submittedIcon: Icon(
+                            Icons.check,
+                            color: Colors.white,
+                          ),
+                          sliderButtonYOffset: -8,
+                          sliderButtonIcon: Icon(
                             Icons.arrow_forward,
                             color: Colors.white,
-                            size: 24.0,
                           ),
+                          onSubmit: () {
+                            Future.delayed(
+                              Duration(milliseconds: 200),
+                              () => {
+                                Navigator.pop(context),
+                              },
+                            );
+                          },
                         ),
-                        shimmer: true,
-                        vibrationFlag: true,
-                        // buttonSize: ,
-                        boxShadow: BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          spreadRadius: 3,
-                          blurRadius: 5,
-                          offset: Offset(0, 2), // changes position of shadow
-                        ),
-
-                        ///Change All the color and size from here.
-                        width: MediaQuery.of(context).size.width,
-                        // height: 45,
-                        radius: 8,
-                        buttonColor: MaterialColors.secondary,
-                        backgroundColor: Color.fromARGB(255, 12, 120, 209),
-                        baseColor: Colors.white,
-                      ))
-                      // Container(
-                      //   height: 45,
-                      //   child: ElevatedButton(
-                      //     child: Text(
-                      //       "Đã lấy món xong",
-                      //       style: TextStyle(
-                      //           color: Colors.white,
-                      //           fontFamily: "SF SemiBold",
-                      //           fontSize: 18),
-                      //     ),
-                      //     style: ElevatedButton.styleFrom(
-                      //       primary: MaterialColors.secondary,
-                      //       textStyle: TextStyle(color: Colors.white),
-                      //       shadowColor: Colors.white,
-                      //       shape: RoundedRectangleBorder(
-                      //         borderRadius: BorderRadius.circular(8),
-                      //       ),
-                      //     ),
-                      //     onPressed: () => {},
-                      //   ),
-                      // )
-                      )),
+                      ))),
             ],
           ))
     ]);

@@ -69,13 +69,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       'fcmToken': fcmToken,
                     }),
                     setState(() {
-                      isLogin = false;
                       isLoading = false;
+                      isLogin = true;
                     }),
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => LandingScreen()))
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LandingScreen()))
                   }
               })
           .catchError((onError) => {

@@ -9,11 +9,17 @@ const kLightSecondaryColor = Color(0xFFF3F7FB);
 const kAccentColor = Color.fromARGB(255, 255, 190, 105);
 const kAccentColorButton = Color.fromARGB(255, 3, 82, 151);
 
+enum StatusAccordionOrder { create, doing, done, fail }
+
 List itemsTab = [
   {"icon": Icons.home, "size": 30.0, "label": "Trang chủ"},
   {"icon": Icons.notes_rounded, "size": 22.0, "label": "Đơn hàng"},
-  {"icon": Icons.account_balance, "size": 21.0, "label": "Ví tiền"},
-  {"icon": Icons.history, "size": 24.0, "label": "Giao dịch"},
+  {"icon": Icons.history, "size": 21.0, "label": "Lịch sử"},
+  {
+    "icon": Icons.account_balance_wallet_outlined,
+    "size": 24.0,
+    "label": "Giao dịch"
+  },
   {"icon": Icons.account_circle_outlined, "size": 30.0, "label": "Tài khoản"},
 ];
 
