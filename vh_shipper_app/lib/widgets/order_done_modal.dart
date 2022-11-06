@@ -6,7 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 import 'package:vh_shipper_app/Colors/color.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:slider_button/slider_button.dart';
+import 'package:slide_to_act/slide_to_act.dart';
 
 class OrderDoneModal extends StatefulWidget {
   late ValueChanged<void> function;
@@ -452,73 +452,47 @@ class _OrderDoneModal extends State<OrderDoneModal> {
               Positioned(
                   bottom: 0,
                   child: Container(
-                      height: 70,
+                      // height: 70,
                       decoration: BoxDecoration(color: Colors.white),
                       padding: EdgeInsets.only(
                           left: 15, right: 15, top: 10, bottom: 10),
                       width: MediaQuery.of(context).size.width,
                       child: Center(
-                          child: SliderButton(
-                        action: () {
-                          ///Do something here
-                          Navigator.pop(context);
-                        },
-                        alignLabel: Alignment(0.3, 0),
-                        label: Text(
-                          "Hoàn thành đơn hàng",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "SF SemiBold",
-                              fontSize: 18),
-                        ),
-                        icon: Container(
-                          child: Icon(
+                        child: SlideAction(
+                          alignment: Alignment.bottomCenter,
+                          textStyle: TextStyle(
+                              fontSize: 18,
+                              fontFamily: "SF Bold",
+                              color: Colors.white),
+                          // innerColor: Color.fromRGBO(219, 98, 71, 1),
+                          outerColor: Colors.green[400],
+                          innerColor: Color.fromRGBO(10, 158, 36, 1),
+                          // text: "Chấp nhận" + ,
+                          text: "Hoàn thành đơn hàng",
+                          height: 55,
+                          sliderButtonIconSize: 35,
+                          sliderRotate: false,
+                          borderRadius: 10,
+                          sliderButtonIconPadding: 15,
+                          submittedIcon: Icon(
+                            Icons.check,
+                            color: Colors.white,
+                          ),
+                          sliderButtonYOffset: -8,
+                          sliderButtonIcon: Icon(
                             Icons.arrow_forward,
                             color: Colors.white,
-                            size: 24.0,
                           ),
+                          onSubmit: () {
+                            Future.delayed(
+                              Duration(milliseconds: 200),
+                              () => {
+                                Navigator.pop(context),
+                              },
+                            );
+                          },
                         ),
-                        shimmer: true,
-                        vibrationFlag: true,
-                        // buttonSize: ,
-                        boxShadow: BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          spreadRadius: 3,
-                          blurRadius: 5,
-                          offset: Offset(0, 2), // changes position of shadow
-                        ),
-
-                        ///Change All the color and size from here.
-                        width: MediaQuery.of(context).size.width,
-                        // height: 45,
-                        radius: 8,
-                        buttonColor: Color.fromARGB(255, 11, 158, 36),
-                        backgroundColor: Colors.green,
-                        baseColor: Colors.white,
-                      ))
-                      // Container(
-                      //   height: 45,
-                      //   child: ElevatedButton(
-                      //     child: Text(
-                      //       "Đã lấy món xong",
-                      //       style: TextStyle(
-                      //           color: Colors.white,
-                      //           fontFamily: "SF SemiBold",
-                      //           fontSize: 18),
-                      //     ),
-                      //     style: ElevatedButton.styleFrom(
-                      //       primary: MaterialColors.secondary,
-                      //       textStyle: TextStyle(color: Colors.white),
-                      //       shadowColor: Colors.white,
-                      //       shape: RoundedRectangleBorder(
-                      //         borderRadius: BorderRadius.circular(8),
-                      //       ),
-                      //     ),
-                      //     onPressed: () => {},
-                      //   ),
-                      // )
-                      )),
+                      ))),
             ],
           ))
     ]);

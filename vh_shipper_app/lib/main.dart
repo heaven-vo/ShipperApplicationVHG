@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:vh_shipper_app/Json/constrain.dart';
+import 'package:vh_shipper_app/apis/apiServices.dart';
+import 'package:vh_shipper_app/models/DriverModel.dart';
 import 'package:vh_shipper_app/pages/login_screen.dart';
 import 'package:vh_shipper_app/pages/notification_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:vh_shipper_app/pages/order_page.dart';
+import 'package:vh_shipper_app/pages/list_order_page.dart';
 import 'package:vh_shipper_app/pages/root_app.dart';
 import 'package:provider/provider.dart';
 import 'package:vh_shipper_app/provider/appProvider.dart';
@@ -29,47 +31,57 @@ void main() async {
       debugShowCheckedModeBanner: false,
       //theme: kDarkTheme,
       theme: kLightTheme,
-      home: RootApp(),
+      home: LandingScreen(),
       //home: OrderPage(),
     ),
   ));
 }
 
-// class LandingScreen extends StatelessWidget {
-//   FirebaseAuth auth = FirebaseAuth.instance;
-//   checkUserAuth() async {
-//     try {
-//       User user = auth.currentUser!;
-//       return user;
-//     } catch (e) {
-//       print(e);
-//     }
-//   }
+class LandingScreen extends StatelessWidget {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  checkUserAuth() async {
+    try {
+      User user = auth.currentUser!;
+      return user;
+    } catch (e) {
+      print(e);
+    }
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     checkUserAuth().then((success) {
-//       if (success != null) {
-//         context.read<AppProvider>().setUserLogin(success.email);
-//         context.read<AppProvider>().setUid(success.uid);
-//         context.read<AppProvider>().setName("Shipper 1");
-//         context.read<AppProvider>().setStatus(true);
-//         print("ok");
-//         Navigator.push(
-//             context, MaterialPageRoute(builder: (context) => RootApp()));
-//       } else {
-//         print("login");
-//         Navigator.push(
-//             context, MaterialPageRoute(builder: (context) => LoginScreen()));
-//         // Navigator.push(
-//         //     context, MaterialPageRoute(builder: (context) => LoginScreen()));
-//       }
-//     });
+  @override
+  Widget build(BuildContext context) {
+    checkUserAuth().then((success) {
+      if (success != null) {
+        context.read<AppProvider>().setUserLogin(success.email);
+        context.read<AppProvider>().setUid(success.uid);
+        DriverModel driverModel = DriverModel();
+        print("ok");
+        ApiServices.getDriver(success.email)
+            .then((value) => {
+                  driverModel = value,
+                  context.read<AppProvider>().setName(driverModel.fullName),
+                  context.read<AppProvider>().setAvatar(driverModel.image),
+                  context.read<AppProvider>().setDriverModel(driverModel),
+                  context.read<AppProvider>().setStatus(driverModel.status!),
 
-//     return Scaffold(
-//       body: Center(
-//         child: CircularProgressIndicator(),
-//       ),
-//     );
-//   }
-// }
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => RootApp()))
+                  // context.read<AppProvider>().setName(store.name)
+                })
+            .catchError((onError) => {print(onError)});
+      } else {
+        print("login");
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        // Navigator.push(
+        //     context, MaterialPageRoute(builder: (context) => LoginScreen()));
+      }
+    });
+
+    return Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+  }
+}

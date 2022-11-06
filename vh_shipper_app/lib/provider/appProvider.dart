@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:vh_shipper_app/models/DriverModel.dart';
 
 class AppProvider with ChangeNotifier {
   String userId = "";
   String uid = "";
   String name = "";
   String avatar = "";
-  // late StoreModel storeModel = StoreModel();
+  late DriverModel driverModel = DriverModel();
   bool status = false;
 
   void setStatus(bool bool) {
@@ -13,10 +14,10 @@ class AppProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  // void setStoreModel(StoreModel store) {
-  //   storeModel = store;
-  //   notifyListeners();
-  // }
+  void setDriverModel(DriverModel driver) {
+    driverModel = driver;
+    notifyListeners();
+  }
 
   void setAvatar(img) {
     avatar = img;
@@ -38,8 +39,8 @@ class AppProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void setName(storeName) {
-    name = storeName;
+  void setName(driverName) {
+    name = driverName;
     notifyListeners();
   }
 
@@ -48,5 +49,5 @@ class AppProvider with ChangeNotifier {
   String get getAvatar => avatar;
   String get getUid => uid;
   String get getName => name;
-  // StoreModel get getStoreModel => storeModel;
+  DriverModel get getDriverModel => driverModel;
 }

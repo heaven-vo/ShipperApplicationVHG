@@ -1,16 +1,21 @@
+import 'dart:async';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:vh_shipper_app/Colors/color.dart';
 import 'package:vh_shipper_app/Json/constrain.dart';
 import 'package:vh_shipper_app/models/notificationModel.dart';
 import 'package:vh_shipper_app/pages/contact_page.dart';
+import 'package:vh_shipper_app/pages/history_page.dart';
 import 'package:vh_shipper_app/pages/home_page.dart';
 import 'package:vh_shipper_app/pages/notification_page.dart';
-import 'package:vh_shipper_app/pages/order_page.dart';
+import 'package:vh_shipper_app/pages/list_order_page.dart';
 import 'package:vh_shipper_app/pages/transaction_page.dart';
 import 'package:vh_shipper_app/pages/wallet_page.dart';
+import 'package:vh_shipper_app/widgets/order_accept_modal.dart';
 
 class RootApp extends StatefulWidget {
   const RootApp({super.key});
@@ -24,11 +29,14 @@ class _RootAppState extends State<RootApp> {
   //AppBar appBar = Null;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // backgroundColor: Color.fromARGB(255, 254, 254, 254),
-        bottomNavigationBar: getFooter(),
-        appBar: getAppBar(),
-        body: getBody());
+    return DefaultTabController(
+        initialIndex: 0,
+        length: 2,
+        child: Scaffold(
+            // backgroundColor: Color.fromARGB(255, 254, 254, 254),
+            bottomNavigationBar: getFooter(),
+            appBar: getAppBar(),
+            body: getBody()));
   }
 
   Widget getBody() {
@@ -36,8 +44,8 @@ class _RootAppState extends State<RootApp> {
       index: activeTab,
       children: [
         HomePage(),
-        OrderPage(),
-        WalletPage(),
+        ListOrderPage(),
+        HistoryPage(),
         TransactionPage(),
         ContactPage(),
       ],
@@ -47,7 +55,19 @@ class _RootAppState extends State<RootApp> {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   late PushNotificationModel _notificationInfo;
   FirebaseFirestore db = FirebaseFirestore.instance;
-  // late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+  late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+  late StreamSubscription fcmListener;
+
+  void _ModalAccept(context) {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(15.0))),
+        builder: (BuildContext bc) {
+          return OrderAcceptModal(function: (func) {});
+        });
+  }
 
   void registerNotification() async {
     await Firebase.initializeApp();
@@ -56,7 +76,9 @@ class _RootAppState extends State<RootApp> {
     NotificationSettings settings = await messaging.requestPermission(
         alert: true, badge: true, provisional: false, sound: true);
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      fcmListener = FirebaseMessaging.onMessage
+          .asBroadcastStream()
+          .listen((RemoteMessage message) {
         print("on app");
         PushNotificationModel notification = PushNotificationModel(
             title: message.notification!.title,
@@ -69,59 +91,47 @@ class _RootAppState extends State<RootApp> {
         });
         print("body: ${notification.body}");
         print("title: ${notification.title}");
-        if (notification != null) {
-          // _showNotification(
-          //     _notificationInfo!.title!, _notificationInfo!.body!);
-        }
+        _ModalAccept(context);
+        _showNotification(_notificationInfo.title!, _notificationInfo.body!);
       });
     } else {
       print("not permission");
     }
   }
 
-  // Future<void> _showNotification(String title, String content) async {
-  //   final AndroidNotificationDetails androidPlatformChannelSpecifics =
-  //       AndroidNotificationDetails('your channel id', 'your channel name',
-  //           channelDescription: 'your channel description',
-  //           importance: Importance.max,
-  //           priority: Priority.high,
-  //           icon: '@drawable/logo_transparent',
-  //           tag: "TWE",
-  //           ticker: 'ticker');
+  Future<void> _showNotification(String title, String content) async {
+    final AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails('your channel id', 'your channel name',
+            channelDescription: 'your channel description',
+            importance: Importance.max,
+            priority: Priority.high,
+            icon: '@drawable/logoicon',
+            tag: "Cộng Đồng Chung Cư",
+            ticker: 'ticker');
 
-  //   final NotificationDetails platformChannelSpecifics =
-  //       NotificationDetails(android: androidPlatformChannelSpecifics);
-  //   await flutterLocalNotificationsPlugin
-  //       .show(0, title, content, platformChannelSpecifics, payload: 'item x');
-  // }
+    final NotificationDetails platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin
+        .show(0, title, content, platformChannelSpecifics, payload: 'item x');
+  }
 
   @override
   void initState() {
-    // var initializationSettingsAndroid =
-    //     AndroidInitializationSettings('@mipmap/ic_launcher');
-    // var initializationSettingsIOS = IOSInitializationSettings();
-    // var initializationSettings = InitializationSettings(
-    //     android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
-    // flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-    // flutterLocalNotificationsPlugin.initialize(initializationSettings,
-    //     onSelectNotification: (value) {
-    //   Navigator.pushNamed(context, "/notification");
-    // });
+    var initializationSettingsAndroid =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettingsIOS = DarwinInitializationSettings();
+    var initializationSettings = InitializationSettings(
+        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+    flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onDidReceiveNotificationResponse: (value) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => RootApp()));
+    });
 
     registerNotification();
     checkForInitialMessage();
     super.initState();
-
-    // UserModel user;
-    // ApiServices.getProfileByUsername(context.read<AppProvider>().getUid)
-    //     .then((value) => {
-    //           print("value12321: $value"),
-    //           if (value != null)
-    //             {
-    //               user = value,
-    //               context.read<AppProvider>().setAvatar(user.image)
-    //             }
-    //         });
   }
 
   checkForInitialMessage() async {
@@ -129,45 +139,52 @@ class _RootAppState extends State<RootApp> {
         await FirebaseMessaging.instance.getInitialMessage();
     if (initialMessage != null) {
       FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-        Navigator.pushNamed(context, "/notification");
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => RootApp()));
       });
     }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   getAppBar() {
     switch (activeTab) {
       case 0:
-        return AppBar(
-          centerTitle: true,
-          elevation: 10.0,
-          automaticallyImplyLeading: false,
-          backgroundColor: MaterialColors.primary,
-          title: Text(
-            "Trang chủ",
-            style:
-                TextStyle(color: MaterialColors.black, fontFamily: "SF Bold"),
-          ),
-          actions: <Widget>[
-            IconButton(
-              padding: EdgeInsets.only(right: 25),
-              icon: Icon(
-                Icons.light_mode,
-                color: Color.fromARGB(255, 0, 0, 0),
-                size: 25,
-              ),
-              onPressed: () {
-                // do something
-              },
-            )
-          ],
-        );
-        break;
+        return null;
+      // AppBar(
+      //   centerTitle: true,
+      //   elevation: 10.0,
+      //   automaticallyImplyLeading: false,
+      //   backgroundColor: Colors.white,
+      //   shadowColor: MaterialColors.primary,
+      //   title: Text(
+      //     "Trang chủ",
+      //     style:
+      //         TextStyle(color: MaterialColors.black, fontFamily: "SF Bold"),
+      //   ),
+      //   actions: <Widget>[
+      //     IconButton(
+      //       padding: EdgeInsets.only(right: 25),
+      //       icon: Icon(
+      //         Icons.light_mode,
+      //         color: Color.fromARGB(255, 0, 0, 0),
+      //         size: 25,
+      //       ),
+      //       onPressed: () {
+      //         // do something
+      //       },
+      //     )
+      //   ],
+      // );
       case 1:
         return AppBar(
           centerTitle: true,
           elevation: 10.0,
           automaticallyImplyLeading: false,
-          backgroundColor: MaterialColors.primary,
+          backgroundColor: Colors.white,
           title: Text(
             "Đơn hàng",
             style:
@@ -187,65 +204,75 @@ class _RootAppState extends State<RootApp> {
             )
           ],
         );
-        break;
       case 2:
         return AppBar(
+          backgroundColor: Color.fromARGB(255, 255, 255, 255),
           centerTitle: true,
-          elevation: 10.0,
-          backgroundColor: MaterialColors.primary,
-          automaticallyImplyLeading: false,
           title: Text(
-            "Ví tiền",
+            "Lịch sử",
             style:
                 TextStyle(color: MaterialColors.black, fontFamily: "SF Bold"),
           ),
-          actions: <Widget>[
-            IconButton(
-              padding: EdgeInsets.only(right: 25),
-              icon: Icon(
-                Icons.light_mode,
-                color: Color.fromARGB(255, 0, 0, 0),
-                size: 25,
+          bottom: TabBar(
+            labelColor: MaterialColors.primary,
+            unselectedLabelColor: MaterialColors.black,
+            tabs: <Widget>[
+              Tab(
+                // icon: Icon(Icons.cloud_outlined),
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(top: 3),
+                      width: 85,
+                      child: Text(
+                        "Hoàn Thành",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: "SF SemiBold",
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // text: "Hiện tại",
               ),
-              onPressed: () {
-                // do something
-              },
-            )
-          ],
+              Tab(
+                // icon: Icon(Icons.beach_access_sharp),
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(top: 3),
+                      width: 85,
+                      child: Text(
+                        "Đã Hủy",
+                        textAlign: TextAlign.center,
+                        style:
+                            TextStyle(fontFamily: "SF SemiBold", fontSize: 16),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         );
-        break;
       case 3:
         return AppBar(
+          backgroundColor: Color.fromARGB(255, 255, 255, 255),
           centerTitle: true,
-          elevation: 10.0,
-          backgroundColor: MaterialColors.primary,
-          automaticallyImplyLeading: false,
           title: Text(
-            "Lịch sử giao dịch",
+            "Giao dịch",
             style:
                 TextStyle(color: MaterialColors.black, fontFamily: "SF Bold"),
           ),
-          actions: <Widget>[
-            IconButton(
-              padding: EdgeInsets.only(right: 25),
-              icon: Icon(
-                Icons.light_mode,
-                color: Color.fromARGB(255, 0, 0, 0),
-                size: 25,
-              ),
-              onPressed: () {
-                // do something
-              },
-            )
-          ],
         );
-        break;
       case 4:
         return AppBar(
           centerTitle: true,
           elevation: 10.0,
           automaticallyImplyLeading: false,
-          backgroundColor: MaterialColors.primary,
+          backgroundColor: Colors.white,
           title: Text(
             "Tài khoản",
             style:

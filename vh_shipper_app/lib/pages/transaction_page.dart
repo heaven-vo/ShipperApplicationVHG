@@ -34,81 +34,81 @@ class _TransactionPageState extends State<TransactionPage> {
                         fontFamily: "SF Bold"),
                   ),
                 ),
-                Expanded(
-                    flex: 4,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_downward,
-                                    color: Colors.blue,
-                                    size: 18,
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      "Thu:",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontFamily: "SF Regular"),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                child: Text(
-                                  "500.000đ",
-                                  style: TextStyle(
-                                      fontSize: 14, fontFamily: "SF Regular"),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: kSpacingUnit * 1,
-                        ),
-                        Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_upward,
-                                    color: Colors.orange,
-                                    size: 18,
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      "Chi:",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontFamily: "SF Regular"),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                child: Text(
-                                  "1.500.000đ",
-                                  style: TextStyle(
-                                      fontSize: 14, fontFamily: "SF Regular"),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ))
+                // Expanded(
+                //     flex: 4,
+                //     child: Column(
+                //       mainAxisAlignment: MainAxisAlignment.end,
+                //       crossAxisAlignment: CrossAxisAlignment.end,
+                //       children: [
+                //         Container(
+                //           child: Row(
+                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //             crossAxisAlignment: CrossAxisAlignment.center,
+                //             children: [
+                //               Row(
+                //                 children: [
+                //                   Icon(
+                //                     Icons.arrow_downward,
+                //                     color: Colors.blue,
+                //                     size: 18,
+                //                   ),
+                //                   Container(
+                //                     child: Text(
+                //                       "Thu:",
+                //                       style: TextStyle(
+                //                           fontSize: 14,
+                //                           fontFamily: "SF Regular"),
+                //                     ),
+                //                   ),
+                //                 ],
+                //               ),
+                //               Container(
+                //                 child: Text(
+                //                   "500.000đ",
+                //                   style: TextStyle(
+                //                       fontSize: 14, fontFamily: "SF Regular"),
+                //                 ),
+                //               )
+                //             ],
+                //           ),
+                //         ),
+                //         SizedBox(
+                //           height: kSpacingUnit * 1,
+                //         ),
+                //         Container(
+                //           child: Row(
+                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //             crossAxisAlignment: CrossAxisAlignment.center,
+                //             children: [
+                //               Row(
+                //                 children: [
+                //                   Icon(
+                //                     Icons.arrow_upward,
+                //                     color: Colors.orange,
+                //                     size: 18,
+                //                   ),
+                //                   Container(
+                //                     child: Text(
+                //                       "Chi:",
+                //                       style: TextStyle(
+                //                           fontSize: 14,
+                //                           fontFamily: "SF Regular"),
+                //                     ),
+                //                   ),
+                //                 ],
+                //               ),
+                //               Container(
+                //                 child: Text(
+                //                   "1.500.000đ",
+                //                   style: TextStyle(
+                //                       fontSize: 14, fontFamily: "SF Regular"),
+                //                 ),
+                //               )
+                //             ],
+                //           ),
+                //         ),
+                //       ],
+                //     ))
               ],
             ),
           ),
