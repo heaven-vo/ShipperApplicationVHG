@@ -65,104 +65,93 @@ class _ContactPageState extends State<ContactPage> {
                 child: Column(
                   children: [
                     Container(
-                        padding: const EdgeInsets.only(
-                            top: 15, bottom: 15, left: 15, right: 15),
-                        child: Row(
-                          children: [
-                            Container(
-                                width: 70,
-                                height: 70,
-                                margin: const EdgeInsets.only(right: 15),
-                                child: ClipRRect(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(50),
-                                      bottomLeft: Radius.circular(50),
-                                      topRight: Radius.circular(50),
-                                      bottomRight: Radius.circular(50),
+                      padding: const EdgeInsets.only(
+                          top: 15, bottom: 15, left: 15, right: 15),
+                      child: Row(
+                        children: [
+                          Container(
+                              width: 70,
+                              height: 70,
+                              margin: const EdgeInsets.only(right: 15),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(50),
+                                    bottomLeft: Radius.circular(50),
+                                    topRight: Radius.circular(50),
+                                    bottomRight: Radius.circular(50),
+                                  ),
+                                  child: Container(
+                                    height: 70,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(50),
+                                        bottomLeft: Radius.circular(50),
+                                        topRight: Radius.circular(50),
+                                        bottomRight: Radius.circular(50),
+                                      ),
                                     ),
-
-                                    // padding: const EdgeInsets.only(right: 15, left: 0),
-                                    child: Container(
-                                      height: 70,
-                                      // color: Colors.red,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(50),
-                                          bottomLeft: Radius.circular(50),
-                                          topRight: Radius.circular(50),
-                                          bottomRight: Radius.circular(50),
-                                        ),
+                                    width: 70,
+                                    child: Icon(
+                                      Icons.account_circle_rounded,
+                                      size: 70,
+                                      color: MaterialColors.primary,
+                                    ),
+                                  ))),
+                          Expanded(
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => UpdateProfileScreen(),
+                                  ),
+                                );
+                              },
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    context.read<AppProvider>().getName,
+                                    style: const TextStyle(
+                                        color: MaterialColors.black,
+                                        fontFamily: "SF Bold",
+                                        fontSize: 22),
+                                  ),
+                                  Padding(padding: EdgeInsets.all(2)),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Chỉnh sửa tài khoản",
+                                        style: const TextStyle(
+                                            color: Colors.black54,
+                                            fontFamily: "SF Medium",
+                                            fontSize: 15),
                                       ),
-                                      width: 70,
-                                      child: Icon(
-                                        Icons.account_circle_rounded,
-                                        size: 70,
-                                        color: MaterialColors.primary,
+                                      SizedBox(
+                                        width: 5,
                                       ),
-                                    ))
-                                // Image(
-                                //   // color:70olors.red,
-                                //   height: 70,
-                                //   width: 70,
-                                //   fit: BoxFit.cover,
-                                //   image: NetworkImage(image),
-                                // )),
-                                ),
-                            Expanded(
-                                child: InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              UpdateProfileScreen(),
-                                        ),
-                                      );
-                                    },
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          context.read<AppProvider>().getName,
-                                          style: const TextStyle(
-                                              color: MaterialColors.black,
-                                              fontFamily: "SF Bold",
-                                              fontSize: 22),
-                                        ),
-                                        Padding(padding: EdgeInsets.all(2)),
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Chỉnh sửa tài khoản",
-                                              style: const TextStyle(
-                                                  color: Colors.black54,
-                                                  fontFamily: "SF Medium",
-                                                  fontSize: 15),
-                                            ),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            Icon(
-                                              Icons.arrow_forward_ios,
-                                              size: 12,
-                                              color: Colors.black54,
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    )))
-                          ],
-                        )),
+                                      Icon(
+                                        Icons.arrow_forward_ios,
+                                        size: 12,
+                                        color: Colors.black54,
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     Container(
-                        color: MaterialColors.grey,
-                        padding: const EdgeInsets.all(5)),
+                      color: MaterialColors.grey,
+                      padding: const EdgeInsets.all(5),
+                    ),
                     Container(
                       padding: const EdgeInsets.all(15),
                       child: Column(
@@ -170,7 +159,7 @@ class _ContactPageState extends State<ContactPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           const Text(
-                            "Cài đặt",
+                            "Thiết lập tài khoản",
                             style: TextStyle(
                                 color: Colors.black54,
                                 fontFamily: "SF Medium",
@@ -178,40 +167,83 @@ class _ContactPageState extends State<ContactPage> {
                           ),
                           const Padding(padding: EdgeInsets.all(15)),
                           Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.settings,
-                                      size: 24,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.settings,
+                                    size: 24,
+                                  ),
+                                  Padding(padding: EdgeInsets.all(8)),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Text(
+                                      "Cài đặt ",
+                                      style: TextStyle(
+                                          color: Colors.black87,
+                                          fontFamily: "SF SemiBold",
+                                          fontSize: 16),
                                     ),
-                                    Padding(padding: EdgeInsets.all(8)),
-                                    InkWell(
-                                      onTap: () {},
-                                      child: Text(
-                                        "Cài đặt ",
-                                        style: TextStyle(
-                                            color: Colors.black87,
-                                            fontFamily: "SF SemiBold",
-                                            fontSize: 16),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                const Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  size: 16,
-                                  color: Colors.black45,
-                                ),
-                              ]),
+                                  )
+                                ],
+                              ),
+                              const Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                size: 16,
+                                color: Colors.black45,
+                              ),
+                            ],
+                          ),
                           Container(
-                              decoration: const BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          color: Colors.black12, width: 1))),
-                              margin: EdgeInsets.only(top: 20, bottom: 20)),
+                            decoration: const BoxDecoration(
+                              border: Border(
+                                bottom:
+                                    BorderSide(color: Colors.black12, width: 1),
+                              ),
+                            ),
+                            margin: EdgeInsets.only(top: 20, bottom: 20),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.settings,
+                                    size: 24,
+                                  ),
+                                  Padding(padding: EdgeInsets.all(8)),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Text(
+                                      "Điều khoản hợp tác ",
+                                      style: TextStyle(
+                                          color: Colors.black87,
+                                          fontFamily: "SF SemiBold",
+                                          fontSize: 16),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              const Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                size: 16,
+                                color: Colors.black45,
+                              ),
+                            ],
+                          ),
+                          Container(
+                            decoration: const BoxDecoration(
+                              border: Border(
+                                bottom:
+                                    BorderSide(color: Colors.black12, width: 1),
+                              ),
+                            ),
+                            margin: EdgeInsets.only(top: 20, bottom: 20),
+                          ),
                           Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -219,12 +251,12 @@ class _ContactPageState extends State<ContactPage> {
                                 Row(
                                   children: [
                                     Icon(
-                                      Icons.history,
+                                      Icons.support_agent,
                                       size: 24,
                                     ),
                                     Padding(padding: EdgeInsets.all(8)),
                                     Text(
-                                      "Lịch sử đơn hàng",
+                                      "Trung tâm hỗ trợ",
                                       style: TextStyle(
                                           color: Colors.black87,
                                           fontFamily: "SF SemiBold",
@@ -385,140 +417,4 @@ class _ContactPageState extends State<ContactPage> {
       ));
     });
   }
-  // @override
-  // Widget build(BuildContext context) {
-  // var profileInfor = Row(children: [
-  //   Container(
-  //     height: kSpacingUnit * 12,
-  //     width: kSpacingUnit * 12,
-  //     margin: EdgeInsets.only(top: kSpacingUnit * 1.5),
-  //     child: Stack(
-  //       children: [
-  //         CircleAvatar(
-  //           radius: 80,
-  //           // backgroundImage:
-  //           //     AssetImage('build\flutter_assets\Images\avt.jpg'),
-  //         ),
-  //         Align(
-  //           alignment: Alignment.bottomRight,
-  //           child: Container(
-  //             height: kSpacingUnit * 3,
-  //             width: kSpacingUnit * 3,
-  //             decoration: BoxDecoration(
-  //                 color: Theme.of(context).accentColor,
-  //                 shape: BoxShape.circle),
-  //             child: Icon(
-  //               Icons.edit,
-  //               color: Color.fromARGB(255, 0, 0, 0),
-  //               size: 20,
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   ),
-  //   Column(
-  //     children: [
-  //       SizedBox(
-  //         height: kSpacingUnit * 1.5,
-  //       ),
-  //       Text(
-  //         "Vo Chi Cong",
-  //         style: TextStyle(fontWeight: FontWeight.bold),
-  //       ),
-  //       SizedBox(
-  //         height: kSpacingUnit * 1,
-  //       ),
-  //       Text(
-  //         "0123456789",
-  //       ),
-  //       SizedBox(
-  //         height: kSpacingUnit * 1,
-  //       ),
-  //       Text(
-  //         "abc@gmail.com",
-  //       ),
-  //       SizedBox(
-  //         height: kSpacingUnit * 1,
-  //       ),
-  //     ],
-  //   )
-  //   // Container(
-  //   //   height: kSpacingUnit * 4,
-  //   //   width: kSpacingUnit * 20,
-  //   //   decoration: BoxDecoration(
-  //   //     borderRadius: BorderRadius.circular(kSpacingUnit * 5),
-  //   //     color: Theme.of(context).accentColor,
-  //   //   ),
-  //   //   child: Center(
-  //   //     child: Text(
-  //   //       "Chỉnh sửa hồ sơ",
-  //   //       style: TextStyle(
-  //   //           color: Theme.of(context).backgroundColor,
-  //   //           fontWeight: FontWeight.bold),
-  //   //     ),
-  //   //   ),
-  //   // ),
-  // ]);
-
-  // var header = Row(
-  //   mainAxisAlignment: MainAxisAlignment.start,
-  //   crossAxisAlignment: CrossAxisAlignment.center,
-  //   children: <Widget>[
-  //     // SizedBox(
-  //     //   width: kSpacingUnit * 4,
-  //     // ),
-  //     profileInfor,
-  //     // SizedBox(
-  //     //   width: kSpacingUnit * 4,
-  //     // ),
-  //   ],
-  // );
-
-  // return Scaffold(
-  //   body: Column(
-  //     children: <Widget>[
-  //       // SizedBox(
-  //       //   height: kSpacingUnit * 1,
-  //       // ),
-  //       header,
-  //       // SizedBox(
-  //       //   height: kSpacingUnit * 2,
-  //       // ),
-  //       ProfileListView(
-  //         icon: Icons.done,
-  //         text: 'Điều khoản hợp tác',
-  //       ),
-  //       SizedBox(
-  //         height: kSpacingUnit * 1,
-  //       ),
-  //       ProfileListView(
-  //         icon: Icons.menu,
-  //         text: 'Thông tin bảo mật',
-  //       ),
-  //       SizedBox(
-  //         height: kSpacingUnit * 1,
-  //       ),
-  //       ProfileListView(
-  //         icon: Icons.help,
-  //         text: 'Trợ giúp & hỗ trợ',
-  //       ),
-  //       SizedBox(
-  //         height: kSpacingUnit * 1,
-  //       ),
-  //       ProfileListView(
-  //         icon: Icons.settings,
-  //         text: 'Cài đặt',
-  //       ),
-  //       SizedBox(
-  //         height: kSpacingUnit * 1,
-  //       ),
-  //       ProfileListView(
-  //         icon: Icons.logout,
-  //         text: 'Đăng xuất',
-  //       ),
-  //     ],
-  //   ),
-  // );
-  // }
 }
