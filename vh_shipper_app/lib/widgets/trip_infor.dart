@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:vh_shipper_app/Colors/color.dart';
 import 'package:vh_shipper_app/Json/constrain.dart';
-import 'package:vh_shipper_app/pages/order_detail_page.dart';
 import 'package:vh_shipper_app/widgets/accordion_order.dart';
 import 'package:vh_shipper_app/widgets/trip_detail.dart';
-import 'package:vh_shipper_app/widgets/trip_infor.dart';
 
-class ListOrderPage extends StatefulWidget {
-  const ListOrderPage({super.key});
+class TripInfor extends StatefulWidget {
+  TripInfor({super.key});
 
   @override
-  State<ListOrderPage> createState() => _ListOrderPageState();
+  State<TripInfor> createState() => _TripInforState();
 }
 
-class _ListOrderPageState extends State<ListOrderPage> {
+class _TripInforState extends State<TripInfor> {
   var location = 0;
   header() {
     return Container(
       padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
       decoration: BoxDecoration(color: Colors.white),
-      child: Row(
+      child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -28,7 +28,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "Số chuyến hàng - 05",
+                  "Số đơn hàng - 05",
                   style: TextStyle(
                     fontSize: 17,
                     fontFamily: "SF Bold",
@@ -45,14 +45,73 @@ class _ListOrderPageState extends State<ListOrderPage> {
               color: Colors.white,
               size: 28,
             ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Số tiền cần ứng ",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: "SF Medium",
+                            color: Color(0xfff7892b),
+                          ),
+                        ),
+                        Icon(
+                          Icons.report_gmailerrorred,
+                          size: 16,
+                          color: Color.fromARGB(255, 99, 92, 92),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "500.000 đ",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: "SF Medium",
+                        color: Color(0xfff7892b),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: kSpacingUnit * 1.5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Số tiền cần thu ",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        Icon(
+                          Icons.report_gmailerrorred,
+                          size: 15,
+                          color: Color.fromARGB(255, 99, 92, 92),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "200.000 đ",
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ]),
     );
   }
 
   collectMoney() {
     return Container(
-      // width: MediaQuery.of(context).size.width,
-
       color: Colors.white,
       padding: EdgeInsets.only(
         left: 15,
@@ -136,9 +195,6 @@ class _ListOrderPageState extends State<ListOrderPage> {
         ),
         child: Container(
           padding: EdgeInsets.only(left: 15, right: 15),
-          // height: kSpacingUnit * 7,
-          // width: kSpacingUnit * 40,
-
           child: Column(
             children: [
               Container(
@@ -199,82 +255,6 @@ class _ListOrderPageState extends State<ListOrderPage> {
                   ],
                 ),
               ),
-              // Container(
-              //   padding: EdgeInsets.only(top: 15, bottom: 15),
-              //   child: Row(
-              //     crossAxisAlignment: CrossAxisAlignment.start,
-              //     mainAxisAlignment: MainAxisAlignment.start,
-              //     children: [
-              //       Column(
-              //         crossAxisAlignment: CrossAxisAlignment.center,
-              //         mainAxisAlignment: MainAxisAlignment.center,
-              //         children: [
-              //           SizedBox(
-              //             height: 5,
-              //           ),
-              //           Image(
-              //               // color:70olors.red,
-              //               height: 16,
-              //               width: 16,
-              //               fit: BoxFit.cover,
-              //               image: NetworkImage(
-              //                   "https://cdn-icons-png.flaticon.com/512/1946/1946770.png")),
-              //           SizedBox(
-              //             height: 5,
-              //           ),
-              //           Container(
-              //             height: 30,
-              //             decoration: const BoxDecoration(
-              //                 border: Border(
-              //                     right: BorderSide(
-              //                         color: Color.fromRGBO(200, 200, 200, 1),
-              //                         width: 1))),
-              //           ),
-              //           SizedBox(
-              //             height: 5,
-              //           ),
-              //           Icon(
-              //             Icons.info,
-              //             size: 16,
-              //             color: Color.fromRGBO(255, 206, 2, 1),
-              //           ),
-              //         ],
-              //       ),
-              //       SizedBox(
-              //         width: 20,
-              //       ),
-              //       Expanded(
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           mainAxisAlignment: MainAxisAlignment.center,
-              //           children: [
-              //             Text(
-              //               "Bếp Việt T13/07, MANHATTAN , Vinhomes Grand Park, Phường Long Thạnh Mỹ, Quận 9 13 123 123",
-              //               style: TextStyle(
-              //                   fontSize: 15,
-              //                   fontFamily: "SF Regular",
-              //                   overflow: TextOverflow.ellipsis,
-              //                   height: 1.3),
-              //               maxLines: 2,
-              //             ),
-              //             SizedBox(
-              //               height: 20,
-              //             ),
-              //             Text(
-              //               "S2.05, Vinhomes Grand Park, Phường Long Thạnh Mỹ, Quận 9",
-              //               style: TextStyle(
-              //                   fontSize: 15,
-              //                   color: Colors.black,
-              //                   fontFamily: "SF Regular",
-              //                   height: 1.3),
-              //             ),
-              //           ],
-              //         ),
-              //       )
-              //     ],
-              //   ),
-              // ),
-
               collectMoney()
             ],
           ),
@@ -340,7 +320,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
               child: AccordionOrder(
                 status: StatusAccordionOrder.fail,
                 content: way(StatusAccordionOrder.fail),
-                title: "Chuyến hàng #093828",
+                title: "Đơn hàng #093828",
               ),
             ),
             Container(
@@ -352,7 +332,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
               child: AccordionOrder(
                 status: StatusAccordionOrder.done,
                 content: way(StatusAccordionOrder.done),
-                title: "Chuyến hàng #093828",
+                title: "Đơn hàng #093828",
               ),
             ),
             Container(
@@ -364,7 +344,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
               child: AccordionOrder(
                 status: StatusAccordionOrder.doing,
                 content: way(StatusAccordionOrder.doing),
-                title: "Chuyến hàng #093828",
+                title: "Đơn hàng #093828",
               ),
             ),
             Container(
@@ -376,7 +356,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
               child: AccordionOrder(
                 status: StatusAccordionOrder.create,
                 content: way(StatusAccordionOrder.create),
-                title: "Chuyến hàng #093828",
+                title: "Đơn hàng #093828",
               ),
             ),
             Container(
@@ -388,7 +368,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
               child: AccordionOrder(
                 status: StatusAccordionOrder.create,
                 content: way(StatusAccordionOrder.create),
-                title: "Chuyến hàng #093828",
+                title: "Đơn hàng #093828",
               ),
             ),
           ],

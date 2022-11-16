@@ -440,7 +440,7 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     padding: EdgeInsets.only(left: 15),
                     child: Text(
-                      "Doanh thu thu hộ",
+                      "Tiền thu hộ",
                       style: TextStyle(
                           color: Color.fromARGB(255, 0, 0, 0),
                           fontFamily: "SF Bold",
@@ -460,29 +460,30 @@ class _HomePageState extends State<HomePage> {
                   ),
                   order_doing(),
                   Center(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        child: Text("Show Order accept"),
-                        onPressed: () {
-                          _ModalAccept(context);
-                        },
-                      ),
-                      TextButton(
-                        child: Text("Show Order Shipping"),
-                        onPressed: () {
-                          _ModalShipping(context);
-                        },
-                      ),
-                      TextButton(
-                        child: Text("Show Order Done"),
-                        onPressed: () {
-                          _ModalDone(context);
-                        },
-                      )
-                    ],
-                  )),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          child: Text("Show Order accept"),
+                          onPressed: () {
+                            _ModalAccept(context);
+                          },
+                        ),
+                        TextButton(
+                          child: Text("Show Order Shipping"),
+                          onPressed: () {
+                            _ModalShipping(context);
+                          },
+                        ),
+                        TextButton(
+                          child: Text("Show Order Done"),
+                          onPressed: () {
+                            _ModalDone(context);
+                          },
+                        )
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

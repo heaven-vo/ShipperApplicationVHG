@@ -33,7 +33,7 @@ class _OrderAcceptModal extends State<OrderAcceptModal> {
   late Timer _timer;
 
   void _startTimer() {
-    count = 20;
+    count = 2000;
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (count > 0) {
         setState(() {
