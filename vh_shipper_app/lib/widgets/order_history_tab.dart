@@ -133,11 +133,11 @@ historyItem(index) {
                   ),
                 ],
               ),
-              SizedBox(
-                width: 45,
-              ),
+              //SizedBox(
+              //width: 45,
+              //),
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(

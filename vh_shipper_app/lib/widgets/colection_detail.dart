@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:vh_shipper_app/Colors/color.dart';
 import 'package:vh_shipper_app/Json/constrain.dart';
+import 'package:vh_shipper_app/pages/home_page.dart';
+import 'package:vh_shipper_app/provider/appProvider.dart';
+import 'package:flutter_switch/flutter_switch.dart';
+import 'package:provider/provider.dart';
 
 class ColectionDetail extends StatefulWidget {
   const ColectionDetail({super.key});
@@ -10,6 +15,7 @@ class ColectionDetail extends StatefulWidget {
   State<ColectionDetail> createState() => _ColectionDetailState();
 }
 
+bool status = true;
 historyTitle() {
   return Container(
     decoration: BoxDecoration(
@@ -93,11 +99,13 @@ historyItem(index) {
                   Container(
                     child: Row(
                       children: [
-                        Text(
-                          "11/09/2022 19:36:00",
-                          style: TextStyle(
-                              fontFamily: "SF SemiBold", fontSize: 14),
-                        ),
+                        TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "11/09/2022 19:36:00",
+                              style: TextStyle(
+                                  fontFamily: "SF SemiBold", fontSize: 14),
+                            )),
                       ],
                     ),
                   ),
@@ -122,7 +130,7 @@ historyItem(index) {
                     child: Row(
                       children: [
                         Text(
-                          "MOMO VO CHI CONG",
+                          "VNPay VO CHI CONG",
                           style: TextStyle(
                               fontFamily: "SF Regular",
                               fontSize: 16,
@@ -180,22 +188,53 @@ historyItem(index) {
 class _ColectionDetailState extends State<ColectionDetail> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: kSpacingUnit * 3,
+    return Consumer<AppProvider>(
+      builder: (context, provider, child) {
+        return Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            elevation: 10.0,
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.white,
+            shadowColor: MaterialColors.primary,
+            leading: Builder(
+              builder: (BuildContext context) {
+                return IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    size: 25,
+                  ),
+                );
+              },
             ),
-            historyTitle(),
-            ...[1, 2, 3, 4, 5].map((item) => historyItem(item)).toList(),
-            SizedBox(
-              height: kSpacingUnit * 0.5,
+            title: Text(
+              "Lịch sử giao dịch",
+              style:
+                  TextStyle(color: MaterialColors.black, fontFamily: "SF Bold"),
             ),
-          ],
-        ),
-      ),
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: kSpacingUnit * 3,
+                ),
+                historyTitle(),
+                ...[1, 2, 3, 4, 5].map((item) => historyItem(item)).toList(),
+                SizedBox(
+                  height: kSpacingUnit * 0.5,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
