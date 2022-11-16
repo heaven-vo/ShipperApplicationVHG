@@ -202,22 +202,23 @@ class _OrderDoneModal extends State<OrderDoneModal> {
                                 width: 25,
                                 height: 25,
                                 child: ClipRRect(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(50),
-                                      bottomLeft: Radius.circular(50),
-                                      topRight: Radius.circular(50),
-                                      bottomRight: Radius.circular(50),
-                                    ),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(50),
+                                    bottomLeft: Radius.circular(50),
+                                    topRight: Radius.circular(50),
+                                    bottomRight: Radius.circular(50),
+                                  ),
 
-                                    // padding: const EdgeInsets.only(right: 15, left: 0),
-                                    child: Image(
-                                      // color:40olors.red,
-                                      height: 35,
-                                      width: 35,
-                                      fit: BoxFit.cover,
-                                      image: NetworkImage(
-                                          "https://firebasestorage.googleapis.com/v0/b/deliveryfood-9c436.appspot.com/o/icon%2Froom-service.png?alt=media&token=67d36528-b39c-4acc-bfb2-96cf318ddf39"),
-                                    )),
+                                  // padding: const EdgeInsets.only(right: 15, left: 0),
+                                  child: Image(
+                                    // color:40olors.red,
+                                    height: 35,
+                                    width: 35,
+                                    fit: BoxFit.cover,
+                                    image: NetworkImage(
+                                        "https://firebasestorage.googleapis.com/v0/b/deliveryfood-9c436.appspot.com/o/icon%2Froom-service.png?alt=media&token=67d36528-b39c-4acc-bfb2-96cf318ddf39"),
+                                  ),
+                                ),
                               ),
                               SizedBox(
                                 width: 10,

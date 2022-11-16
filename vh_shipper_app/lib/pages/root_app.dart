@@ -184,7 +184,7 @@ class _RootAppState extends State<RootApp> {
           centerTitle: true,
           elevation: 10.0,
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
+          backgroundColor: MaterialColors.primary,
           title: Text(
             "Đơn hàng",
             style:
@@ -206,7 +206,7 @@ class _RootAppState extends State<RootApp> {
         );
       case 2:
         return AppBar(
-          backgroundColor: Color.fromARGB(255, 255, 255, 255),
+          backgroundColor: MaterialColors.primary,
           centerTitle: true,
           title: Text(
             "Lịch sử",
@@ -214,8 +214,8 @@ class _RootAppState extends State<RootApp> {
                 TextStyle(color: MaterialColors.black, fontFamily: "SF Bold"),
           ),
           bottom: TabBar(
-            labelColor: MaterialColors.primary,
-            unselectedLabelColor: MaterialColors.black,
+            labelColor: MaterialColors.black,
+            unselectedLabelColor: MaterialColors.white,
             tabs: <Widget>[
               Tab(
                 // icon: Icon(Icons.cloud_outlined),
@@ -259,7 +259,7 @@ class _RootAppState extends State<RootApp> {
         );
       case 3:
         return AppBar(
-          backgroundColor: Color.fromARGB(255, 255, 255, 255),
+          backgroundColor: MaterialColors.primary,
           centerTitle: true,
           title: Text(
             "Giao dịch",
@@ -272,7 +272,7 @@ class _RootAppState extends State<RootApp> {
           centerTitle: true,
           elevation: 10.0,
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
+          backgroundColor: MaterialColors.primary,
           title: Text(
             "Tài khoản",
             style:
