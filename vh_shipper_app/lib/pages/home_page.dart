@@ -10,6 +10,7 @@ import 'package:vh_shipper_app/widgets/order_done_modal.dart';
 import 'package:vh_shipper_app/widgets/order_shipping_modal.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:provider/provider.dart';
+import 'package:vh_shipper_app/widgets/transaction_record.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -127,8 +128,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    DetailRemittanceHistory()));
+                                builder: (context) => ColectionDetail()));
                       },
                       child: Text('Xem chi tiết',
                           style: TextStyle(
