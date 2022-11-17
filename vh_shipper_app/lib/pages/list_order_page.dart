@@ -3,6 +3,8 @@ import 'package:vh_shipper_app/Colors/color.dart';
 import 'package:vh_shipper_app/Json/constrain.dart';
 import 'package:vh_shipper_app/pages/order_detail_page.dart';
 import 'package:vh_shipper_app/widgets/accordion_order.dart';
+import 'package:vh_shipper_app/widgets/trip_detail.dart';
+import 'package:vh_shipper_app/widgets/trip_infor.dart';
 
 class ListOrderPage extends StatefulWidget {
   const ListOrderPage({super.key});
@@ -16,16 +18,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
   header() {
     return Container(
       padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
-      decoration: BoxDecoration(color: Colors.white
-          // gradient: LinearGradient(
-          //     begin: Alignment.centerLeft,
-          //     end: Alignment.centerRight,
-          //     colors: [
-          //       Color(0xfff7892b).withOpacity(0.9),
-          //       Color(0xfff7892b).withOpacity(0.8),
-          //       MaterialColors.primary,
-          //     ]),
-          ),
+      decoration: BoxDecoration(color: Colors.white),
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,7 +28,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "Task #F9838",
+                  "Số chuyến hàng - 05",
                   style: TextStyle(
                     fontSize: 17,
                     fontFamily: "SF Bold",
@@ -44,14 +37,6 @@ class _ListOrderPageState extends State<ListOrderPage> {
                 ),
                 SizedBox(
                   height: 5,
-                ),
-                Text(
-                  "5 Đơn hàng",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontFamily: "SF Regular",
-                    color: Colors.black,
-                  ),
                 ),
               ],
             ),
@@ -67,11 +52,13 @@ class _ListOrderPageState extends State<ListOrderPage> {
   collectMoney() {
     return Container(
       // width: MediaQuery.of(context).size.width,
+
       color: Colors.white,
       padding: EdgeInsets.only(
         left: 15,
         right: 15,
         bottom: 15,
+        top: 15,
       ),
       child: Column(
         children: [
@@ -84,7 +71,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                   Row(
                     children: [
                       Text(
-                        "Tổng phí ",
+                        "Tổng tiền ",
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: "SF Medium",
@@ -99,7 +86,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                     ],
                   ),
                   Text(
-                    "50.000 đ",
+                    "500.000 đ",
                     style: TextStyle(
                       fontSize: 18,
                       fontFamily: "SF Medium",
@@ -118,7 +105,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                   Row(
                     children: [
                       Text(
-                        "Nhận tiền mặt ",
+                        "Tiền mặt ",
                         style: TextStyle(fontSize: 16),
                       ),
                       Icon(
@@ -129,7 +116,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                     ],
                   ),
                   Text(
-                    "50.000 đ",
+                    "500.000 đ",
                     style: TextStyle(fontSize: 15),
                   ),
                 ],
@@ -201,7 +188,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => OrderDetailPage(Status: 1),
+                            builder: (context) => TripDetail(Status: 1),
                           ),
                         );
                       },
@@ -229,7 +216,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                                 Icons.arrow_forward_ios_outlined,
                                 size: 10,
                                 color: MaterialColors.primary,
-                              )
+                              ),
                             ],
                           )),
                     )
@@ -561,11 +548,35 @@ class _ListOrderPageState extends State<ListOrderPage> {
                 height: 20,
               ),
               header(),
-              collectMoney(),
+              //collectMoney(),
               Container(
                 color: Color.fromRGBO(245, 245, 245, 1),
                 height: 15,
               ),
+
+              Container(
+                margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    border:
+                        Border.all(color: getColor(StatusAccordionOrder.fail))),
+                child: AccordionOrder(
+                  status: StatusAccordionOrder.fail,
+                  content: way(StatusAccordionOrder.fail, 0),
+                  title: "Chuyến hàng #093828",
+                ),
+              ),
+              // Container(
+              //   margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
+              //   decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(5),
+              //       border:
+              //           Border.all(color: getColor(StatusAccordionOrder.done))),
+              //   child: AccordionOrder(
+              //     status: StatusAccordionOrder.done,
+              //     content: way(StatusAccordionOrder.done,0),
+              //     title: "Chuyến hàng #093828",
+              //   ),
               Container(
                 padding: EdgeInsets.all(15),
                 child: Row(children: [
