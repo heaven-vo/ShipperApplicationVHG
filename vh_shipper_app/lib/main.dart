@@ -31,7 +31,7 @@ void main() async {
       debugShowCheckedModeBanner: false,
       //theme: kDarkTheme,
       theme: kLightTheme,
-      home: LandingScreen(),
+      home: RootApp(),
       //home: OrderPage(),
     ),
   ));

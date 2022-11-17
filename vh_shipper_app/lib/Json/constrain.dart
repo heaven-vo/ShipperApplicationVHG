@@ -42,6 +42,16 @@ final kDarkTheme = ThemeData(
       ),
 );
 
+String getIconOrder(modeId) {
+  if (modeId == "1") {
+    return "assets/images/breakfast.png";
+  } else if (modeId == "2") {
+    return "assets/images/dicho-active.png";
+  } else {
+    return "assets/images/giaohang.png";
+  }
+}
+
 final kLightTheme = ThemeData(
     brightness: Brightness.light,
     fontFamily: 'SF Regular',

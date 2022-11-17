@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:vh_shipper_app/Colors/color.dart';
 import 'package:vh_shipper_app/provider/appProvider.dart';
 import 'package:vh_shipper_app/widgets/colection_detail.dart';
-import 'package:vh_shipper_app/widgets/detail_remittance_history.dart';
+import 'package:vh_shipper_app/pages/detail_remittance_history_page.dart';
 import 'package:vh_shipper_app/widgets/order_accept_modal.dart';
 import 'package:vh_shipper_app/widgets/order_done_modal.dart';
 import 'package:vh_shipper_app/widgets/order_shipping_modal.dart';
@@ -146,7 +146,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  order_doing() {
+  order_doing(segment) {
     return Container(
       margin: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
       padding: EdgeInsets.all(15),
@@ -163,41 +163,39 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  child: Row(
-                    children: [
-                      Text(
-                        "#0123456",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ],
+                Text(
+                  "#0123456",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: "SF SemiBold",
+                    fontSize: 16,
                   ),
                 ),
-                SizedBox(
-                  width: 7,
-                ),
                 Container(
                   child: Row(
                     children: [
-                      Container(
-                        child: Icon(
-                          Icons.shopping_bag,
-                          color: MaterialColors.primary,
-                        ),
-                      ),
+                      Image(
+                          // color:70olors.red,
+                          height: 20,
+                          width: 20,
+                          fit: BoxFit.cover,
+                          image: NetworkImage(segment == 0
+                              ? "https://cdn-icons-png.flaticon.com/512/4521/4521931.png"
+                              : "https://cdn-icons-png.flaticon.com/512/7541/7541900.png")),
                       SizedBox(
                         width: 5,
                       ),
-                      Text(
-                        "Lấy hàng",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
+                      Container(
+                        padding: EdgeInsets.only(top: 5),
+                        child: Text(
+                          (segment == 0 ? "Lấy Hàng" : "Giao hàng"),
+                          style: TextStyle(
+                            fontFamily: "SF Medium",
+                            color: MaterialColors.primary,
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                 )
@@ -365,9 +363,11 @@ class _HomePageState extends State<HomePage> {
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
                           colors: [
-                            Color(0xfff7892b).withOpacity(0.9),
-                            Color(0xfff7892b).withOpacity(0.8),
                             MaterialColors.primary,
+                            MaterialColors.primary.withOpacity(0.99),
+                            MaterialColors.primary.withOpacity(0.97),
+                            MaterialColors.primary.withOpacity(0.95),
+                            MaterialColors.primary.withOpacity(0.9),
                           ]),
                     ),
                     padding: EdgeInsets.only(
@@ -458,7 +458,7 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 18),
                     ),
                   ),
-                  order_doing(),
+                  order_doing(0),
                   Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:vh_shipper_app/Colors/color.dart';
@@ -11,10 +11,8 @@ import 'package:vh_shipper_app/models/notificationModel.dart';
 import 'package:vh_shipper_app/pages/contact_page.dart';
 import 'package:vh_shipper_app/pages/history_page.dart';
 import 'package:vh_shipper_app/pages/home_page.dart';
-import 'package:vh_shipper_app/pages/notification_page.dart';
 import 'package:vh_shipper_app/pages/list_order_page.dart';
 import 'package:vh_shipper_app/pages/transaction_page.dart';
-import 'package:vh_shipper_app/pages/wallet_page.dart';
 import 'package:vh_shipper_app/widgets/order_accept_modal.dart';
 
 class RootApp extends StatefulWidget {
@@ -150,6 +148,40 @@ class _RootAppState extends State<RootApp> {
     super.dispose();
   }
 
+  TabBar get _tabBar => TabBar(
+        labelColor: MaterialColors.primary,
+        unselectedLabelColor: Colors.black45,
+        tabs: [
+          Tab(
+            child: Container(
+              padding: EdgeInsets.only(top: 3),
+              width: 85,
+              child: Text(
+                "Hoàn thành",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: "SF SemiBold",
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+          Tab(
+            child: Container(
+              padding: EdgeInsets.only(top: 3),
+              width: 85,
+              child: Text(
+                "Đã Hủy",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: "SF SemiBold",
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
   getAppBar() {
     switch (activeTab) {
       case 0:
@@ -184,18 +216,32 @@ class _RootAppState extends State<RootApp> {
           centerTitle: true,
           elevation: 10.0,
           automaticallyImplyLeading: false,
-          backgroundColor: MaterialColors.primary,
+          // backgroundColor: MaterialColors.primary,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    MaterialColors.primary,
+                    MaterialColors.primary.withOpacity(0.99),
+                    MaterialColors.primary.withOpacity(0.97),
+                    MaterialColors.primary.withOpacity(0.95),
+                    MaterialColors.primary.withOpacity(0.9),
+                  ]),
+            ),
+          ),
           title: Text(
             "Đơn hàng",
             style:
-                TextStyle(color: MaterialColors.black, fontFamily: "SF Bold"),
+                TextStyle(color: MaterialColors.white, fontFamily: "SF Bold"),
           ),
           actions: <Widget>[
             IconButton(
               padding: EdgeInsets.only(right: 25),
               icon: Icon(
                 Icons.light_mode,
-                color: Color.fromARGB(255, 0, 0, 0),
+                color: MaterialColors.white,
                 size: 25,
               ),
               onPressed: () {
@@ -206,65 +252,54 @@ class _RootAppState extends State<RootApp> {
         );
       case 2:
         return AppBar(
-          backgroundColor: MaterialColors.primary,
-          centerTitle: true,
-          title: Text(
-            "Lịch sử",
-            style:
-                TextStyle(color: MaterialColors.black, fontFamily: "SF Bold"),
-          ),
-          bottom: TabBar(
-            labelColor: MaterialColors.black,
-            unselectedLabelColor: MaterialColors.white,
-            tabs: <Widget>[
-              Tab(
-                // icon: Icon(Icons.cloud_outlined),
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(top: 3),
-                      width: 85,
-                      child: Text(
-                        "Hoàn Thành",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: "SF SemiBold",
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                // text: "Hiện tại",
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      MaterialColors.primary,
+                      MaterialColors.primary.withOpacity(0.99),
+                      MaterialColors.primary.withOpacity(0.97),
+                      MaterialColors.primary.withOpacity(0.95),
+                      MaterialColors.primary.withOpacity(0.9),
+                    ]),
               ),
-              Tab(
-                // icon: Icon(Icons.beach_access_sharp),
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(top: 3),
-                      width: 85,
-                      child: Text(
-                        "Đã Hủy",
-                        textAlign: TextAlign.center,
-                        style:
-                            TextStyle(fontFamily: "SF SemiBold", fontSize: 16),
-                      ),
-                    ),
-                  ],
-                ),
+            ),
+            centerTitle: true,
+            title: Text(
+              "Lịch sử",
+              style:
+                  TextStyle(color: MaterialColors.white, fontFamily: "SF Bold"),
+            ),
+            bottom: PreferredSize(
+              preferredSize: _tabBar.preferredSize,
+              child: ColoredBox(
+                color: Colors.white,
+                child: _tabBar,
               ),
-            ],
-          ),
-        );
+            ));
       case 3:
         return AppBar(
-          backgroundColor: MaterialColors.primary,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    MaterialColors.primary,
+                    MaterialColors.primary.withOpacity(0.99),
+                    MaterialColors.primary.withOpacity(0.97),
+                    MaterialColors.primary.withOpacity(0.95),
+                    MaterialColors.primary.withOpacity(0.9),
+                  ]),
+            ),
+          ),
           centerTitle: true,
           title: Text(
             "Giao dịch",
             style:
-                TextStyle(color: MaterialColors.black, fontFamily: "SF Bold"),
+                TextStyle(color: MaterialColors.white, fontFamily: "SF Bold"),
           ),
         );
       case 4:
@@ -272,7 +307,20 @@ class _RootAppState extends State<RootApp> {
           centerTitle: true,
           elevation: 10.0,
           automaticallyImplyLeading: false,
-          backgroundColor: MaterialColors.primary,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    MaterialColors.primary,
+                    MaterialColors.primary.withOpacity(0.99),
+                    MaterialColors.primary.withOpacity(0.97),
+                    MaterialColors.primary.withOpacity(0.95),
+                    MaterialColors.primary.withOpacity(0.9),
+                  ]),
+            ),
+          ),
           title: Text(
             "Tài khoản",
             style:
