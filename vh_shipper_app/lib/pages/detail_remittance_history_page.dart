@@ -20,19 +20,19 @@ historyTitle() {
   return Container(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
           child: Text(
             "SỐ TIỀN GIAO DỊCH",
             style: TextStyle(
-              color: MaterialColors.primary,
-              fontSize: 18,
-            ),
+                color: MaterialColors.primary,
+                fontSize: 17,
+                fontFamily: "SF Medium"),
           ),
         ),
         SizedBox(
-          height: kSpacingUnit * 1,
+          height: kSpacingUnit * 1.5,
         ),
         Container(
           child: Text(
@@ -44,7 +44,7 @@ historyTitle() {
           ),
         ),
         SizedBox(
-          height: kSpacingUnit * 1,
+          height: kSpacingUnit * 1.5,
         ),
       ],
     ),
@@ -59,7 +59,7 @@ historyInfor() {
     ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           child: Row(
@@ -69,10 +69,10 @@ historyInfor() {
               Expanded(
                 flex: 6,
                 child: Text(
-                  "Từ tài khoản",
+                  "Tài khoản giao dịch",
                   style: TextStyle(
-                    color: MaterialColors.primary,
-                    fontSize: 16,
+                    color: MaterialColors.primary.withOpacity(0.7),
+                    fontSize: 15,
                   ),
                 ),
               ),
@@ -82,25 +82,16 @@ historyInfor() {
         SizedBox(
           height: kSpacingUnit * 1,
         ),
-        Container(
-          child: Row(
-            children: [
-              Expanded(
-                flex: 6,
-                child: Text(
-                  "VO CHI CONG",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    fontSize: 16,
-                    fontFamily: "SF Bold",
-                  ),
-                ),
-              ),
-            ],
+        Text(
+          "Phạm Văn Dương".toUpperCase(),
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 16,
+            fontFamily: "SF SemiBold",
           ),
         ),
         SizedBox(
-          height: kSpacingUnit * 1,
+          height: kSpacingUnit * 0.5,
         ),
         Container(
           child: Row(
@@ -110,18 +101,25 @@ historyInfor() {
               Expanded(
                 flex: 6,
                 child: Text(
-                  "0123 4567 8910",
+                  "Shipper1@gmail.com",
                   style: TextStyle(
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    fontSize: 16,
+                    color: Color.fromRGBO(100, 100, 100, 1),
+                    fontSize: 14,
                   ),
                 ),
               ),
             ],
           ),
         ),
-        SizedBox(
-          height: kSpacingUnit * 1,
+        Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            border: Border(
+              bottom:
+                  BorderSide(color: Color.fromRGBO(240, 240, 240, 1), width: 1),
+            ),
+          ),
+          margin: EdgeInsets.only(top: 30),
         ),
       ],
     ),
@@ -146,8 +144,8 @@ historyTime() {
                 child: Text(
                   "Thời gian thực hiện",
                   style: TextStyle(
-                    color: MaterialColors.primary,
-                    fontSize: 16,
+                    color: MaterialColors.primary.withOpacity(0.7),
+                    fontSize: 15,
                   ),
                 ),
               ),
@@ -157,8 +155,39 @@ historyTime() {
                   "11:11 11/11/2022",
                   style: TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
-                      fontSize: 16,
-                      fontFamily: "SF Bold"),
+                      fontSize: 15,
+                      fontFamily: "SF Medium"),
+                ),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: kSpacingUnit * 2.5,
+        ),
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                //flex: 6,
+                child: Text(
+                  "Mã giao dịch",
+                  style: TextStyle(
+                    color: MaterialColors.primary.withOpacity(0.7),
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+              Container(
+                //flex: 6,
+                child: Text(
+                  "99983V929A",
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontSize: 15,
+                      fontFamily: "SF Medium"),
                 ),
               ),
             ],
@@ -177,19 +206,19 @@ historyTime() {
                 child: Text(
                   "Danh mục",
                   style: TextStyle(
-                    color: MaterialColors.primary,
-                    fontSize: 16,
+                    color: MaterialColors.primary.withOpacity(0.7),
+                    fontSize: 15,
                   ),
                 ),
               ),
               Container(
                 //flex: 6,
                 child: Text(
-                  "Chi Tiêu Thẻ ATM",
+                  "Thu hộ đơn hàng",
                   style: TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
-                      fontSize: 16,
-                      fontFamily: "SF Bold"),
+                      fontSize: 15,
+                      fontFamily: "SF Medium"),
                 ),
               ),
             ],
@@ -206,52 +235,21 @@ historyTime() {
               Container(
                 //flex: 6,
                 child: Text(
-                  "Nội dung chuyển tiền",
+                  "Trạng thái",
                   style: TextStyle(
-                    color: MaterialColors.primary,
-                    fontSize: 16,
+                    color: MaterialColors.primary.withOpacity(0.7),
+                    fontSize: 15,
                   ),
                 ),
               ),
               Container(
                 //flex: 6,
                 child: Text(
-                  "nap tien vao vi app",
+                  "Thành công",
                   style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      fontSize: 16,
-                      fontFamily: "SF Bold"),
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(
-          height: kSpacingUnit * 2.5,
-        ),
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                //flex: 6,
-                child: Text(
-                  "Cách thức",
-                  style: TextStyle(
-                    color: MaterialColors.primary,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              Container(
-                //flex: 6,
-                child: Text(
-                  "OYJHK83738434A",
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      fontSize: 16,
-                      fontFamily: "SF Bold"),
+                      color: Colors.green[400],
+                      fontSize: 15,
+                      fontFamily: "SF Medium"),
                 ),
               ),
             ],
@@ -269,30 +267,28 @@ class _DetailRemittanceHistoryState extends State<DetailRemittanceHistory> {
       builder: (context, provider, child) {
         return Scaffold(
           appBar: AppBar(
-            centerTitle: true,
-            elevation: 10.0,
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.white,
-            shadowColor: MaterialColors.primary,
-            leading: Builder(
-              builder: (BuildContext context) {
-                return IconButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    size: 25,
-                  ),
-                );
-              },
+            iconTheme: IconThemeData(
+              color: Colors.white, //change your color here
             ),
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      MaterialColors.primary,
+                      MaterialColors.primary.withOpacity(0.99),
+                      MaterialColors.primary.withOpacity(0.97),
+                      MaterialColors.primary.withOpacity(0.95),
+                      MaterialColors.primary.withOpacity(0.9),
+                    ]),
+              ),
+            ),
+            centerTitle: true,
+            shadowColor: MaterialColors.primary,
             title: Text(
               "Chi tiết giao dịch",
-              style:
-                  TextStyle(color: MaterialColors.black, fontFamily: "SF Bold"),
+              style: TextStyle(color: Colors.white, fontFamily: "SF Bold"),
             ),
           ),
           body: SingleChildScrollView(
@@ -306,9 +302,6 @@ class _DetailRemittanceHistoryState extends State<DetailRemittanceHistory> {
                   height: kSpacingUnit * 0.5,
                 ),
                 historyInfor(),
-                SizedBox(
-                  height: kSpacingUnit * 0.5,
-                ),
                 historyTime()
               ],
             ),

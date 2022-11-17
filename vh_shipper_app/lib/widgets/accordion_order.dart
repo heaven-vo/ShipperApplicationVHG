@@ -71,24 +71,32 @@ class _AccordionOrderState extends State<AccordionOrder> {
               // contentPadding: EdgeInsets.only(left: 15),
               title: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  getIcon(widget.status),
-                  Padding(padding: EdgeInsets.all(5)),
-                  Text(
-                    widget.title,
-                    style: TextStyle(
-                      fontFamily: "SF SemiBold",
-                      fontSize: 16,
-                      color: Colors.black,
+              Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    getIcon(widget.status),
+                    SizedBox(
+                      width: 10,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+                    Expanded(
+                      child: Text(
+                        widget.title,
+                        style: TextStyle(
+                            overflow: TextOverflow.ellipsis,
+                            fontFamily: "SF Medium",
+                            fontSize: 15,
+                            wordSpacing: 1.5,
+                            color: Colors.black,
+                            height: 1.5),
+                        maxLines: 2,
+                      ),
+                    )
+                  ],
+                ),
               ),
               Padding(padding: EdgeInsets.all(5)),
               Icon(

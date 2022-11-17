@@ -20,7 +20,7 @@ const Color black = Color(0xff000000);
 const kAccentColorButton = Color.fromARGB(255, 3, 82, 151);
 
 class MaterialColors {
-  static const Color primary = Color.fromRGBO(255, 170, 76, 1);
+  static const Color primary = Color.fromARGB(255, 250, 159, 56);
   static const Color black = Color.fromRGBO(24, 23, 37, 1.0);
   static const Color secondary = Color.fromRGBO(14, 105, 180, 1.0);
   static const Color white = Color.fromARGB(255, 255, 255, 255);
