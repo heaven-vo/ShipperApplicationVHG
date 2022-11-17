@@ -346,33 +346,39 @@ class _TransactionPageState extends State<TransactionPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            revenue(),
-            transactionTitle(),
-            Container(
-              height: MediaQuery.of(context).size.height - 378,
-              child: SingleChildScrollView(
-                child: Column(children: [
-                  // SizedBox(
-                  //   height: kSpacingUnit * 0.7,
-                  // ),
-                  ...[1, 2, 3, 4, 5]
-                      .map((item) => InkWell(
-                            child: transactionItem(item),
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          DetailRemittanceHistory()));
-                            },
-                          ))
-                      .toList(),
-                  SizedBox(
-                    height: kSpacingUnit * 0.5,
-                  ),
-                ]),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: [
+                  revenue(),
+                  transactionTitle(),
+                ],
               ),
-            )
+            ),
+            Expanded(
+                flex: 1,
+                child: SingleChildScrollView(
+                  child: Column(children: [
+                    // SizedBox(
+                    //   height: kSpacingUnit * 0.7,
+                    // ),
+                    ...[1, 2, 3, 4, 5]
+                        .map((item) => InkWell(
+                              child: transactionItem(item),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            DetailRemittanceHistory()));
+                              },
+                            ))
+                        .toList(),
+                    SizedBox(
+                      height: kSpacingUnit * 0.5,
+                    ),
+                  ]),
+                )),
           ],
         ),
       ),
