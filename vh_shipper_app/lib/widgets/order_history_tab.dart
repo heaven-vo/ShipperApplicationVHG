@@ -10,7 +10,7 @@ class OrderHistoryTab extends StatefulWidget {
   _OrderHistoryTabState createState() => _OrderHistoryTabState();
 }
 
-historyTitle() {
+historyTitle(title) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(kSpacingUnit * 1),
@@ -27,7 +27,7 @@ historyTitle() {
               Expanded(
                 flex: 6,
                 child: Text(
-                  "Tháng 09/2022",
+                  title,
                   style: TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 18,
@@ -61,24 +61,15 @@ historyItem(index) {
               Stack(
                 children: [
                   Container(
-                      height: kSpacingUnit * 5.5,
-                      width: kSpacingUnit * 5.5,
+                      height: 35,
+                      width: 35,
                       child: Container(
-                        height: kSpacingUnit * 5,
-                        width: kSpacingUnit * 5,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            border: Border.all(
-                                width: 1,
-                                color: Color.fromRGBO(200, 200, 200, 1))),
-                        child: const Center(
-                          child: Image(
-                              // color:70olors.red,
-                              height: 20,
-                              width: 20,
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  "https://firebasestorage.googleapis.com/v0/b/deliveryfood-9c436.appspot.com/o/icon%2Fwallet.png?alt=media&token=49ac71c1-04e2-4e65-ae48-fbe255daeca9")),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: Image.asset(
+                          getIconOrder("1"),
+                          fit: BoxFit.cover,
                         ),
                       )),
                 ],
@@ -90,87 +81,62 @@ historyItem(index) {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        Text(
-                          "Bún thịt nướng 5 ngon",
-                          style: TextStyle(
-                              fontFamily: "SF SemiBold", fontSize: 16),
-                        ),
-                      ],
-                    ),
+                  Text(
+                    "Bún thịt nướng 5 ngon",
+                    style: TextStyle(fontFamily: "SF SemiBold", fontSize: 16),
                   ),
                   SizedBox(
                     height: kSpacingUnit * 0.5,
                   ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Text(
-                          "+ 45.000",
-                          style:
-                              TextStyle(fontFamily: "SF Regular", fontSize: 14),
-                        ),
-                      ],
-                    ),
+                  Text(
+                    "45.000",
+                    style: TextStyle(fontFamily: "SF Regular", fontSize: 14),
                   ),
                   SizedBox(
                     height: kSpacingUnit * 0.5,
                   ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Text(
-                          "Tiền mặt",
-                          style: TextStyle(
-                              fontFamily: "SF Regular",
-                              fontSize: 14,
-                              color: Colors.black38),
-                        ),
-                      ],
-                    ),
+                  Text(
+                    "Giao hàng",
+                    style: TextStyle(
+                        fontFamily: "SF Regular",
+                        fontSize: 14,
+                        color: Colors.black38),
                   ),
                 ],
               ),
               //SizedBox(
               //width: 45,
               //),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        Text(
-                          "09/09/2022 - 24:24",
-                          style: TextStyle(
-                              fontFamily: "SF Regular",
-                              fontSize: 10,
-                              color: Colors.black38),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 30, top: 10),
-                    child: Stack(
-                      children: <Widget>[
-                        Positioned(
-                          child: Icon(
-                            Icons.check_circle,
-                            color: Colors.green,
-                            size: kSpacingUnit * 3,
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
             ],
           ),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              "17:05, 09/09/2022",
+              style: TextStyle(
+                  fontFamily: "SF Regular",
+                  fontSize: 13,
+                  color: Colors.black38),
+            ),
+            Container(
+                margin: EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(
+                    left: 10, right: 10, bottom: 5, top: 5),
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  "Thành công",
+                  style: TextStyle(
+                      fontFamily: "SF Medium",
+                      fontSize: 13,
+                      color: Colors.white),
+                ))
+          ],
         ),
       ],
     ),
@@ -188,7 +154,15 @@ class _OrderHistoryTabState extends State<OrderHistoryTab> {
             SizedBox(
               height: kSpacingUnit * 1.5,
             ),
-            historyTitle(),
+            historyTitle("Hôm nay"),
+            ...[
+              1,
+              2,
+            ].map((item) => historyItem(item)).toList(),
+            SizedBox(
+              height: kSpacingUnit * 0.5,
+            ),
+            historyTitle("Cũ hơn"),
             ...[1, 2, 3, 4, 5].map((item) => historyItem(item)).toList(),
             SizedBox(
               height: kSpacingUnit * 0.5,
