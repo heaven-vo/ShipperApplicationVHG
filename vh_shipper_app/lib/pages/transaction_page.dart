@@ -346,14 +346,11 @@ class _TransactionPageState extends State<TransactionPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  revenue(),
-                  transactionTitle(),
-                ],
-              ),
+            Column(
+              children: [
+                revenue(),
+                transactionTitle(),
+              ],
             ),
             Expanded(
                 flex: 1,

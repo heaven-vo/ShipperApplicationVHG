@@ -5,6 +5,8 @@ import 'package:vh_shipper_app/Colors/color.dart';
 import 'package:vh_shipper_app/Json/constrain.dart';
 import 'package:vh_shipper_app/pages/home_page.dart';
 import 'package:vh_shipper_app/pages/list_order_page.dart';
+import 'package:vh_shipper_app/pages/order_detail_page.dart';
+import 'package:vh_shipper_app/widgets/order_ship.dart';
 import 'package:vh_shipper_app/widgets/trip_infor.dart';
 
 class TripDetail extends StatefulWidget {
@@ -322,11 +324,31 @@ class _TripDetailState extends State<TripDetail> with TickerProviderStateMixin {
                 SizedBox(
                   height: kSpacingUnit * 1.5,
                 ),
-                ...["A", "B", "C", "D"]
-                    .map((item) => pointPickup(item))
+                ...["A", "B"]
+                    .map((item) => InkWell(
+                          child: pointPickup(item),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => OrderDetailPage(
+                                          Status: 1,
+                                        )));
+                          },
+                        ))
                     .toList(),
                 ...["A", "B", "C", "D"]
-                    .map((item) => pointDelivery(item))
+                    .map((item) => InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => OrderDetailPage(
+                                          Status: 0,
+                                        )));
+                          },
+                          child: pointDelivery(item),
+                        ))
                     .toList(),
               ],
             ),
