@@ -64,49 +64,332 @@ class _HomePageState extends State<HomePage> {
         color: Colors.white,
         border: Border.all(color: Color.fromRGBO(200, 200, 200, 1)),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            child: Row(children: [
-              Icon(Icons.today, color: MaterialColors.primary),
-              SizedBox(
-                width: 5,
-              ),
-              Text(
-                "01 Thg 11",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontFamily: "SF SemiBold"),
-              ),
-            ]),
-          ),
-          Container(
-            child: Row(children: [
-              SizedBox(
-                width: 5,
-              ),
-              Icon(
-                Icons.arrow_back_ios,
-              ),
-              SizedBox(
-                width: 3,
-              ),
-              Icon(Icons.arrow_forward_ios,
-                  color: Color.fromARGB(255, 179, 176, 173)),
-            ]),
-          )
-        ],
+      child: Container(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: Row(children: [
+                Container(
+                  child: Icon(
+                    Icons.today,
+                    color: MaterialColors.primary,
+                  ),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                TextButton(
+                  child: Text(
+                    "17 Thag 11",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        fontFamily: "SF Bold",
+                        fontSize: 16),
+                  ),
+                  onPressed: () {
+                    _modalBottomSheetMenu();
+                  },
+                ),
+              ]),
+            ),
+            Container(
+              child: Row(children: [
+                SizedBox(
+                  width: 5,
+                ),
+                Icon(
+                  Icons.arrow_back_ios,
+                ),
+                SizedBox(
+                  width: 3,
+                ),
+                Icon(Icons.arrow_forward_ios,
+                    color: Color.fromARGB(255, 179, 176, 173)),
+              ]),
+            )
+          ],
+        ),
       ),
     );
   }
 
+  void _modalBottomSheetMenu() {
+    showModalBottomSheet(
+        context: context,
+        builder: (builder) {
+          return Container(
+            height: 350.0,
+            color: Colors.transparent,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(45),
+                  topRight: Radius.circular(55),
+                ),
+              ),
+              child: Center(
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 15, bottom: 15),
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Chọn Khoảng Thời Gian",
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                  fontFamily: "SF Bold",
+                                  fontSize: 15),
+                            ),
+                          ]),
+                    ),
+                    Container(
+                        padding: EdgeInsets.only(left: 15, right: 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                              color: Color.fromRGBO(200, 200, 200, 1)),
+                        ),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Container(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Row(children: [
+                                      Text(
+                                        "Hôm nay",
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173),
+                                            fontFamily: "SF Bold",
+                                            fontSize: 16),
+                                      ),
+                                    ]),
+                                  ),
+                                  Container(
+                                    child: Row(children: [
+                                      Icon(Icons.radio_button_unchecked,
+                                          color: Color.fromARGB(
+                                              255, 179, 176, 173)),
+                                    ]),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Container(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Row(children: [
+                                      Text(
+                                        "Hôm qua",
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173),
+                                            fontFamily: "SF Bold",
+                                            fontSize: 16),
+                                      ),
+                                    ]),
+                                  ),
+                                  Container(
+                                    child: Row(children: [
+                                      Icon(Icons.radio_button_unchecked,
+                                          color: Color.fromARGB(
+                                              255, 179, 176, 173)),
+                                    ]),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Container(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Row(children: [
+                                      Text(
+                                        "Tuần này",
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173),
+                                            fontFamily: "SF Bold",
+                                            fontSize: 16),
+                                      ),
+                                    ]),
+                                  ),
+                                  Container(
+                                    child: Row(children: [
+                                      Icon(Icons.radio_button_unchecked,
+                                          color: Color.fromARGB(
+                                              255, 179, 176, 173)),
+                                    ]),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Container(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Row(children: [
+                                      Text(
+                                        "Tuần Trước",
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173),
+                                            fontFamily: "SF Bold",
+                                            fontSize: 16),
+                                      ),
+                                    ]),
+                                  ),
+                                  Container(
+                                    child: Row(children: [
+                                      Icon(Icons.radio_button_unchecked,
+                                          color: Color.fromARGB(
+                                              255, 179, 176, 173)),
+                                    ]),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Container(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Row(children: [
+                                      Text(
+                                        "Tháng này",
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173),
+                                            fontFamily: "SF Bold",
+                                            fontSize: 16),
+                                      ),
+                                    ]),
+                                  ),
+                                  Container(
+                                    child: Row(children: [
+                                      Icon(Icons.radio_button_unchecked,
+                                          color: Color.fromARGB(
+                                              255, 179, 176, 173)),
+                                    ]),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Container(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Row(children: [
+                                      Text(
+                                        "Tháng trước",
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173),
+                                            fontFamily: "SF Bold",
+                                            fontSize: 16),
+                                      ),
+                                    ]),
+                                  ),
+                                  Container(
+                                    child: Row(children: [
+                                      Icon(Icons.radio_button_unchecked,
+                                          color: Color.fromARGB(
+                                              255, 179, 176, 173)),
+                                    ]),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Container(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Row(children: [
+                                      Text(
+                                        "3 tháng gần nhất",
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173),
+                                            fontFamily: "SF Bold",
+                                            fontSize: 16),
+                                      ),
+                                    ]),
+                                  ),
+                                  Container(
+                                    child: Row(children: [
+                                      Icon(Icons.radio_button_unchecked,
+                                          color: Color.fromARGB(
+                                              255, 179, 176, 173)),
+                                    ]),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                          ],
+                        ))
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
   revenue() {
     return Container(
-      margin: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -115,317 +398,483 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
+                  padding: EdgeInsets.only(
+                    bottom: 15,
+                  ),
                   child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          width: 160.0,
-                          child: OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              backgroundColor:
-                                  Color.fromARGB(255, 255, 255, 255),
-                              side: BorderSide(
-                                color: Colors.amber,
-                                style: BorderStyle.solid,
-                                width: 1,
-                              ),
-                            ),
-                            onPressed: null,
-                            child: Column(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.only(
-                                      top: 10, left: 5, right: 5),
-                                  child: Text(
-                                    'Tổng Đơn',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: "SF SemiBold",
-                                        color: Colors.black),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(
-                                    bottom: 10,
-                                  ),
-                                  child: Text(
-                                    '10 đơn hàng',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: "SF SemiBold",
-                                        color: MaterialColors.primary),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        SizedBox(
-                          width: 160.0,
-                          child: OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              backgroundColor:
-                                  Color.fromARGB(255, 255, 255, 255),
-                              side: BorderSide(
-                                color: Colors.amber,
-                                style: BorderStyle.solid,
-                                width: 1,
-                              ),
-                            ),
-                            onPressed: null,
-                            child: Column(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.only(
-                                      top: 10, left: 5, right: 5),
-                                  child: Text(
-                                    'Đã Hủy',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: "SF SemiBold",
-                                        color: Colors.black),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(
-                                    bottom: 10,
-                                  ),
-                                  child: Text(
-                                    '01 đơn hàng',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: "SF SemiBold",
-                                        color: MaterialColors.primary),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ]),
-                ),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SizedBox(
-                        width: 160.0,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                            side: BorderSide(
-                              color: Colors.amber,
-                              style: BorderStyle.solid,
-                              width: 1,
-                            ),
-                          ),
-                          onPressed: null,
-                          child: Column(
-                            children: [
-                              Container(
-                                padding:
-                                    EdgeInsets.only(top: 10, left: 5, right: 5),
-                                child: Text(
-                                  'Thành Công',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "SF SemiBold",
-                                      color: Colors.black),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                padding: EdgeInsets.only(
-                                  bottom: 10,
-                                ),
-                                child: Text(
-                                  '08 đơn hàng',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "SF SemiBold",
-                                      color: MaterialColors.primary),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                      Text(
+                        "Tổng quan đơn hàng  ",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            fontFamily: "SF Bold",
+                            fontSize: 18),
                       ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      SizedBox(
-                        width: 160.0,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                            side: BorderSide(
-                              color: Colors.amber,
-                              style: BorderStyle.solid,
-                              width: 1,
-                            ),
-                          ),
-                          onPressed: null,
-                          child: Column(
-                            children: [
-                              Container(
-                                padding:
-                                    EdgeInsets.only(top: 10, left: 5, right: 5),
-                                child: Text(
-                                  'Khách Hủy',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "SF SemiBold",
-                                      color: Colors.black),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                padding: EdgeInsets.only(
-                                  bottom: 10,
-                                ),
-                                child: Text(
-                                  '01 đơn hàng',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "SF SemiBold",
-                                      color: MaterialColors.primary),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
+                      Icon(Icons.info,
+                          size: 15, color: Color.fromARGB(255, 170, 165, 165)),
                     ],
                   ),
                 ),
                 Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        width: 160.0,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                            side: BorderSide(
-                              color: Colors.amber,
-                              style: BorderStyle.solid,
-                              width: 1,
-                            ),
-                          ),
-                          onPressed: null,
-                          child: Column(
-                            children: [
-                              Container(
-                                padding:
-                                    EdgeInsets.only(top: 10, left: 5, right: 5),
-                                child: Text(
-                                  'Thành Công',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "SF SemiBold",
-                                      color: Colors.black),
+                  child: Column(children: [
+                    Container(
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: 160.0,
+                              height: 80.0,
+                              child: OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  backgroundColor:
+                                      MaterialColors.primary.withOpacity(0.1),
+                                  side: BorderSide(
+                                    color: Color.fromARGB(114, 252, 255, 177),
+                                    style: BorderStyle.solid,
+                                    width: 1,
+                                  ),
+                                ),
+                                onPressed: null,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      child: Text(
+                                        'Tổng Đơn',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "SF SemiBold",
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                        bottom: 10,
+                                      ),
+                                      child: Text(
+                                        '10 đơn hàng',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "SF SemiBold",
+                                            color: MaterialColors.primary),
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ),
-                              SizedBox(
-                                height: 5,
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            SizedBox(
+                              width: 160.0,
+                              height: 80,
+                              child: OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  backgroundColor:
+                                      MaterialColors.primary.withOpacity(0.1),
+                                  side: BorderSide(
+                                    color: Color.fromARGB(114, 252, 255, 177),
+                                    style: BorderStyle.solid,
+                                    width: 1,
+                                  ),
+                                ),
+                                onPressed: null,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      child: Text(
+                                        'Thành Công',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "SF SemiBold",
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                        bottom: 10,
+                                      ),
+                                      child: Text(
+                                        '08 đơn hàng',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "SF SemiBold",
+                                            color: MaterialColors.primary),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
-                              Container(
-                                padding: EdgeInsets.only(
-                                  bottom: 10,
+                            ),
+                          ]),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            width: 160.0,
+                            height: 80,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
                                 ),
-                                child: Text(
-                                  '08 đơn hàng',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "SF SemiBold",
-                                      color: MaterialColors.primary),
+                                backgroundColor:
+                                    MaterialColors.primary.withOpacity(0.1),
+                                side: BorderSide(
+                                  color: Color.fromARGB(114, 252, 255, 177),
+                                  style: BorderStyle.solid,
+                                  width: 1,
                                 ),
-                              )
-                            ],
+                              ),
+                              onPressed: null,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      'Đã Hủy',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "SF SemiBold",
+                                          color: Colors.black),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(
+                                      bottom: 10,
+                                    ),
+                                    child: Text(
+                                      '01 đơn hàng',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "SF SemiBold",
+                                          color: MaterialColors.primary),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          SizedBox(
+                            width: 160.0,
+                            height: 80,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                backgroundColor:
+                                    MaterialColors.primary.withOpacity(0.1),
+                                side: BorderSide(
+                                  color: Color.fromARGB(114, 252, 255, 177),
+                                  style: BorderStyle.solid,
+                                  width: 1,
+                                ),
+                              ),
+                              onPressed: null,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      'Khách Hủy',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "SF SemiBold",
+                                          color: Colors.black),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(
+                                      bottom: 10,
+                                    ),
+                                    child: Text(
+                                      '01 đơn hàng',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "SF SemiBold",
+                                          color: MaterialColors.primary),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      SizedBox(
-                        width: 160.0,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                            side: BorderSide(
-                              color: Colors.amber,
-                              style: BorderStyle.solid,
-                              width: 1,
-                            ),
+                    ),
+                  ]),
+                ),
+                Container(
+                  child: Column(children: [
+                    Container(
+                      padding: EdgeInsets.only(right: 15, top: 15),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Tổng quan thu tiền  ",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontFamily: "SF Bold",
+                                fontSize: 18),
                           ),
-                          onPressed: null,
-                          child: Column(
-                            children: [
-                              Container(
-                                padding:
-                                    EdgeInsets.only(top: 10, left: 5, right: 5),
-                                child: Text(
-                                  'Khách Hủy',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "SF SemiBold",
-                                      color: Colors.black),
+                          Icon(Icons.info,
+                              size: 15,
+                              color: Color.fromARGB(255, 170, 165, 165)),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            width: 160.0,
+                            height: 80,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                backgroundColor:
+                                    MaterialColors.primary.withOpacity(0.1),
+                                side: BorderSide(
+                                  color: Color.fromARGB(114, 252, 255, 177),
+                                  style: BorderStyle.solid,
+                                  width: 1,
                                 ),
                               ),
-                              SizedBox(
-                                height: 5,
+                              onPressed: null,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      'Tổng Tiền Thu Hộ',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "SF SemiBold",
+                                          color: Colors.black),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(
+                                      bottom: 10,
+                                    ),
+                                    child: Text(
+                                      '1,000,000 VND',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: "SF SemiBold",
+                                          color: MaterialColors.primary),
+                                    ),
+                                  )
+                                ],
                               ),
-                              Container(
-                                padding: EdgeInsets.only(
-                                  bottom: 10,
-                                ),
-                                child: Text(
-                                  '01 đơn hàng',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "SF SemiBold",
-                                      color: MaterialColors.primary),
-                                ),
-                              )
-                            ],
+                            ),
                           ),
-                        ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          SizedBox(
+                            width: 160.0,
+                            height: 80,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                backgroundColor:
+                                    MaterialColors.primary.withOpacity(0.1),
+                                side: BorderSide(
+                                  color: Color.fromARGB(114, 252, 255, 177),
+                                  style: BorderStyle.solid,
+                                  width: 1,
+                                ),
+                              ),
+                              onPressed: null,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      'Thu Hộ Tài Khoản',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: "SF SemiBold",
+                                          color: Colors.black),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(
+                                      bottom: 10,
+                                    ),
+                                    child: Text(
+                                      '500,000 VND',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: "SF SemiBold",
+                                          color: MaterialColors.primary),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: 160.0,
+                              height: 80,
+                              child: OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  backgroundColor:
+                                      MaterialColors.primary.withOpacity(0.1),
+                                  side: BorderSide(
+                                    color: Color.fromARGB(114, 252, 255, 177),
+                                    style: BorderStyle.solid,
+                                    width: 1,
+                                  ),
+                                ),
+                                onPressed: null,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      child: Text(
+                                        'Thu Hộ Tiền Mặt',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Bold",
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                        bottom: 10,
+                                      ),
+                                      child: Text(
+                                        '500,000 VND',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "SF SemiBold",
+                                            color: MaterialColors.primary),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            SizedBox(
+                              width: 160.0,
+                              height: 80.0,
+                              child: OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  backgroundColor:
+                                      MaterialColors.primary.withOpacity(0.1),
+                                  side: BorderSide(
+                                    color: Color.fromARGB(114, 252, 255, 177),
+                                    style: BorderStyle.solid,
+                                    width: 1,
+                                  ),
+                                ),
+                                onPressed: null,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      child: Text(
+                                        'Khác',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "SF SemiBold",
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Container(
+                                      child: Text(
+                                        '0 VND',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: "Bold",
+                                            color: MaterialColors.primary),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ]),
+                    ),
+                  ]),
                 ),
               ],
             ),
@@ -640,6 +1089,7 @@ class _HomePageState extends State<HomePage> {
     return Consumer<AppProvider>(
       builder: (context, provider, child) {
         return Scaffold(
+          backgroundColor: Colors.white,
           body: Container(
             child: SingleChildScrollView(
               child: Column(
@@ -744,29 +1194,6 @@ class _HomePageState extends State<HomePage> {
                     ],
                   )),
                   statistical_order(),
-                  Container(
-                      child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(left: 15, right: 15),
-                        child: Row(
-                          children: [
-                            Text(
-                              "Tổng quan ",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  fontFamily: "SF Bold",
-                                  fontSize: 18),
-                            ),
-                            Icon(Icons.info,
-                                size: 15,
-                                color: Color.fromARGB(255, 170, 165, 165)),
-                          ],
-                        ),
-                      )
-                    ],
-                  )),
                   revenue(),
                   Center(
                       child: Column(
