@@ -11,6 +11,7 @@ import 'package:vh_shipper_app/models/notificationModel.dart';
 import 'package:vh_shipper_app/pages/contact_page.dart';
 import 'package:vh_shipper_app/pages/history_page.dart';
 import 'package:vh_shipper_app/pages/home_page.dart';
+import 'package:vh_shipper_app/pages/list_order_aceept_page.dart';
 import 'package:vh_shipper_app/pages/list_order_page.dart';
 import 'package:vh_shipper_app/pages/transaction_page.dart';
 import 'package:vh_shipper_app/widgets/order_accept_modal.dart';
@@ -42,7 +43,7 @@ class _RootAppState extends State<RootApp> {
       index: activeTab,
       children: [
         HomePage(),
-        ListOrderPage(),
+        ListOrderAceeptPage(),
         HistoryPage(),
         TransactionPage(),
         ContactPage(),

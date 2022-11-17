@@ -17,96 +17,76 @@ class TripDetail extends StatefulWidget {
 
 pointPickup(index) {
   return Container(
-    padding: EdgeInsets.only(right: 15, top: 15, bottom: 15, left: 15),
-    color: index % 2 == 1 ? Colors.white : Color.fromRGBO(250, 250, 250, 1),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
+    margin: EdgeInsets.only(right: 10, top: 5, bottom: 5, left: 10),
+    padding: EdgeInsets.all(10),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(5),
+      color: Colors.white,
+      boxShadow: <BoxShadow>[
+        BoxShadow(
+            color: Colors.grey.shade200,
+            offset: const Offset(2, 4),
+            blurRadius: 5,
+            spreadRadius: 2)
+      ],
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Row(children: [
+          Container(
+            padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3),
+                border: Border.all(color: Color.fromRGBO(230, 230, 230, 1))),
+            child: Text(index,
+                style: TextStyle(fontSize: 14, fontFamily: "SF SemiBold")),
+          ),
+          SizedBox(width: 5),
+          Container(
+            padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3),
+              color: MaterialColors.secondary,
+              border: Border.all(color: MaterialColors.secondary),
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.podcasts, size: 14, color: Colors.white),
+                Text(
+                  "  Điểm lấy hàng",
+                  style: TextStyle(
+                      fontFamily: "SF Medium",
+                      fontSize: 13,
+                      color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+        ]),
+        SizedBox(
+          height: kSpacingUnit * 1,
+        ),
         Container(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                width: 15,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Row(children: [
-                      Container(
-                        child: OutlinedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStatePropertyAll<Color>(
-                                Color.fromARGB(255, 247, 247, 247)),
-                          ),
-                          onPressed: null,
-                          child: Text('A',
-                              style: TextStyle(
-                                  fontSize: 14, fontFamily: "SF SemiBold")),
-                        ),
-                      ),
-                      Text(" "),
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 208, 207, 205),
-                          border: Border.all(
-                              color: Color.fromRGBO(200, 200, 200, 1)),
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.podcasts,
-                              size: 14,
-                            ),
-                            Text(
-                              "  Điểm lấy hàng",
-                              style: TextStyle(
-                                  fontFamily: "SF SemiBold", fontSize: 14),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ]),
-                  ),
-                  SizedBox(
-                    height: kSpacingUnit * 0.5,
-                  ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Text(
-                          "Trà sữa 5 Ngon",
-                          style:
-                              TextStyle(fontFamily: "SF Regular", fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: kSpacingUnit * 0.5,
-                  ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Text(
-                          "Số 01, Lê Văn Việt, Quận 9",
-                          style: TextStyle(
-                              fontFamily: "SF Regular",
-                              fontSize: 16,
-                              color: Colors.black38),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+              Text(
+                "Trà sữa 5 Ngon",
+                style: TextStyle(fontFamily: "SF Medium", fontSize: 16),
               ),
             ],
           ),
+        ),
+        SizedBox(
+          height: kSpacingUnit * .5,
+        ),
+        Text(
+          "S5.05, Vinhomes Grand Park, Phường Long Thạnh Mỹ, Quận 9",
+          style: TextStyle(
+              fontFamily: "SF Regular",
+              fontSize: 15,
+              color: Color.fromRGBO(150, 150, 150, 1)),
         ),
       ],
     ),
@@ -115,105 +95,174 @@ pointPickup(index) {
 
 pointDelivery(index) {
   return Container(
-    padding: EdgeInsets.only(right: 15, top: 15, bottom: 15, left: 15),
-    color: index % 2 == 1 ? Colors.white : Color.fromRGBO(250, 250, 250, 1),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
+    margin: EdgeInsets.only(right: 10, top: 5, bottom: 5, left: 10),
+    padding: EdgeInsets.all(10),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(5),
+      color: Colors.white,
+      boxShadow: <BoxShadow>[
+        BoxShadow(
+            color: Colors.grey.shade200,
+            offset: const Offset(2, 4),
+            blurRadius: 5,
+            spreadRadius: 2)
+      ],
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Row(children: [
+          Container(
+            padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3),
+                border: Border.all(color: Color.fromRGBO(230, 230, 230, 1))),
+            child: Text(index,
+                style: TextStyle(fontSize: 14, fontFamily: "SF SemiBold")),
+          ),
+          SizedBox(width: 5),
+          Container(
+            padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3),
+              color: MaterialColors.primary,
+              border: Border.all(color: MaterialColors.primary),
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.podcasts, size: 14, color: Colors.white),
+                Text(
+                  "  Điểm giao hàng",
+                  style: TextStyle(
+                      fontFamily: "SF Medium",
+                      fontSize: 13,
+                      color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+        ]),
+        SizedBox(
+          height: kSpacingUnit * 1,
+        ),
         Container(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                width: 15,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        Container(
-                          child: OutlinedButton(
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll<Color>(
-                                  Color.fromARGB(255, 247, 247, 247)),
-                            ),
-                            onPressed: null,
-                            child: Text('A',
-                                style: TextStyle(
-                                    fontSize: 14, fontFamily: "SF SemiBold")),
-                          ),
-                        ),
-                        Text(" "),
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            color: MaterialColors.primary,
-                            border: Border.all(
-                                color: Color.fromRGBO(200, 200, 200, 1)),
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.podcasts,
-                                size: 14,
-                              ),
-                              Text(
-                                "Điểm giao hàng",
-                                style: TextStyle(
-                                    fontFamily: "SF SemiBold",
-                                    fontSize: 14,
-                                    color: Colors.white),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: kSpacingUnit * 0.5,
-                  ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Text(
-                          "S1.01, Rainbow",
-                          style:
-                              TextStyle(fontFamily: "SF Regular", fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: kSpacingUnit * 0.5,
-                  ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Text(
-                          "Số 01, Đường 01, Vinhome Grand Park",
-                          style: TextStyle(
-                              fontFamily: "SF Regular",
-                              fontSize: 16,
-                              color: Colors.black38),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+              Text(
+                "Trà sữa 5 Ngon",
+                style: TextStyle(fontFamily: "SF Medium", fontSize: 16),
               ),
             ],
           ),
+        ),
+        SizedBox(
+          height: kSpacingUnit * .5,
+        ),
+        Text(
+          "S5.05, Vinhomes Grand Park, Phường Long Thạnh Mỹ, Quận 9",
+          style: TextStyle(
+              fontFamily: "SF Regular",
+              fontSize: 15,
+              color: Color.fromRGBO(150, 150, 150, 1)),
         ),
       ],
     ),
   );
 }
+
+total_order() {
+  return Container(
+    padding: EdgeInsets.only(top: 30, bottom: 15, left: 15, right: 15),
+    color: Colors.white,
+    child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Column(
+            children: [
+              Text(
+                "Tổng phí".toUpperCase(),
+                style: TextStyle(
+                  fontFamily: "SF SemiBold",
+                  fontSize: 14,
+                  color: Color.fromRGBO(170, 170, 170, 1),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "đ200.000",
+                style: TextStyle(
+                  fontFamily: "SF SemiBold",
+                  fontSize: 17,
+                  color: MaterialColors.primary,
+                ),
+              )
+            ],
+          ),
+          Column(
+            children: [
+              Text(
+                "Tiền ứng tối thiểu".toUpperCase(),
+                style: TextStyle(
+                  fontFamily: "SF SemiBold",
+                  fontSize: 14,
+                  color: Color.fromRGBO(170, 170, 170, 1),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "đ500.000",
+                style: TextStyle(
+                  fontFamily: "SF SemiBold",
+                  fontSize: 17,
+                  color: MaterialColors.black,
+                ),
+              )
+            ],
+          ),
+        ]),
+  );
+}
+
+TabBar get _tabBar => TabBar(
+      labelColor: MaterialColors.primary,
+      unselectedLabelColor: Colors.black45,
+      tabs: [
+        Tab(
+          child: Container(
+            padding: EdgeInsets.only(top: 3),
+            width: 85,
+            child: Text(
+              "Điểm đến",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: "SF SemiBold",
+                fontSize: 16,
+              ),
+            ),
+          ),
+        ),
+        Tab(
+          child: Container(
+            padding: EdgeInsets.only(top: 3),
+            width: 85,
+            child: Text(
+              "Đơn hàng",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: "SF SemiBold",
+                fontSize: 16,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
 
 class _TripDetailState extends State<TripDetail> with TickerProviderStateMixin {
   @override
@@ -223,87 +272,62 @@ class _TripDetailState extends State<TripDetail> with TickerProviderStateMixin {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          centerTitle: true,
-          elevation: 10.0,
-          automaticallyImplyLeading: false,
-          backgroundColor: MaterialColors.primary,
-          shadowColor: MaterialColors.primary,
-          leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ListOrderPage()));
-                },
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  size: 25,
-                ),
-              );
-            },
-          ),
-          title: Text(
-            "Chi tiết chuyến hàng",
-            style:
-                TextStyle(color: MaterialColors.black, fontFamily: "SF Bold"),
-          ),
-          bottom: TabBar(
-            indicatorColor: MaterialColors.primary,
-            labelColor: Color.fromARGB(255, 0, 0, 0),
-            unselectedLabelColor: MaterialColors.white,
-            tabs: <Widget>[
-              Tab(
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(top: 3),
-                      width: 85,
-                      child: Text(
-                        "Địa Điểm",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: "SF SemiBold",
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+            centerTitle: true,
+            backgroundColor: MaterialColors.primary,
+            title: Text(
+              "Chi tiết chuyến hàng",
+              style:
+                  TextStyle(color: MaterialColors.white, fontFamily: "SF Bold"),
+            ),
+            bottom: PreferredSize(
+              preferredSize: _tabBar.preferredSize,
+              child: ColoredBox(
+                color: Colors.white,
+                child: _tabBar,
               ),
-              Tab(
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(top: 3),
-                      width: 85,
-                      child: Text(
-                        "Đơn hàng",
-                        textAlign: TextAlign.center,
-                        style:
-                            TextStyle(fontFamily: "SF SemiBold", fontSize: 16),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+            )),
         body: TabBarView(children: [
           Container(
               child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                total_order(),
+                // Container(
+                //   width: MediaQuery.of(context).size.width,
+                //   padding: EdgeInsets.only(
+                //     bottom: 15,
+                //   ),
+                //   color: Colors.white,
+                //   child: Row(
+                //       crossAxisAlignment: CrossAxisAlignment.center,
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: [
+                //         Text(
+                //           "TỔNG ĐIỂM ĐẾN: ",
+                //           style: TextStyle(
+                //               color: Color.fromRGBO(170, 170, 170, 1),
+                //               fontSize: 14,
+                //               fontFamily: "SF SemiBold"),
+                //         ),
+                //         Text(
+                //           "5",
+                //           style: TextStyle(
+                //               color: MaterialColors.black,
+                //               fontSize: 16,
+                //               fontFamily: "SF SemiBold"),
+                //         )
+                //       ]),
+                // ),
                 SizedBox(
                   height: kSpacingUnit * 1.5,
                 ),
-                ...[1, 2, 3, 4].map((item) => pointPickup(item)).toList(),
-                SizedBox(
-                  height: kSpacingUnit * 0.5,
-                ),
-                ...[1, 2, 3, 4].map((item) => pointDelivery(item)).toList(),
+                ...["A", "B", "C", "D"]
+                    .map((item) => pointPickup(item))
+                    .toList(),
+                ...["A", "B", "C", "D"]
+                    .map((item) => pointDelivery(item))
+                    .toList(),
               ],
             ),
           )),
