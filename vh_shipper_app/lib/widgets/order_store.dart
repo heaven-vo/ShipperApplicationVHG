@@ -4,6 +4,7 @@ import 'package:vh_shipper_app/Colors/color.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vh_shipper_app/Json/constrain.dart';
+import 'package:vh_shipper_app/pages/order_detail_page.dart';
 
 class OrderStore extends StatefulWidget {
   const OrderStore({Key? key}) : super(key: key);
@@ -28,9 +29,6 @@ class _OrderStoreState extends State<OrderStore> {
       color: Colors.white,
       child: Container(
         padding: EdgeInsets.all(15),
-        // height: kSpacingUnit * 7,
-        // width: kSpacingUnit * 40,
-
         child: Column(
           children: [
             Container(
@@ -255,144 +253,153 @@ class _OrderStoreState extends State<OrderStore> {
                   bottom: BorderSide(
                       color: Color.fromRGBO(230, 230, 230, 1), width: 1))),
         ),
-        note(),
-        Container(
-            color: MaterialColors.grey, padding: EdgeInsets.only(top: 10)),
-        Container(
-          padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                width: 25,
-                height: 25,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      bottomLeft: Radius.circular(50),
-                      topRight: Radius.circular(50),
-                      bottomRight: Radius.circular(50),
-                    ),
 
-                    // padding: const EdgeInsets.only(right: 15, left: 0),
-                    child: Image(
-                      // color:40olors.red,
-                      height: 25,
-                      width: 25,
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                          "https://cdn-icons-png.flaticon.com/512/4507/4507529.png"),
-                    )),
+        Container(
+          child: Column(children: [
+            note(),
+            Container(
+                color: MaterialColors.grey, padding: EdgeInsets.only(top: 20)),
+            Container(
+              padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 25,
+                    height: 25,
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                          bottomLeft: Radius.circular(50),
+                          topRight: Radius.circular(50),
+                          bottomRight: Radius.circular(50),
+                        ),
+
+                        // padding: const EdgeInsets.only(right: 15, left: 0),
+                        child: Image(
+                          // color:40olors.red,
+                          height: 25,
+                          width: 25,
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                              "https://cdn-icons-png.flaticon.com/512/4507/4507529.png"),
+                        )),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Danh sách món",
+                        style: const TextStyle(
+                            color: MaterialColors.black,
+                            fontFamily: "SF Bold",
+                            fontSize: 16)),
+                  ),
+                ],
               ),
-              SizedBox(
-                width: 15,
-              ),
-              Container(
-                alignment: Alignment.centerLeft,
-                child: Text("Danh sách món",
+            ),
+            Container(
+              padding:
+                  EdgeInsets.only(left: 30, right: 15, bottom: 10, top: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "1 x",
+                          style: const TextStyle(
+                              color: MaterialColors.black,
+                              fontFamily: "SF Regular",
+                              fontSize: 16),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Text(
+                            "Kebab Thịt heo",
+                            style: const TextStyle(
+                                color: MaterialColors.black,
+                                fontFamily: "SF Regular",
+                                fontSize: 16),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    "₫ 25.000",
                     style: const TextStyle(
                         color: MaterialColors.black,
-                        fontFamily: "SF Bold",
-                        fontSize: 16)),
+                        fontFamily: "SF Regular",
+                        fontSize: 16),
+                  )
+                ],
               ),
-            ],
-          ),
+            ),
+            Container(
+              padding:
+                  EdgeInsets.only(left: 30, right: 15, bottom: 10, top: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "1 x",
+                          style: const TextStyle(
+                              color: MaterialColors.black,
+                              fontFamily: "SF Regular",
+                              fontSize: 16),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Text(
+                            "Kebab Thịt heo đặc biệt có phô mai mai mai",
+                            style: const TextStyle(
+                                color: MaterialColors.black,
+                                fontFamily: "SF Regular",
+                                fontSize: 16),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    "₫ 25.000",
+                    style: const TextStyle(
+                        color: MaterialColors.black,
+                        fontFamily: "SF Regular",
+                        fontSize: 16),
+                  )
+                ],
+              ),
+            ),
+          ]),
         ),
-        Container(
-          padding: EdgeInsets.only(left: 30, right: 15, bottom: 10, top: 10),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "1 x",
-                      style: const TextStyle(
-                          color: MaterialColors.black,
-                          fontFamily: "SF Regular",
-                          fontSize: 16),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: Text(
-                        "Kebab Thịt heo",
-                        style: const TextStyle(
-                            color: MaterialColors.black,
-                            fontFamily: "SF Regular",
-                            fontSize: 16),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Text(
-                "₫ 25.000",
-                style: const TextStyle(
-                    color: MaterialColors.black,
-                    fontFamily: "SF Regular",
-                    fontSize: 16),
-              )
-            ],
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.only(left: 30, right: 15, bottom: 10, top: 10),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "1 x",
-                      style: const TextStyle(
-                          color: MaterialColors.black,
-                          fontFamily: "SF Regular",
-                          fontSize: 16),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: Text(
-                        "Kebab Thịt heo đặc biệt có phô mai mai mai",
-                        style: const TextStyle(
-                            color: MaterialColors.black,
-                            fontFamily: "SF Regular",
-                            fontSize: 16),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Text(
-                "₫ 25.000",
-                style: const TextStyle(
-                    color: MaterialColors.black,
-                    fontFamily: "SF Regular",
-                    fontSize: 16),
-              )
-            ],
-          ),
-        ),
+
         Container(
             color: MaterialColors.grey, padding: EdgeInsets.only(top: 10)),
+        //thanh toán
         Container(
           padding: EdgeInsets.all(15),
           child: Column(
@@ -403,23 +410,74 @@ class _OrderStoreState extends State<OrderStore> {
                 children: [
                   Container(
                     child: Text(
-                      "Trả tiền mặt cho nhà hàng",
+                      "Thanh toán",
                       style: const TextStyle(
                           color: MaterialColors.black,
                           fontFamily: "SF SemiBold",
                           fontSize: 16),
                     ),
                   ),
-                  Container(
-                    child: Text(
-                      "₫ 50.000",
-                      style: const TextStyle(
-                          color: MaterialColors.black,
-                          fontFamily: "SF SemiBold",
-                          fontSize: 16),
-                    ),
-                  )
                 ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            Container(
+                              child: Icon(
+                                Icons.local_atm,
+                                color: Colors.green,
+                                size: 30,
+                              ),
+                            ),
+                            Container(
+                              child: Row(children: [
+                                Container(
+                                  child: Text(
+                                    "  Số tiền cần ứng",
+                                    style: const TextStyle(
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        fontFamily: "SF SemiBold",
+                                        fontSize: 16),
+                                  ),
+                                )
+                              ]),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                          children: [
+                            Container(
+                              child: Text(
+                                "-đ",
+                                style: const TextStyle(
+                                    color: Color.fromARGB(255, 255, 0, 0),
+                                    fontFamily: "SF Regular",
+                                    fontSize: 16),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                "50.000",
+                                style: const TextStyle(
+                                    color: Color.fromARGB(255, 255, 0, 0),
+                                    fontFamily: "SF Regular",
+                                    fontSize: 16),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ]),
               ),
               SizedBox(
                 height: 15,
@@ -449,54 +507,54 @@ class _OrderStoreState extends State<OrderStore> {
               SizedBox(
                 height: 15,
               ),
-              // Row(
-              //   crossAxisAlignment: CrossAxisAlignment.center,
-              //   mainAxisAlignment:
-              //       MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Container(
-              //       child: Text(
-              //         "Cước phí",
-              //         style: const TextStyle(
-              //             color: MaterialColors.black,
-              //             fontFamily: "SF Regular",
-              //             fontSize: 16),
-              //       ),
-              //     ),
-              //     Container(
-              //       child: Text(
-              //         "₫ 15.000",
-              //         style: const TextStyle(
-              //             color: MaterialColors.black,
-              //             fontFamily: "SF Regular",
-              //             fontSize: 16),
-              //       ),
-              //     )
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 15,
-              // ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    child: Text(
-                      "Tổng cộng",
-                      style: const TextStyle(
-                          color: MaterialColors.black,
-                          fontFamily: "SF Regular",
-                          fontSize: 16),
+                    child: Row(
+                      children: [
+                        Container(
+                          child: Text(
+                            "Tiền COD cần ứng ",
+                            style: const TextStyle(
+                                color: MaterialColors.black,
+                                fontFamily: "SF Regular",
+                                fontSize: 16),
+                          ),
+                        ),
+                        Container(
+                          child: Icon(
+                            Icons.error_outline,
+                            color: Color.fromARGB(255, 125, 125, 131),
+                            size: 15,
+                          ),
+                        )
+                      ],
                     ),
                   ),
                   Container(
-                    child: Text(
-                      "₫ 50.000",
-                      style: const TextStyle(
-                          color: MaterialColors.black,
-                          fontFamily: "SF Regular",
-                          fontSize: 16),
+                    child: Row(
+                      children: [
+                        Container(
+                          child: Text(
+                            "-đ",
+                            style: const TextStyle(
+                                color: MaterialColors.black,
+                                fontFamily: "SF Regular",
+                                fontSize: 16),
+                          ),
+                        ),
+                        Container(
+                          child: Text(
+                            "50.000",
+                            style: const TextStyle(
+                                color: MaterialColors.black,
+                                fontFamily: "SF Regular",
+                                fontSize: 16),
+                          ),
+                        )
+                      ],
                     ),
                   )
                 ],

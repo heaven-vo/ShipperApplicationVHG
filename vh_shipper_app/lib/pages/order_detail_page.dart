@@ -112,14 +112,14 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                "Đơn hàng #F9838",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: "SF Bold",
-                  color: Colors.white,
-                ),
-              ),
+              // Text(
+              //   "Đơn hàng #F9838",
+              //   style: TextStyle(
+              //     fontSize: 18,
+              //     fontFamily: "SF Bold",
+              //     color: Colors.white,
+              //   ),
+              // ),
               SizedBox(
                 height: 5,
               ),
@@ -128,8 +128,8 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                     ? "Di chuyển đến nhà hàng"
                     : "Di chuyển đến nơi giao hàng",
                 style: TextStyle(
-                  fontSize: 14,
-                  fontFamily: "SF Regular",
+                  fontSize: 18,
+                  fontFamily: "SF Bold",
                   color: Colors.white,
                 ),
               ),
