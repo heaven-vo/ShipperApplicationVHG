@@ -189,76 +189,76 @@ class _TripInforState extends State<TripInfor> {
 
   way(status) {
     return Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: Container(
-          padding: EdgeInsets.only(left: 15, right: 15),
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.only(bottom: 10),
-                decoration: BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(
-                            color: Color.fromRGBO(220, 220, 220, 1)))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      getStatusName(status),
-                      style: TextStyle(
-                        fontFamily: "SF Medium",
-                        color: getColor(status),
-                        fontSize: 14,
-                      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: Container(
+        padding: EdgeInsets.only(left: 15, right: 15),
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.only(bottom: 10),
+              decoration: BoxDecoration(
+                  border: Border(
+                      bottom:
+                          BorderSide(color: Color.fromRGBO(220, 220, 220, 1)))),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    getStatusName(status),
+                    style: TextStyle(
+                      fontFamily: "SF Medium",
+                      color: getColor(status),
+                      fontSize: 14,
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => TripDetail(Status: 1),
-                          ),
-                        );
-                      },
-                      child: Container(
-                          padding: EdgeInsets.only(
-                              left: 5, right: 5, top: 3, bottom: 3),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(2),
-                              border:
-                                  Border.all(color: MaterialColors.primary)),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Xem chi tiết",
-                                style: TextStyle(
-                                  fontFamily: "SF SemiBold",
-                                  color: MaterialColors.primary,
-                                  fontSize: 15,
-                                ),
-                              ),
-                              SizedBox(width: 3),
-                              Icon(
-                                Icons.arrow_forward_ios_outlined,
-                                size: 10,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TripDetail(Status: 1),
+                        ),
+                      );
+                    },
+                    child: Container(
+                        padding: EdgeInsets.only(
+                            left: 5, right: 5, top: 3, bottom: 3),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(2),
+                            border: Border.all(color: MaterialColors.primary)),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Xem chi tiết",
+                              style: TextStyle(
+                                fontFamily: "SF SemiBold",
                                 color: MaterialColors.primary,
+                                fontSize: 15,
                               ),
-                            ],
-                          )),
-                    )
-                  ],
-                ),
+                            ),
+                            SizedBox(width: 3),
+                            Icon(
+                              Icons.arrow_forward_ios_outlined,
+                              size: 10,
+                              color: MaterialColors.primary,
+                            ),
+                          ],
+                        )),
+                  )
+                ],
               ),
-              collectMoney()
-            ],
-          ),
-        ));
+            ),
+            collectMoney()
+          ],
+        ),
+      ),
+    );
   }
 
   Color getColor(status) {

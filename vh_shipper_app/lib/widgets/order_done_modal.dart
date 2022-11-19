@@ -633,6 +633,138 @@ class _OrderDoneModal extends State<OrderDoneModal> {
         });
   }
 
+  void _modalRateSheetMenu() {
+    showModalBottomSheet(
+        context: context,
+        builder: (builder) {
+          return SingleChildScrollView(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(45),
+                  topRight: Radius.circular(55),
+                ),
+              ),
+              child: Column(
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(top: 15, bottom: 15),
+                        child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Vui lòng đánh giá khách hàng này",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    fontFamily: "SF Bold",
+                                    fontSize: 15),
+                              ),
+                            ]),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 15, right: 15),
+                        child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.star_rate,
+                                color: Colors.yellow,
+                                size: 50,
+                              ),
+                              Icon(
+                                Icons.star_rate,
+                                color: Colors.yellow,
+                                size: 50,
+                              ),
+                              Icon(
+                                Icons.star_rate,
+                                color: Colors.yellow,
+                                size: 50,
+                              ),
+                              Icon(
+                                Icons.star_rate,
+                                color: Colors.yellow,
+                                size: 50,
+                              ),
+                              Icon(
+                                Icons.star_rate,
+                                color: Colors.yellow,
+                                size: 50,
+                              ),
+                            ]),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Tốt",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontFamily: "SF Bold",
+                              fontSize: 20),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Container(
+                          margin:
+                              EdgeInsets.only(left: 5, right: 5, bottom: 15),
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: MaterialColors.primary,
+                            border: Border.all(
+                                color: Color.fromRGBO(200, 200, 200, 1)),
+                          ),
+                          child: Container(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  child: Row(children: [
+                                    TextButton(
+                                      child: Text(
+                                        "Xác nhận",
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 255, 255, 255),
+                                            fontFamily: "SF Bold",
+                                            fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                  ]),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(alignment: Alignment.center, children: [
@@ -1088,7 +1220,8 @@ class _OrderDoneModal extends State<OrderDoneModal> {
                             Future.delayed(
                               Duration(milliseconds: 200),
                               () => {
-                                Navigator.pop(context),
+                                //Navigator.pop(context),
+                                _modalRateSheetMenu()
                               },
                             );
                           },
