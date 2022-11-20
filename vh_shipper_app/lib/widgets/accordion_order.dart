@@ -87,7 +87,7 @@ class _AccordionOrderState extends State<AccordionOrder> {
                         widget.title,
                         style: TextStyle(
                             overflow: TextOverflow.ellipsis,
-                            fontFamily: "SF Medium",
+                            fontFamily: "SF SemiBold",
                             fontSize: 15,
                             wordSpacing: 1.5,
                             color: Colors.black,

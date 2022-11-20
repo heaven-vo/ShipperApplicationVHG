@@ -52,593 +52,595 @@ class _OrderShippingModal extends State<OrderShippingModal> {
     }
   }
 
-  void _modalCancelSheetMenu() {
+  void _modalCancelSheetMenu(context) {
     showModalBottomSheet(
         context: context,
         builder: (builder) {
-          return SingleChildScrollView(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(45),
-                  topRight: Radius.circular(55),
-                ),
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(45),
+                topRight: Radius.circular(55),
               ),
-              child: Column(
-                children: [
-                  Column(
+            ),
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: 15, bottom: 15),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Color.fromRGBO(200, 200, 200, 1)),
+                  ),
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Hãy chọn lý do giao hàng thất bại",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontFamily: "SF Bold",
+                              fontSize: 15),
+                        ),
+                      ]),
+                ),
+                Container(
+                  height: 270,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(left: 15, right: 15),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Người nhận không nghe máy",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Thuê bao không liên lạc được",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Sai số điện thoại",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Người nhận không xuất hiện",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Người nhận hẹn lại ngày giao",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Người nhận hẹn giao lại trong ngày",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Người nhận đổi địa chỉ giao hàng",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Hàng hóa không như người nhận yêu cầu",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Sai tiền thu hộ COD",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Người nhận đổi ý",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Không được kiểm/thử hàng",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Người nhận không đặt hàng, đơn trùng",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Hàng hóa hư hỏng",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Hàng hóa thất lạc",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Người nhận không đủ tiền thanh toán",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Row(children: [
+                                        Icon(Icons.radio_button_unchecked,
+                                            color: Color.fromARGB(
+                                                255, 179, 176, 173)),
+                                      ]),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Row(children: [
+                                        Text(
+                                          "Bất đồng ngoại ngữ",
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 179, 176, 173),
+                                              fontFamily: "SF Bold",
+                                              fontSize: 16),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  color: Colors.white,
+                  child: Column(
                     children: [
                       Container(
-                        padding: EdgeInsets.only(top: 15, bottom: 15),
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Hãy chọn lý do giao hàng thất bại",
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 0, 0, 0),
-                                    fontFamily: "SF Bold",
-                                    fontSize: 15),
-                              ),
-                            ]),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(left: 15, right: 15),
+                        height: 45,
+                        margin: EdgeInsets.only(
+                            left: 15, right: 15, top: 0, bottom: 0),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          color: MaterialColors.primary,
                           border: Border.all(
                               color: Color.fromRGBO(200, 200, 200, 1)),
                         ),
-                        child: Column(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(
-                              height: 15,
-                            ),
                             Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
+                              child: Row(children: [
+                                TextButton(
+                                  child: Text(
+                                    "Xác nhận",
+                                    style: TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
+                                        fontFamily: "SF Bold",
+                                        fontSize: 16),
                                   ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Người nhận không nghe máy",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Thuê bao không liên lạc được",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Sai số điện thoại",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Người nhận không xuất hiện",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Người nhận hẹn lại ngày giao",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Người nhận hẹn giao lại trong ngày",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Người nhận đổi địa chỉ giao hàng",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Hàng hóa không như người nhận yêu cầu",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Sai tiền thu hộ COD",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Người nhận đổi ý",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Không được kiểm/thử hàng",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Người nhận không đặt hàng, đơn trùng",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Hàng hóa hư hỏng",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Hàng hóa thất lạc",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Người nhận không đủ tiền thanh toán",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Row(children: [
-                                      Icon(Icons.radio_button_unchecked,
-                                          color: Color.fromARGB(
-                                              255, 179, 176, 173)),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                    child: Row(children: [
-                                      Text(
-                                        "Bất đồng ngoại ngữ",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 179, 176, 173),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                    ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
+                                  onPressed: () {},
+                                ),
+                              ]),
                             ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                  Container(
-                    child: Column(
-                      children: [
-                        Container(
-                          margin:
-                              EdgeInsets.only(left: 5, right: 5, bottom: 15),
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: MaterialColors.primary,
-                            border: Border.all(
-                                color: Color.fromRGBO(200, 200, 200, 1)),
-                          ),
-                          child: Container(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  child: Row(children: [
-                                    TextButton(
-                                      child: Text(
-                                        "Xác nhận",
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 255, 255, 255),
-                                            fontFamily: "SF Bold",
-                                            fontSize: 16),
-                                      ),
-                                      onPressed: () {},
-                                    ),
-                                  ]),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           );
         });
@@ -1133,16 +1135,15 @@ class _OrderShippingModal extends State<OrderShippingModal> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                FloatingActionButton(
-                                  onPressed: () {
-                                    _modalCancelSheetMenu();
+                                InkWell(
+                                  onTap: () {
+                                    _modalCancelSheetMenu(context);
                                   },
                                   child: Icon(
                                     Icons.cancel_outlined,
                                     color: Color.fromARGB(255, 221, 45, 45),
                                     size: 30,
                                   ),
-                                  backgroundColor: Colors.white,
                                 ),
                                 SizedBox(
                                   height: 5,

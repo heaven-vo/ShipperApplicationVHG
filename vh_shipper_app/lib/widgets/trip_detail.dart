@@ -8,6 +8,7 @@ import 'package:vh_shipper_app/pages/list_order_page.dart';
 import 'package:vh_shipper_app/pages/order_detail_page.dart';
 import 'package:vh_shipper_app/widgets/order_ship.dart';
 import 'package:vh_shipper_app/widgets/trip_infor.dart';
+import 'package:slide_to_act/slide_to_act.dart';
 
 class TripDetail extends StatefulWidget {
   int Status;
@@ -289,70 +290,157 @@ class _TripDetailState extends State<TripDetail> with TickerProviderStateMixin {
               ),
             )),
         body: TabBarView(children: [
-          Container(
-              child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                total_order(),
-                // Container(
-                //   width: MediaQuery.of(context).size.width,
-                //   padding: EdgeInsets.only(
-                //     bottom: 15,
-                //   ),
-                //   color: Colors.white,
-                //   child: Row(
-                //       crossAxisAlignment: CrossAxisAlignment.center,
-                //       mainAxisAlignment: MainAxisAlignment.center,
-                //       children: [
-                //         Text(
-                //           "TỔNG ĐIỂM ĐẾN: ",
-                //           style: TextStyle(
-                //               color: Color.fromRGBO(170, 170, 170, 1),
-                //               fontSize: 14,
-                //               fontFamily: "SF SemiBold"),
-                //         ),
-                //         Text(
-                //           "5",
-                //           style: TextStyle(
-                //               color: MaterialColors.black,
-                //               fontSize: 16,
-                //               fontFamily: "SF SemiBold"),
-                //         )
-                //       ]),
-                // ),
-                SizedBox(
-                  height: kSpacingUnit * 1.5,
-                ),
-                ...["A", "B"]
-                    .map((item) => InkWell(
-                          child: pointPickup(item),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
+          Stack(
+            children: [
+              Container(
+                  padding: EdgeInsets.only(bottom: 65),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        total_order(),
+                        // Container(
+                        //   width: MediaQuery.of(context).size.width,
+                        //   padding: EdgeInsets.only(
+                        //     bottom: 15,
+                        //   ),
+                        //   color: Colors.white,
+                        //   child: Row(
+                        //       crossAxisAlignment: CrossAxisAlignment.center,
+                        //       mainAxisAlignment: MainAxisAlignment.center,
+                        //       children: [
+                        //         Text(
+                        //           "TỔNG ĐIỂM ĐẾN: ",
+                        //           style: TextStyle(
+                        //               color: Color.fromRGBO(170, 170, 170, 1),
+                        //               fontSize: 14,
+                        //               fontFamily: "SF SemiBold"),
+                        //         ),
+                        //         Text(
+                        //           "5",
+                        //           style: TextStyle(
+                        //               color: MaterialColors.black,
+                        //               fontSize: 16,
+                        //               fontFamily: "SF SemiBold"),
+                        //         )
+                        //       ]),
+                        // ),
+                        SizedBox(
+                          height: kSpacingUnit * 1.5,
+                        ),
+                        ...["A", "B"]
+                            .map((item) => InkWell(
+                                  child: pointPickup(item),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                OrderDetailPage(
+                                                  Status: 1,
+                                                )));
+                                  },
+                                ))
+                            .toList(),
+                        ...["A", "B", "C", "D"]
+                            .map((item) => InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                OrderDetailPage(
+                                                  Status: 0,
+                                                )));
+                                  },
+                                  child: pointDelivery(item),
+                                ))
+                            .toList(),
+                      ],
+                    ),
+                  )),
+              // Positioned(
+              //     bottom: 0,
+              //     child: Container(
+              //         decoration: BoxDecoration(color: Colors.white),
+              //         padding: EdgeInsets.only(
+              //             left: 15, right: 15, top: 10, bottom: 10),
+              //         width: MediaQuery.of(context).size.width,
+              //         child: Container(
+              //           height: 45,
+              //           child: ElevatedButton(
+              //             child: Text(
+              //               "Nhận chuyến hàng",
+              //               style: TextStyle(
+              //                   color: Colors.white,
+              //                   fontFamily: "SF Bold",
+              //                   fontSize: 16),
+              //             ),
+              //             style: ElevatedButton.styleFrom(
+              //               primary: MaterialColors.primary,
+              //               textStyle: TextStyle(color: Colors.white),
+              //               shadowColor: Colors.white,
+              //               shape: RoundedRectangleBorder(
+              //                 borderRadius: BorderRadius.circular(8),
+              //               ),
+              //             ),
+              //             onPressed: () => {},
+              //           ),
+              //         ))),
+              Positioned(
+                  bottom: 0,
+                  child: Container(
+                      // height: 70,
+                      decoration: BoxDecoration(color: Colors.white),
+                      padding: EdgeInsets.only(
+                          left: 15, right: 15, top: 10, bottom: 10),
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                        child: SlideAction(
+                          alignment: Alignment.bottomCenter,
+                          textStyle: TextStyle(
+                              fontSize: 18,
+                              fontFamily: "SF Bold",
+                              color: Colors.white),
+                          // innerColor: Color.fromRGBO(219, 98, 71, 1),
+                          outerColor: Color.fromARGB(255, 12, 120, 209),
+                          innerColor: MaterialColors.secondary,
+                          // text: "Chấp nhận" + ,
+                          text: "Nhận chuyến hàng",
+                          height: 50,
+                          sliderButtonIconSize: 35,
+                          sliderRotate: false,
+                          borderRadius: 10,
+                          sliderButtonIconPadding: 13,
+                          submittedIcon: Icon(
+                            Icons.check,
+                            color: Colors.white,
+                          ),
+                          sliderButtonYOffset: -8,
+                          sliderButtonIcon: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          ),
+                          onSubmit: () {
+                            Future.delayed(
+                              Duration(milliseconds: 200),
+                              () => {
+                                Navigator.pop(context),
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
                                     builder: (context) => OrderDetailPage(
-                                          Status: 1,
-                                        )));
+                                      Status: 2,
+                                    ),
+                                  ),
+                                )
+                              },
+                            );
                           },
-                        ))
-                    .toList(),
-                ...["A", "B", "C", "D"]
-                    .map((item) => InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => OrderDetailPage(
-                                          Status: 0,
-                                        )));
-                          },
-                          child: pointDelivery(item),
-                        ))
-                    .toList(),
-              ],
-            ),
-          )),
+                        ),
+                      )))
+            ],
+          ),
           TripInfor()
         ]),
       ),
