@@ -339,7 +339,7 @@ class _ContactPageState extends State<ContactPage> {
                                                   child: const Text(
                                                     "Đồng ý",
                                                     style: TextStyle(
-                                                        color: Colors.black,
+                                                        color: Colors.white,
                                                         fontFamily: "SF Medium",
                                                         fontSize: 16),
                                                   ),
@@ -348,7 +348,7 @@ class _ContactPageState extends State<ContactPage> {
                                                     primary:
                                                         MaterialColors.primary,
                                                     textStyle: TextStyle(
-                                                        color: Colors.black),
+                                                        color: Colors.white),
                                                     shadowColor: Colors.white,
                                                     shape:
                                                         RoundedRectangleBorder(
