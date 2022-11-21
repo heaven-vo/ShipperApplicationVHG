@@ -52,6 +52,24 @@ String getIconOrder(modeId) {
   }
 }
 
+List MessageCancel = [
+  {"id": 1, "message": "Người nhận không nghe máy"},
+  {"id": 2, "message": "Thuê bao không liên lạc được"},
+  {"id": 3, "message": "Sai số điện thoại"},
+  {"id": 4, "message": "Người nhận hẹn lại ngày giao"},
+  {"id": 5, "message": "Người nhận hẹn giao lại trong ngày"},
+  {"id": 6, "message": "Người nhận đổi địa chỉ giao hàng"},
+  {"id": 7, "message": "Hàng hóa không như người nhận yêu cầu"},
+  {"id": 8, "message": "Sai tiền thu hộ COD"},
+  {"id": 9, "message": "Người nhận đổi ý"},
+  {"id": 10, "message": "Không được kiểm/thử hàng"},
+  {"id": 11, "message": "Người nhận không đặt hàng, đơn trùng"},
+  {"id": 12, "message": "Hàng hóa hư hỏng"},
+  {"id": 13, "message": "Hàng hóa thất lạc"},
+  {"id": 14, "message": "Người nhận không đủ tiền thanh toán"},
+  {"id": 15, "message": "Bất đồng ngoại ngữ"},
+];
+
 final kLightTheme = ThemeData(
     brightness: Brightness.light,
     fontFamily: 'SF Regular',
