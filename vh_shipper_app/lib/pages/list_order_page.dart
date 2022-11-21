@@ -15,6 +15,64 @@ class ListOrderPage extends StatefulWidget {
 
 class _ListOrderPageState extends State<ListOrderPage> {
   var location = 0;
+  total_order() {
+    return Container(
+      padding: EdgeInsets.only(top: 30, bottom: 15, left: 15, right: 15),
+      color: Colors.white,
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                Text(
+                  "Tổng phí".toUpperCase(),
+                  style: TextStyle(
+                    fontFamily: "SF SemiBold",
+                    fontSize: 14,
+                    color: Color.fromRGBO(170, 170, 170, 1),
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "đ200.000",
+                  style: TextStyle(
+                    fontFamily: "SF SemiBold",
+                    fontSize: 17,
+                    color: MaterialColors.primary,
+                  ),
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Text(
+                  "Tiền ứng tối thiểu".toUpperCase(),
+                  style: TextStyle(
+                    fontFamily: "SF SemiBold",
+                    fontSize: 14,
+                    color: Color.fromRGBO(170, 170, 170, 1),
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "đ500.000",
+                  style: TextStyle(
+                    fontFamily: "SF SemiBold",
+                    fontSize: 17,
+                    color: MaterialColors.black,
+                  ),
+                )
+              ],
+            ),
+          ]),
+    );
+  }
+
   header() {
     return Container(
       padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
@@ -186,11 +244,11 @@ class _ListOrderPageState extends State<ListOrderPage> {
                     InkWell(
                       onTap: () {
                         Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => TripDetail(Status: 1),
-                          ),
-                        );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OrderDetailPage(
+                                      Status: segment,
+                                    )));
                       },
                       child: Container(
                           padding: EdgeInsets.only(
@@ -543,29 +601,30 @@ class _ListOrderPageState extends State<ListOrderPage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                color: Color.fromRGBO(245, 245, 245, 1),
-                height: 20,
-              ),
-              header(),
+              // Container(
+              //   color: Color.fromRGBO(245, 245, 245, 1),
+              //   height: 20,
+              // ),
+              // header(),
+              total_order(),
               //collectMoney(),
-              Container(
-                color: Color.fromRGBO(245, 245, 245, 1),
-                height: 15,
-              ),
+              // Container(
+              //   color: Color.fromRGBO(245, 245, 245, 1),
+              //   height: 15,
+              // ),
 
-              Container(
-                margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border:
-                        Border.all(color: getColor(StatusAccordionOrder.fail))),
-                child: AccordionOrder(
-                  status: StatusAccordionOrder.fail,
-                  content: way(StatusAccordionOrder.fail, 0),
-                  title: "Chuyến hàng #093828",
-                ),
-              ),
+              // Container(
+              //   margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
+              //   decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(5),
+              //       border:
+              //           Border.all(color: getColor(StatusAccordionOrder.fail))),
+              //   child: AccordionOrder(
+              //     status: StatusAccordionOrder.fail,
+              //     content: way(StatusAccordionOrder.fail, 0),
+              //     title: "Chuyến hàng #093828",
+              //   ),
+              // ),
               // Container(
               //   margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
               //   decoration: BoxDecoration(
@@ -581,7 +640,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                 padding: EdgeInsets.all(15),
                 child: Row(children: [
                   Text(
-                    "Lộ Trình",
+                    "Đơn hàng",
                     style: TextStyle(
                         fontSize: 16,
                         color: Color.fromRGBO(150, 150, 150, 1),
@@ -597,7 +656,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                         height: 1.3),
                   ),
                   Text(
-                    "5 lộ trình",
+                    "5 đơn hàng",
                     style: TextStyle(
                         fontSize: 17,
                         color: Colors.black,
@@ -628,8 +687,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                 child: AccordionOrder(
                   status: StatusAccordionOrder.done,
                   content: way(StatusAccordionOrder.done, 0),
-                  title:
-                      "S2.05, Vinhomes Grand Park, Phường Long Thạnh Mỹ, Quận 9",
+                  title: "#CDCC-000012",
                 ),
               ),
               Container(
@@ -641,8 +699,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                 child: AccordionOrder(
                   status: StatusAccordionOrder.done,
                   content: way(StatusAccordionOrder.done, 0),
-                  title:
-                      "S2.05, Vinhomes Grand Park, Phường Long Thạnh Mỹ, Quận 9",
+                  title: "#CDCC-000012",
                 ),
               ),
               Container(
@@ -654,8 +711,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                 child: AccordionOrder(
                   status: StatusAccordionOrder.doing,
                   content: way(StatusAccordionOrder.doing, 1),
-                  title:
-                      "S2.05, Vinhomes Grand Park, Phường Long Thạnh Mỹ, Quận 9",
+                  title: "#CDCC-000012",
                 ),
               ),
               Container(
@@ -667,8 +723,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                 child: AccordionOrder(
                   status: StatusAccordionOrder.create,
                   content: way(StatusAccordionOrder.create, 1),
-                  title:
-                      "S2.05, Vinhomes Grand Park, Phường Long Thạnh Mỹ, Quận 9",
+                  title: "#CDCC-000012",
                 ),
               ),
               Container(
@@ -680,8 +735,7 @@ class _ListOrderPageState extends State<ListOrderPage> {
                 child: AccordionOrder(
                   status: StatusAccordionOrder.create,
                   content: way(StatusAccordionOrder.create, 0),
-                  title:
-                      "Bếp Việt T13/07, MANHATTAN , Vinhomes Grand Park, Phường Long Thạnh Mỹ, Quận 9 13 123 123",
+                  title: "#CDCC-000012",
                 ),
               ),
             ],

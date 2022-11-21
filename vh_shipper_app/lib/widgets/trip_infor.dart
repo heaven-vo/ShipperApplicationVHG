@@ -15,6 +15,65 @@ class TripInfor extends StatefulWidget {
 
 class _TripInforState extends State<TripInfor> {
   var location = 0;
+
+  total_order() {
+    return Container(
+      padding: EdgeInsets.only(top: 30, bottom: 15, left: 15, right: 15),
+      color: Colors.white,
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                Text(
+                  "Tổng phí".toUpperCase(),
+                  style: TextStyle(
+                    fontFamily: "SF SemiBold",
+                    fontSize: 14,
+                    color: Color.fromRGBO(170, 170, 170, 1),
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "đ200.000",
+                  style: TextStyle(
+                    fontFamily: "SF SemiBold",
+                    fontSize: 17,
+                    color: MaterialColors.primary,
+                  ),
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Text(
+                  "Tiền ứng tối thiểu".toUpperCase(),
+                  style: TextStyle(
+                    fontFamily: "SF SemiBold",
+                    fontSize: 14,
+                    color: Color.fromRGBO(170, 170, 170, 1),
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "đ500.000",
+                  style: TextStyle(
+                    fontFamily: "SF SemiBold",
+                    fontSize: 17,
+                    color: MaterialColors.black,
+                  ),
+                )
+              ],
+            ),
+          ]),
+    );
+  }
+
   header() {
     return Container(
       padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
@@ -300,11 +359,12 @@ class _TripInforState extends State<TripInfor> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              color: Color.fromRGBO(245, 245, 245, 1),
-              height: 20,
-            ),
-            header(),
+            // Container(
+            //   color: Color.fromRGBO(245, 245, 245, 1),
+            //   height: 20,
+            // ),
+            // header(),
+            total_order(),
             //collectMoney(),
             Container(
               color: Color.fromRGBO(245, 245, 245, 1),

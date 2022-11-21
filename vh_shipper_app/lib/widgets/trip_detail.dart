@@ -356,9 +356,13 @@ class _TripDetailState extends State<TripDetail> with TickerProviderStateMixin {
                                   child: pointDelivery(item),
                                 ))
                             .toList(),
+                        SizedBox(
+                          height: kSpacingUnit * 1.5,
+                        ),
                       ],
                     ),
                   )),
+
               // Positioned(
               //     bottom: 0,
               //     child: Container(
@@ -441,7 +445,63 @@ class _TripDetailState extends State<TripDetail> with TickerProviderStateMixin {
                       )))
             ],
           ),
-          TripInfor()
+          Stack(
+            children: [
+              ListOrderPage(),
+              Positioned(
+                  bottom: 0,
+                  child: Container(
+                      // height: 70,
+                      decoration: BoxDecoration(color: Colors.white),
+                      padding: EdgeInsets.only(
+                          left: 15, right: 15, top: 10, bottom: 10),
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                        child: SlideAction(
+                          alignment: Alignment.bottomCenter,
+                          textStyle: TextStyle(
+                              fontSize: 18,
+                              fontFamily: "SF Bold",
+                              color: Colors.white),
+                          // innerColor: Color.fromRGBO(219, 98, 71, 1),
+                          outerColor: Color.fromARGB(255, 12, 120, 209),
+                          innerColor: MaterialColors.secondary,
+                          // text: "Chấp nhận" + ,
+                          text: "Nhận chuyến hàng",
+                          height: 50,
+                          sliderButtonIconSize: 35,
+                          sliderRotate: false,
+                          borderRadius: 10,
+                          sliderButtonIconPadding: 13,
+                          submittedIcon: Icon(
+                            Icons.check,
+                            color: Colors.white,
+                          ),
+                          sliderButtonYOffset: -8,
+                          sliderButtonIcon: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          ),
+                          onSubmit: () {
+                            Future.delayed(
+                              Duration(milliseconds: 200),
+                              () => {
+                                Navigator.pop(context),
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => OrderDetailPage(
+                                      Status: 2,
+                                    ),
+                                  ),
+                                )
+                              },
+                            );
+                          },
+                        ),
+                      )))
+            ],
+          )
         ]),
       ),
     );

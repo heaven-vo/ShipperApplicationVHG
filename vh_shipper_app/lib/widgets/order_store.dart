@@ -15,6 +15,8 @@ class OrderStore extends StatefulWidget {
 }
 
 class _OrderStoreState extends State<OrderStore> {
+  int activeRadio = 0;
+
   Future<void> _makePhoneCall(String phoneNumber) async {
     if (phoneNumber != "") {
       final Uri launchUri = Uri(
@@ -93,6 +95,166 @@ class _OrderStoreState extends State<OrderStore> {
         ),
       ),
     );
+  }
+
+  showModal() {
+    return showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(8.0))),
+        builder: (BuildContext context) {
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter mystate) {
+            return Container(
+              height: MediaQuery.of(context).size.height * 0.9,
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 5),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            child: Icon(
+                              Icons.arrow_back_ios,
+                              size: 18,
+                              color: Colors.black87,
+                            ),
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Tại sao bạn hủy đơn?",
+                              style: const TextStyle(
+                                  fontFamily: "SF Bold",
+                                  fontSize: 18,
+                                  color: Colors.black87)),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 15, top: 10),
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            ...MessageCancel.map((e) {
+                              return InkWell(
+                                child: Container(
+                                  padding: EdgeInsets.only(left: 15, right: 15),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              child: Row(children: [
+                                                Icon(
+                                                    activeRadio == e["id"]
+                                                        ? Icons
+                                                            .radio_button_checked
+                                                        : Icons
+                                                            .radio_button_unchecked,
+                                                    size: 18,
+                                                    color: Color.fromRGBO(
+                                                        100, 100, 100, 1)),
+                                              ]),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Container(
+                                              child: Row(children: [
+                                                Text(
+                                                  e["message"],
+                                                  style: TextStyle(
+                                                      color: Color.fromRGBO(
+                                                          100, 100, 100, 1),
+                                                      fontFamily: "SF Medium",
+                                                      fontSize: 16),
+                                                ),
+                                              ]),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                onTap: () {
+                                  mystate(() {
+                                    activeRadio = e["id"];
+                                  });
+                                },
+                              );
+                            }).toList()
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      color: Colors.white,
+                      padding: EdgeInsets.only(top: 10),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 45,
+                            margin: EdgeInsets.only(
+                                left: 15, right: 15, top: 0, bottom: 0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: MaterialColors.primary,
+                              border: Border.all(
+                                  color: Color.fromRGBO(200, 200, 200, 1)),
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  child: Row(children: [
+                                    TextButton(
+                                      child: Text(
+                                        "Xác nhận",
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 255, 255, 255),
+                                            fontFamily: "SF Bold",
+                                            fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                  ]),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ]),
+            );
+          });
+        });
   }
 
   dialogOrder() {
@@ -214,8 +376,8 @@ class _OrderStoreState extends State<OrderStore> {
               Text(
                 "Ghi chú khách hàng",
                 style: const TextStyle(
-                    color: MaterialColors.black,
-                    fontFamily: "SF Medium",
+                    color: Color.fromRGBO(150, 150, 150, 1),
+                    fontFamily: "SF Regular",
                     fontSize: 16),
               ),
             ],
@@ -467,6 +629,28 @@ class _OrderStoreState extends State<OrderStore> {
                   ],
                 ),
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "Tổng cộng: ",
+                    style: const TextStyle(
+                        color: Color.fromRGBO(50, 50, 50, 1),
+                        fontFamily: "SF Regular",
+                        fontSize: 14),
+                  ),
+                  Text(
+                    "đ50.000",
+                    style: const TextStyle(
+                        color: MaterialColors.primary,
+                        fontFamily: "SF Regular",
+                        fontSize: 15),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 5,
+              ),
               Container(
                   decoration: BoxDecoration(color: Colors.white),
                   padding: EdgeInsets.only(top: 10, bottom: 10),
@@ -531,29 +715,6 @@ class _OrderStoreState extends State<OrderStore> {
                       )
                     ],
                   ))
-              // Container(
-              //   padding: EdgeInsets.only(top: 0, bottom: 10),
-              //   child: Row(
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-              //       Text(
-              //         "Xem thêm",
-              //         style: const TextStyle(
-              //             color: MaterialColors.primary,
-              //             fontFamily: "SF Regular",
-              //             fontSize: 14),
-              //         textAlign: TextAlign.center,
-              //       ),
-              //       SizedBox(width: 5),
-              //       Icon(
-              //         Icons.arrow_forward_ios_outlined,
-              //         color: MaterialColors.primary,
-              //         size: 10,
-              //       )
-              //     ],
-              //   ),
-              // ),
             ],
           ),
         ));
@@ -812,100 +973,6 @@ class _OrderStoreState extends State<OrderStore> {
             SizedBox(
               height: 15,
             ),
-            // Container(
-            //   padding:
-            //       EdgeInsets.only(left: 30, right: 15, bottom: 10, top: 10),
-            //   child: Row(
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Expanded(
-            //         child: Row(
-            //           crossAxisAlignment: CrossAxisAlignment.start,
-            //           mainAxisAlignment: MainAxisAlignment.center,
-            //           children: [
-            //             Text(
-            //               "1 x",
-            //               style: const TextStyle(
-            //                   color: MaterialColors.black,
-            //                   fontFamily: "SF Regular",
-            //                   fontSize: 16),
-            //             ),
-            //             SizedBox(
-            //               width: 10,
-            //             ),
-            //             Expanded(
-            //               child: Text(
-            //                 "Kebab Thịt heo",
-            //                 style: const TextStyle(
-            //                     color: MaterialColors.black,
-            //                     fontFamily: "SF Regular",
-            //                     fontSize: 16),
-            //               ),
-            //             )
-            //           ],
-            //         ),
-            //       ),
-            //       SizedBox(
-            //         width: 5,
-            //       ),
-            //       Text(
-            //         "₫ 25.000",
-            //         style: const TextStyle(
-            //             color: MaterialColors.black,
-            //             fontFamily: "SF Regular",
-            //             fontSize: 16),
-            //       )
-            //     ],
-            //   ),
-            // ),
-            // Container(
-            //   padding:
-            //       EdgeInsets.only(left: 30, right: 15, bottom: 10, top: 10),
-            //   child: Row(
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Expanded(
-            //         child: Row(
-            //           crossAxisAlignment: CrossAxisAlignment.start,
-            //           mainAxisAlignment: MainAxisAlignment.center,
-            //           children: [
-            //             Text(
-            //               "1 x",
-            //               style: const TextStyle(
-            //                   color: MaterialColors.black,
-            //                   fontFamily: "SF Regular",
-            //                   fontSize: 16),
-            //             ),
-            //             SizedBox(
-            //               width: 10,
-            //             ),
-            //             Expanded(
-            //               child: Text(
-            //                 "Kebab Thịt heo đặc biệt có phô mai mai mai",
-            //                 style: const TextStyle(
-            //                     color: MaterialColors.black,
-            //                     fontFamily: "SF Regular",
-            //                     fontSize: 16),
-            //               ),
-            //             )
-            //           ],
-            //         ),
-            //       ),
-            //       SizedBox(
-            //         width: 5,
-            //       ),
-            //       Text(
-            //         "₫ 25.000",
-            //         style: const TextStyle(
-            //             color: MaterialColors.black,
-            //             fontFamily: "SF Regular",
-            //             fontSize: 16),
-            //       )
-            //     ],
-            //   ),
-            // ),
           ]),
         ),
 
@@ -1084,25 +1151,30 @@ class _OrderStoreState extends State<OrderStore> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.cancel_outlined,
-                  color: Colors.red[800],
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  "Hủy",
-                  style: TextStyle(
-                      color: Colors.red[800],
-                      fontFamily: "SF Regular",
-                      fontSize: 16),
-                )
-              ],
+            InkWell(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.cancel_outlined,
+                    color: Colors.red[800],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    "Hủy",
+                    style: TextStyle(
+                        color: Colors.red[800],
+                        fontFamily: "SF Regular",
+                        fontSize: 16),
+                  )
+                ],
+              ),
+              onTap: () {
+                showModal();
+              },
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,

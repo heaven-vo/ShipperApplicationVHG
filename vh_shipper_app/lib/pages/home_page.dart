@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:vh_shipper_app/Colors/color.dart';
+import 'package:vh_shipper_app/Json/constrain.dart';
 import 'package:vh_shipper_app/pages/test_firestore.dart';
 import 'package:vh_shipper_app/provider/appProvider.dart';
 import 'package:vh_shipper_app/widgets/colection_detail.dart';
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
     return Container(
       margin: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
       // padding: EdgeInsets.all(15),
-      padding: EdgeInsets.only(left: 15, right: 15, bottom: 5, top: 5),
+      padding: EdgeInsets.only(left: 15, right: 15, bottom: 0, top: 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
@@ -1125,6 +1126,168 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  trip_doing(segment) {
+    return Container(
+      margin: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
+      padding: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        border: Border.all(color: Color.fromRGBO(200, 200, 200, 1)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "#0123456",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: "SF SemiBold",
+                    fontSize: 16,
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    children: [
+                      Image(
+                          // color:70olors.red,
+                          height: 20,
+                          width: 20,
+                          fit: BoxFit.cover,
+                          image: NetworkImage(segment == 0
+                              ? "https://cdn-icons-png.flaticon.com/512/4521/4521931.png"
+                              : "https://cdn-icons-png.flaticon.com/512/7541/7541900.png")),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(top: 5),
+                        child: Text(
+                          (segment == 0 ? "Lấy Hàng" : "Giao hàng"),
+                          style: TextStyle(
+                            fontFamily: "SF Medium",
+                            color: MaterialColors.primary,
+                            fontSize: 15,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          // SizedBox(
+          //   height: 15,
+          // ),
+          Container(
+            // padding: EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image(
+                    // color:70olors.red,
+                    height: 16,
+                    width: 16,
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                        "https://cdn-icons-png.flaticon.com/512/1946/1946770.png")),
+                SizedBox(
+                  width: kSpacingUnit * 1,
+                ),
+                Expanded(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Bếp Việt MANHATTAN",
+                      style: TextStyle(
+                          fontSize: 15, fontFamily: "SF SemiBold", height: 1.3),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "Bếp Việt T13/07, MANHATTAN , Vinhomes Grand Park, Phường Long Thạnh Mỹ, Quận 9",
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: "SF Regular",
+                        height: 1.3,
+                        color: Color.fromRGBO(150, 150, 150, 1),
+                      ),
+                    )
+                  ],
+                ))
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        // "Tiền mặt",
+                        "Tổng cộng: ",
+                        style: TextStyle(
+                            color: Color.fromRGBO(80, 80, 80, 1), fontSize: 15),
+                      ),
+                      Text(
+                        "200.000 VND",
+                        style: TextStyle(
+                            color: Color.fromRGBO(80, 80, 80, 1),
+                            fontSize: 16,
+                            fontFamily: "SF SemiBold"),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Container(
+                width: 100,
+                child: OutlinedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStatePropertyAll<Color>(MaterialColors.primary),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    _ModalShipping(context);
+                  },
+                  child: Text('Chi tiết',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 16,
+                          fontFamily: "SF SemiBold")),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
   handleToggle(val) {
     setState(() {
       status = val;
@@ -1242,20 +1405,22 @@ class _HomePageState extends State<HomePage> {
                   )),
                   statistical_order(),
                   revenue(),
-                  Center(
+                  Container(
+                      padding: EdgeInsets.only(left: 15, right: 15, top: 15),
                       child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Đang thực hiện",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 0, 0, 0),
-                            fontFamily: "SF Bold",
-                            fontSize: 18),
-                      ),
-                    ],
-                  )),
-                  order_doing(0),
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Đang thực hiện",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontFamily: "SF Bold",
+                                fontSize: 18),
+                          ),
+                        ],
+                      )),
+                  // order_doing(0),
+                  trip_doing(0),
                   Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
