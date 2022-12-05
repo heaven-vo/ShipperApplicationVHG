@@ -1,10 +1,22 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:vh_shipper_app/Colors/color.dart';
 import 'package:vh_shipper_app/Json/constrain.dart';
+import 'package:vh_shipper_app/apis/apiServices.dart';
+import 'package:vh_shipper_app/models/HistoryModel.dart';
+import 'package:vh_shipper_app/models/MessageEdgeModel.dart';
+import 'package:vh_shipper_app/pages/history_detail_page.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:vh_shipper_app/provider/appProvider.dart';
+import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class OrderHistoryTab extends StatefulWidget {
-  const OrderHistoryTab({Key? key}) : super(key: key);
+  int status;
+  OrderHistoryTab({Key? key, required this.status}) : super(key: key);
 
   @override
   _OrderHistoryTabState createState() => _OrderHistoryTabState();
@@ -28,10 +40,7 @@ historyTitle(title) {
                 flex: 6,
                 child: Text(
                   title,
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      fontSize: 18,
-                      fontFamily: "SF Bold"),
+                  style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 18, fontFamily: "SF Bold"),
                 ),
               ),
             ],
@@ -45,10 +54,12 @@ historyTitle(title) {
   );
 }
 
-historyItem(index) {
+historyItem(HistoryModel item, int status, bool isToday, bool isBorder) {
+  final currencyFormatter = NumberFormat('#,##0', 'ID');
   return Container(
-    padding: EdgeInsets.only(right: 15, top: 15, bottom: 15, left: 15),
-    color: index % 2 == 1 ? Colors.white : Color.fromRGBO(250, 250, 250, 1),
+    padding: EdgeInsets.only(top: 15, bottom: 15, right: 15, left: 15),
+    // margin: EdgeInsets.only(right: 15, left: 15),
+    decoration: BoxDecoration(color: Colors.white, border: isBorder ? Border(bottom: BorderSide(color: Color.fromRGBO(230, 230, 230, 1))) : null),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,24 +67,17 @@ historyItem(index) {
         Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Stack(
-                children: [
-                  Container(
-                      height: 35,
-                      width: 35,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Image.asset(
-                          getIconOrder("1"),
-                          fit: BoxFit.cover,
-                        ),
-                      )),
-                ],
+              SizedBox(
+                width: item.serviceName == "Hub" ? 5 : 0,
               ),
+              Image(
+                  // color:70olors.red,
+                  height: item.serviceName == "Hub" ? 25 : 30,
+                  width: item.serviceName == "Hub" ? 25 : 30,
+                  fit: BoxFit.cover,
+                  image: NetworkImage(item.serviceName == "Hub" ? "https://cdn-icons-png.flaticon.com/512/8072/8072884.png" : "https://cdn-icons-png.flaticon.com/512/2844/2844235.png")),
               SizedBox(
                 width: 15,
               ),
@@ -82,25 +86,22 @@ historyItem(index) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Bún thịt nướng 5 ngon",
+                    item.serviceName == "Hub" ? "Hub" : "Hỏa tốc",
                     style: TextStyle(fontFamily: "SF SemiBold", fontSize: 16),
                   ),
                   SizedBox(
                     height: kSpacingUnit * 0.5,
                   ),
                   Text(
-                    "45.000",
+                    "₫${currencyFormatter.format((item.total!).toInt()).toString()}",
                     style: TextStyle(fontFamily: "SF Regular", fontSize: 14),
                   ),
                   SizedBox(
                     height: kSpacingUnit * 0.5,
                   ),
                   Text(
-                    "Giao hàng",
-                    style: TextStyle(
-                        fontFamily: "SF Regular",
-                        fontSize: 14,
-                        color: Colors.black38),
+                    item.actionType == OrderAction.deliveryHub ? "Lấy hàng đến Hub" : "Giao hàng",
+                    style: TextStyle(fontFamily: "SF Regular", fontSize: 14, color: Colors.black38),
                   ),
                 ],
               ),
@@ -115,26 +116,19 @@ historyItem(index) {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              "17:05, 09/09/2022",
-              style: TextStyle(
-                  fontFamily: "SF Regular",
-                  fontSize: 13,
-                  color: Colors.black38),
+              isToday ? getDateHistoryToday(item.date) : getDateHistory(item.date),
+              style: TextStyle(fontFamily: "SF Regular", fontSize: 13, color: Colors.black38),
             ),
             Container(
                 margin: EdgeInsets.only(top: 10),
-                padding: const EdgeInsets.only(
-                    left: 10, right: 10, bottom: 5, top: 5),
+                padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: status == 1 ? MaterialColors.success : Colors.red[400],
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  "Thành công",
-                  style: TextStyle(
-                      fontFamily: "SF Medium",
-                      fontSize: 13,
-                      color: Colors.white),
+                  status == 1 ? "Thành công" : "Thất bại",
+                  style: TextStyle(fontFamily: "SF Medium", fontSize: 13, color: Colors.white),
                 ))
           ],
         ),
@@ -144,32 +138,158 @@ historyItem(index) {
 }
 
 class _OrderHistoryTabState extends State<OrderHistoryTab> {
+  MessageEdgeModel messageEdgeModel = MessageEdgeModel();
+  List<HistoryModel> historyListToday = [];
+  // List<HistoryModel> historyListCancelToday = [];
+  List<HistoryModel> historyList = [];
+  // List<HistoryModel> historyListCancel = [];
+  bool isLoading = true;
+  late DateTime now;
+  var inputFormat = DateFormat('yyyy-MM-ddTHH:mm:ss');
+  var inputDate;
+  var outputDate;
+  var nowDate;
+  var outputFormat = DateFormat('dd/MM/yyyy');
+  handleGetHistory(shipperId) {
+    ApiServices.getListHistory(shipperId, widget.status, 1, 10)
+        .then((value) => {
+              messageEdgeModel = value,
+              if (messageEdgeModel.statusCode == "Successful")
+                {
+                  now = DateTime.now(),
+                  nowDate = outputFormat.format(now),
+                  setState(() => {
+                        messageEdgeModel.data!.forEach((element) {
+                          inputDate = inputFormat.parse(element["date"]);
+                          outputDate = outputFormat.format(inputDate);
+                          if (nowDate == outputDate) {
+                            historyListToday.add(HistoryModel.fromJson(element));
+                          } else {
+                            historyList.add(HistoryModel.fromJson(element));
+                          }
+                        }),
+                        isLoading = false
+                      })
+                }
+              else
+                {
+                  setState(() => {isLoading = false})
+                }
+            })
+        .catchError((onError) => {print(onError.toString())});
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      isLoading = true;
+    });
+    print("ok");
+    handleGetHistory(context.read<AppProvider>().getUserId);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: kSpacingUnit * 1.5,
+    return Consumer<AppProvider>(builder: (context, provider, child) {
+      return Scaffold(
+          body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (!isLoading) ...[
+                  SizedBox(
+                    height: kSpacingUnit * 1.5,
+                  ),
+                  if (historyListToday.isNotEmpty) ...[
+                    historyTitle("Hôm nay"),
+                    ...[...historyListToday].map((item) {
+                      var index = historyListToday.indexOf(item);
+                      bool isBorder = true;
+                      if (index == historyListToday.length - 1) {
+                        isBorder = false;
+                      }
+                      return InkWell(
+                        child: Container(
+                          child: historyItem(item, widget.status, true, isBorder),
+                          // color: Colors.red,
+                          // margin: EdgeInsets.only(left: 15, right: 15),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      HistoryDetailPage(actionType: item.actionType!, status: widget.status == 1 ? StatusHistoryOrder.done : StatusHistoryOrder.fail, historyOrderId: item.id!)));
+                        },
+                      );
+                    }).toList(),
+                  ],
+                  SizedBox(
+                    height: kSpacingUnit * 0.5,
+                  ),
+                  if (historyList.isNotEmpty) ...[
+                    historyTitle("Cũ hơn"),
+                    ...[...historyList].map((item) {
+                      var index = historyList.indexOf(item);
+                      bool isBorder = true;
+                      if (index == historyList.length - 1) {
+                        isBorder = false;
+                      }
+                      return InkWell(
+                        child: historyItem(item, widget.status, true, isBorder),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      HistoryDetailPage(actionType: item.actionType!, status: widget.status == 1 ? StatusHistoryOrder.done : StatusHistoryOrder.fail, historyOrderId: item.id!)));
+                        },
+                      );
+                    })
+                  ],
+                  if (!isLoading && historyList.isEmpty && historyListToday.isEmpty)
+                    Container(
+                      padding: EdgeInsets.only(top: 100),
+                      child: Center(
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 100,
+                            width: 100,
+                            child: Image.asset(
+                              'assets/images/empty-order.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Text(
+                            "Bạn không có đơn hàng nào",
+                            style: TextStyle(fontFamily: "SF Regular", fontSize: 16),
+                          ),
+                        ],
+                      )),
+                    ),
+                ],
+              ],
             ),
-            historyTitle("Hôm nay"),
-            ...[
-              1,
-              2,
-            ].map((item) => historyItem(item)).toList(),
-            SizedBox(
-              height: kSpacingUnit * 0.5,
+          ),
+          if (isLoading)
+            Positioned(
+              child: Container(
+                // color: Colors.white.withOpacity(0.5),
+                child: SpinKitDualRing(
+                  color: MaterialColors.primary,
+                  size: 40.0,
+                ),
+              ),
             ),
-            historyTitle("Cũ hơn"),
-            ...[1, 2, 3, 4, 5].map((item) => historyItem(item)).toList(),
-            SizedBox(
-              height: kSpacingUnit * 0.5,
-            ),
-          ],
-        ),
-      ),
-    );
+        ],
+      ));
+    });
   }
 }
