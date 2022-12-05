@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 import 'package:vh_shipper_app/Colors/color.dart';
 import 'package:vh_shipper_app/Json/constrain.dart';
-import 'package:vh_shipper_app/pages/home_page.dart';
+import 'package:vh_shipper_app/models/TransactionModel.dart';
 import 'package:vh_shipper_app/provider/appProvider.dart';
-import 'package:flutter_switch/flutter_switch.dart';
-import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class DetailRemittanceHistory extends StatefulWidget {
-  const DetailRemittanceHistory({super.key});
+  TransactionModel transaction;
+  String shipperId;
+  String name;
+  DetailRemittanceHistory({super.key, required this.transaction, required this.shipperId, required this.name});
 
   @override
-  State<DetailRemittanceHistory> createState() =>
-      _DetailRemittanceHistoryState();
+  State<DetailRemittanceHistory> createState() => _DetailRemittanceHistoryState();
 }
 
-historyTitle() {
+historyTitle(amount, transactionAction) {
   return Container(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -25,18 +27,15 @@ historyTitle() {
         Container(
           child: Text(
             "SỐ TIỀN GIAO DỊCH",
-            style: TextStyle(
-                color: MaterialColors.primary,
-                fontSize: 17,
-                fontFamily: "SF Medium"),
+            style: TextStyle(color: MaterialColors.primary, fontSize: 16, fontFamily: "SF Medium"),
           ),
         ),
         SizedBox(
-          height: kSpacingUnit * 1.5,
+          height: kSpacingUnit * 1,
         ),
         Container(
           child: Text(
-            "+ 1,000,000 VND",
+            "${transactionAction == 1 ? "+ " : "-"}$amount VND",
             style: TextStyle(
               color: Color.fromARGB(255, 0, 0, 0),
               fontSize: 25,
@@ -51,7 +50,7 @@ historyTitle() {
   );
 }
 
-historyInfor() {
+historyInfor(shipperId, name) {
   return Container(
     padding: EdgeInsets.all(15),
     decoration: BoxDecoration(
@@ -83,7 +82,7 @@ historyInfor() {
           height: kSpacingUnit * 1,
         ),
         Text(
-          "Phạm Văn Dương".toUpperCase(),
+          "$name".toUpperCase(),
           style: TextStyle(
             color: Colors.black,
             fontSize: 16,
@@ -101,7 +100,7 @@ historyInfor() {
               Expanded(
                 flex: 6,
                 child: Text(
-                  "Shipper1@gmail.com",
+                  shipperId,
                   style: TextStyle(
                     color: Color.fromRGBO(100, 100, 100, 1),
                     fontSize: 14,
@@ -115,8 +114,7 @@ historyInfor() {
           decoration: const BoxDecoration(
             color: Colors.white,
             border: Border(
-              bottom:
-                  BorderSide(color: Color.fromRGBO(240, 240, 240, 1), width: 1),
+              bottom: BorderSide(color: Color.fromRGBO(240, 240, 240, 1), width: 1),
             ),
           ),
           margin: EdgeInsets.only(top: 30),
@@ -126,7 +124,15 @@ historyInfor() {
   );
 }
 
-historyTime() {
+historyTime(date, id, transactionType, status) {
+  getTime(date) {
+    var inputFormat = DateFormat('yyyy-MM-ddTHH:mm:ss');
+    var inputDate = inputFormat.parse(date);
+    var formatterDate = DateFormat('HH:mm:ss dd/MM/yyyy');
+    String actualDate = formatterDate.format(inputDate);
+    return actualDate;
+  }
+
   return Container(
     padding: EdgeInsets.all(15),
     decoration: BoxDecoration(
@@ -152,11 +158,8 @@ historyTime() {
               Container(
                 //flex: 6,
                 child: Text(
-                  "11:11 11/11/2022",
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      fontSize: 15,
-                      fontFamily: "SF Medium"),
+                  getTime(date),
+                  style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 15, fontFamily: "SF Medium"),
                 ),
               ),
             ],
@@ -183,11 +186,8 @@ historyTime() {
               Container(
                 //flex: 6,
                 child: Text(
-                  "99983V929A",
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      fontSize: 15,
-                      fontFamily: "SF Medium"),
+                  id,
+                  style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 15, fontFamily: "SF Medium"),
                 ),
               ),
             ],
@@ -214,11 +214,8 @@ historyTime() {
               Container(
                 //flex: 6,
                 child: Text(
-                  "Thu hộ đơn hàng",
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      fontSize: 15,
-                      fontFamily: "SF Medium"),
+                  getTransactionType(transactionType).toUpperCase(),
+                  style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 15, fontFamily: "SF Medium"),
                 ),
               ),
             ],
@@ -245,11 +242,8 @@ historyTime() {
               Container(
                 //flex: 6,
                 child: Text(
-                  "Thành công",
-                  style: TextStyle(
-                      color: Colors.green[400],
-                      fontSize: 15,
-                      fontFamily: "SF Medium"),
+                  status == 1 ? "Thành công" : "Thất bại",
+                  style: TextStyle(color: status == 1 ? MaterialColors.success : Colors.red[400], fontSize: 15, fontFamily: "SF Medium"),
                 ),
               ),
             ],
@@ -261,6 +255,7 @@ historyTime() {
 }
 
 class _DetailRemittanceHistoryState extends State<DetailRemittanceHistory> {
+  final currencyFormatter = NumberFormat('#,##0', 'ID');
   @override
   Widget build(BuildContext context) {
     return Consumer<AppProvider>(
@@ -272,16 +267,13 @@ class _DetailRemittanceHistoryState extends State<DetailRemittanceHistory> {
             ),
             flexibleSpace: Container(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [
-                      MaterialColors.primary,
-                      MaterialColors.primary.withOpacity(0.99),
-                      MaterialColors.primary.withOpacity(0.97),
-                      MaterialColors.primary.withOpacity(0.95),
-                      MaterialColors.primary.withOpacity(0.9),
-                    ]),
+                gradient: LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [
+                  MaterialColors.primary,
+                  MaterialColors.primary.withOpacity(0.99),
+                  MaterialColors.primary.withOpacity(0.97),
+                  MaterialColors.primary.withOpacity(0.95),
+                  MaterialColors.primary.withOpacity(0.9),
+                ]),
               ),
             ),
             centerTitle: true,
@@ -297,12 +289,12 @@ class _DetailRemittanceHistoryState extends State<DetailRemittanceHistory> {
                 SizedBox(
                   height: kSpacingUnit * 3,
                 ),
-                historyTitle(),
+                historyTitle("${currencyFormatter.format((widget.transaction.amount!).toInt()).toString()}", widget.transaction.transactionAction),
                 SizedBox(
                   height: kSpacingUnit * 0.5,
                 ),
-                historyInfor(),
-                historyTime()
+                historyInfor(widget.shipperId, widget.name),
+                historyTime(widget.transaction.fullDate, widget.transaction.id ?? "", widget.transaction.transactionType, widget.transaction.status)
               ],
             ),
           ),

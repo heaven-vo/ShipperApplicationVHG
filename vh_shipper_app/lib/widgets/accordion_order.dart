@@ -8,9 +8,11 @@ class AccordionOrder extends StatefulWidget {
       {Key? key,
       required this.content,
       required this.title,
+      required this.open,
       required this.status})
       : super(key: key);
   final String title;
+  final bool open;
   final Widget content;
   final StatusAccordionOrder status;
   @override
@@ -53,6 +55,15 @@ class _AccordionOrderState extends State<AccordionOrder> {
   }
 
   bool _showContent = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      _showContent = widget.open;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(

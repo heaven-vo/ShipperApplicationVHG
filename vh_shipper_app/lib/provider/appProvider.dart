@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vh_shipper_app/models/DriverModel.dart';
 
 class AppProvider with ChangeNotifier {
-  String userId = "";
+  String userId = "shipper2@gmail.com";
   String uid = "";
   String name = "";
   String avatar = "";

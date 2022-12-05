@@ -276,12 +276,12 @@ class _TripInforState extends State<TripInfor> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TripDetail(Status: 1),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => TripDetail(status: 1),
+                      //   ),
+                      // );
                     },
                     child: Container(
                         padding: EdgeInsets.only(
@@ -378,6 +378,7 @@ class _TripInforState extends State<TripInfor> {
                   border:
                       Border.all(color: getColor(StatusAccordionOrder.fail))),
               child: AccordionOrder(
+                open: false,
                 status: StatusAccordionOrder.fail,
                 content: way(StatusAccordionOrder.fail),
                 title: "Đơn hàng #093828",
@@ -390,6 +391,7 @@ class _TripInforState extends State<TripInfor> {
                   border:
                       Border.all(color: getColor(StatusAccordionOrder.done))),
               child: AccordionOrder(
+                open: false,
                 status: StatusAccordionOrder.done,
                 content: way(StatusAccordionOrder.done),
                 title: "Đơn hàng #093828",
@@ -402,6 +404,7 @@ class _TripInforState extends State<TripInfor> {
                   border:
                       Border.all(color: getColor(StatusAccordionOrder.doing))),
               child: AccordionOrder(
+                open: false,
                 status: StatusAccordionOrder.doing,
                 content: way(StatusAccordionOrder.doing),
                 title: "Đơn hàng #093828",
@@ -414,6 +417,7 @@ class _TripInforState extends State<TripInfor> {
                   border:
                       Border.all(color: getColor(StatusAccordionOrder.create))),
               child: AccordionOrder(
+                open: false,
                 status: StatusAccordionOrder.create,
                 content: way(StatusAccordionOrder.create),
                 title: "Đơn hàng #093828",
@@ -426,6 +430,7 @@ class _TripInforState extends State<TripInfor> {
                   border:
                       Border.all(color: getColor(StatusAccordionOrder.create))),
               child: AccordionOrder(
+                open: false,
                 status: StatusAccordionOrder.create,
                 content: way(StatusAccordionOrder.create),
                 title: "Đơn hàng #093828",

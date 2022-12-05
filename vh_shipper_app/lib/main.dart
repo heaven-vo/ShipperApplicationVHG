@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:vh_shipper_app/Colors/color.dart';
 import 'package:vh_shipper_app/Json/constrain.dart';
 import 'package:vh_shipper_app/apis/apiServices.dart';
 import 'package:vh_shipper_app/models/DriverModel.dart';
+import 'package:vh_shipper_app/pages/app.dart';
 import 'package:vh_shipper_app/pages/login_screen.dart';
 import 'package:vh_shipper_app/pages/notification_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:vh_shipper_app/pages/list_order_page.dart';
-import 'package:vh_shipper_app/pages/root_app.dart';
 import 'package:provider/provider.dart';
 import 'package:vh_shipper_app/provider/appProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -31,7 +32,7 @@ void main() async {
       debugShowCheckedModeBanner: false,
       //theme: kDarkTheme,
       theme: kLightTheme,
-      home: RootApp(),
+      home: LandingScreen(),
       //home: OrderPage(),
     ),
   ));
@@ -64,15 +65,13 @@ class LandingScreen extends StatelessWidget {
                   context.read<AppProvider>().setDriverModel(driverModel),
                   context.read<AppProvider>().setStatus(driverModel.status!),
 
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => RootApp()))
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => RootApp()))
                   // context.read<AppProvider>().setName(store.name)
                 })
             .catchError((onError) => {print(onError)});
       } else {
         print("login");
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
         // Navigator.push(
         //     context, MaterialPageRoute(builder: (context) => LoginScreen()));
       }
@@ -80,7 +79,7 @@ class LandingScreen extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(color: MaterialColors.primary),
       ),
     );
   }

@@ -414,12 +414,13 @@ class OrderPageState extends State<OrderPage> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => OrderDetailPage(Status: 1),
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => OrderDetailPage(
+                          //         status: 1, statusEdge: StatusEdge.done),
+                          //   ),
+                          // );
                         },
                         child: Container(
                             padding: EdgeInsets.only(
@@ -583,14 +584,13 @@ class OrderPageState extends State<OrderPage> {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => OrderDetailPage(
-                    Status: 1,
-                  ),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) =>
+              //         OrderDetailPage(status: 1, statusEdge: StatusEdge.done),
+              //   ),
+              // );
             },
             child: Container(
                 alignment: Alignment.center,
